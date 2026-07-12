@@ -1,0 +1,14 @@
+# Netlify-Konfiguration.
+# Das Astro-Projekt liegt im Unterordner site/ — deshalb "base".
+# Netlify baut bei jedem Push auf GitHub automatisch neu.
+
+[build]
+  base    = "site"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Astro erzeugt saubere URLs; dieses Redirect fängt unbekannte Pfade als 404 ab.
+# (Bei Bedarf später anpassen.)

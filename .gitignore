@@ -1,0 +1,29 @@
+# Abhängigkeiten
+node_modules/
+site/node_modules/
+
+# Astro / Build
+site/dist/
+site/.astro/
+.netlify/
+
+# Umgebungsvariablen (Umami-ID etc. — nicht committen)
+.env
+.env.*
+!.env.example
+
+# Bibliothek: bleibt lokal (Kontext-/Quellmaterial, teils urheberrechtlich geschützt).
+# Nur die README wird versioniert, damit der Ordner im Repo dokumentiert ist.
+Bibliothek/*
+!Bibliothek/README.md
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
