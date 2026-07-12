@@ -1,0 +1,49 @@
+---
+import '../styles/homepage.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import type { PartId } from '../site';
+
+interface Props {
+  title: string;
+  description?: string;
+  current?: PartId | 'home';
+}
+
+const {
+  title,
+  description = 'Erleben gestalten — Psyche, Herausforderungen und wie sich Glück gestalten lässt.',
+  current,
+} = Astro.props;
+
+const navCurrent = current === 'home' ? undefined : current;
+
+// Umami-Tracking: nur aktiv, wenn beide Variablen gesetzt sind (in Netlify hinterlegt).
+const umamiSrc = import.meta.env.PUBLIC_UMAMI_SRC;
+const umamiId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="/bilder/logo.png" />
+    {umamiSrc && umamiId && (
+      <script defer src={umamiSrc} data-website-id={umamiId}></script>
+    )}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Zum Inhalt springen</a>
+    <Nav current={navCurrent} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer current={current} />
+  </body>
+</html>

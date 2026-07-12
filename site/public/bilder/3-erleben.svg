@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 540" width="540" height="540" role="img" aria-label="Erleben – gelbe Silhouette der sitzenden Person mit goldenen Innenlinien">
+  
+
+  
+  <g id="silhouette" fill="#FBD34D" stroke="none">
+    <path id="kopf-flaeche" d="M 270 86 c 24 0 42 19 42 42 c 0 24 -18 42 -42 42 c -24 0 -42 -18 -42 -42 c 0 -23 18 -42 42 -42 z"></path>
+    <path id="nase-flaeche" d="M 233 110 c -14 1 -21 10 -18 18 c 3 8 11 11 19 9 c 1 -9 0 -18 -1 -27 z"></path>
+    <path id="koerper-flaeche" d="M 270 158 c -40 0 -66 44 -70 100 c -2 26 0 50 4 62 l 132 0 c 4 -12 6 -36 4 -62 c -4 -56 -30 -100 -70 -100 z"></path>
+    <path id="beine-flaeche" d="M 196 312 c -18 14 -26 32 -16 44 c 12 14 48 20 90 20 c 44 0 80 -6 92 -20 c 10 -12 2 -30 -16 -44 c -30 -18 -120 -18 -150 0 z"></path>
+  </g>
+
+  
+  <g id="innenlinien" fill="none" stroke="#F4B81E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path id="kopf" d="M 271 86 c 24 1 41 19 40 42 c -1 24 -19 41 -42 40 c -23 -1 -39 -19 -38 -42 c 1 -23 18 -41 40 -40 z"></path>
+    <path id="ohr" stroke-width="5" d="M 306 128 c 7 -2 10 4 7 10 c -3 5 -9 5 -11 1"></path>
+    <path id="nase" stroke-width="5" d="M 232 112 c -12 2 -18 9 -15 16 c 2 6 9 9 16 7"></path>
+    <path id="koerper" d="M 252 172 c -18 10 -34 30 -42 58 c -8 28 -12 56 -10 76"></path>
+    <path id="koerper2" d="M 290 172 c 20 10 36 32 44 60 c 8 28 11 54 9 74"></path>
+    <path id="arm-l" stroke-width="5" d="M 218 240 c -10 22 -14 44 -10 62 c 3 12 12 20 26 22"></path>
+    <path id="arm-r" stroke-width="5" d="M 324 242 c 10 22 13 44 9 60 c -3 12 -12 20 -26 22"></path>
+    <path id="beine" d="M 196 312 c -18 14 -26 32 -16 44 c 12 14 48 20 90 20 c 44 0 80 -6 92 -20 c 10 -12 2 -30 -16 -44"></path>
+    <path id="bein-linie" stroke-width="5" d="M 226 356 c 28 -16 64 -16 92 -2"></path>
+    <path id="fuss" stroke-width="5" d="M 300 366 c 10 -2 18 2 20 8"></path>
+  </g>
+</svg>

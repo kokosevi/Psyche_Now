@@ -1,5 +1,12 @@
 # Psyche Now — Design-Brief & Kontext für Claude Design
 
+> ⚠️ **Teilweise überholt (Stand 2026-07-12).** Das Design kommt jetzt **von** Claude
+> Design als Hand-off; das live umgesetzte System ist **«Erleben gestalten»**
+> (Sonnengelb, Avenir + Amatic SC), definiert in `site/src/styles/homepage.css`. Der
+> **Design-System-Teil unten («Kraftfeld») ist NICHT mehr maßgeblich.** Weiterhin gültig
+> sind der **Projekt-Kontext, die Grenzen und das Hand-off-Verfahren**. Technischer
+> Rahmen: siehe `reference/TECH-FOR-DESIGN.md`.
+
 > **Diese Datei ins Claude.ai-Projektwissen (Project knowledge) legen.** Sie bringt jeden
 > Design-Chat automatisch auf den aktuellen Stand — du musst sie nicht jede Session neu
 > einfügen. Quelle der Wahrheit ist `reference/design-tokens.md` im Repo; bei Änderungen

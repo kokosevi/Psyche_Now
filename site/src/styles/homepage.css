@@ -1,0 +1,194 @@
+/* ============================================================
+   Homepage — Grundgerüst (Feelgood-System Design)
+   Tokens, Schrift, Nav, Footer, gemeinsame Bausteine.
+   Quelle: design/handoffs/2026-07-12-erleben-gestalten/homepage.css
+   (Font-Pfade auf /fonts/ angepasst — Assets liegen in site/public/fonts/.)
+   ============================================================ */
+
+@font-face { font-family: 'Avenir'; src: url('/fonts/Avenir_Book.ttf') format('truetype');    font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Avenir'; src: url('/fonts/Avenir_Regular.ttf') format('truetype'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Avenir'; src: url('/fonts/Avenir_Heavy.ttf') format('truetype');   font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Avenir'; src: url('/fonts/Avenir_Black.ttf') format('truetype');   font-weight: 900; font-display: swap; }
+@font-face { font-family: 'Amatic SC'; src: url('/fonts/AmaticSC-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
+
+:root {
+  /* Farben */
+  --sun: #FBD34D;
+  --sun-deep: #F4B81E;
+  --ink: #1E1D1D;
+  --ink-2: #4A4844;
+  --ink-3: #807C74;
+  --marker: #ED2A1A;
+  --paper: #FBFAF7;
+  --paper-2: #F4F1EA;
+  --hairline: #EBE6DB;
+
+  /* Schrift */
+  --font-sans: 'Avenir', ui-sans-serif, system-ui, sans-serif;
+  --font-hand: 'Amatic SC', cursive;
+
+  /* Bewegung */
+  --ease: cubic-bezier(.22, 1, .36, 1);
+
+  /* Schatten */
+  --shadow-md: 0 10px 30px rgba(30, 29, 29, .10);
+  --shadow-sun: 0 12px 28px rgba(244, 184, 30, .35);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+a { color: var(--ink); }
+a:hover { color: var(--sun-deep); }
+
+:focus-visible {
+  outline: 3px solid var(--sun-deep);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+.skip-link {
+  position: absolute; left: -9999px; top: 8px;
+  background: var(--ink); color: var(--paper); padding: 8px 16px;
+  border-radius: 8px; font-weight: 700; z-index: 100; text-decoration: none;
+}
+.skip-link:focus { left: 16px; }
+
+/* ---------- Navigation ---------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--paper);
+  border-bottom: 1px solid var(--hairline);
+}
+.nav-in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 72px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+.brand img { height: 44px; width: 44px; }
+.brand span {
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.nav-links { display: flex; gap: 8px; }
+.nav-links a {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  transition: background .18s var(--ease), color .18s var(--ease);
+}
+.nav-links a:hover { background: var(--paper-2); color: var(--ink); }
+.nav-links a[aria-current="page"] { background: var(--sun); color: var(--ink); }
+
+/* ---------- Hand-Strich + Label (unter den Grafiken) ---------- */
+.teil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: var(--ink);
+  padding: 12px;
+  border-radius: 20px;
+  transition: transform .22s var(--ease);
+}
+.teil:hover { color: var(--ink); transform: translateY(-6px); }
+.teil img { width: 100%; max-width: 340px; height: auto; }
+.teil .strich { width: 200px; height: 14px; }
+.teil .strich path {
+  stroke: var(--ink);
+  transition: stroke .18s var(--ease);
+}
+.teil:hover .strich path { stroke: var(--sun-deep); }
+.teil .label {
+  font-family: var(--font-hand);
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 1.1;
+  text-align: center;
+}
+.teil .sub {
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--ink-3);
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .teil, .nav-links a { transition: none; }
+  .teil:hover { transform: none; }
+}
+
+/* ---------- Seitenkopf (Unterseiten) ---------- */
+.pagehead { padding: 88px 0 40px; text-align: center; }
+.pagehead .overline {
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin: 0 0 14px;
+}
+.pagehead h1 {
+  font-family: var(--font-hand);
+  font-weight: 700;
+  font-size: clamp(56px, 8vw, 88px);
+  line-height: .95;
+  margin: 0;
+}
+.pagehead .strich { width: 240px; height: 16px; margin: 18px auto 0; display: block; }
+.pagehead .strich path { stroke: var(--sun-deep); }
+
+/* ---------- Footer ---------- */
+.footer {
+  margin-top: 96px;
+  border-top: 1px solid var(--hairline);
+  background: var(--paper-2);
+}
+.footer-in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 28px 0;
+  font-size: 14px;
+  color: var(--ink-3);
+}
+.footer-in nav { display: flex; gap: 18px; }
+.footer-in a { color: var(--ink-3); text-decoration: none; }
+.footer-in a:hover { color: var(--ink); }
+
+/* ---------- Responsiv ---------- */
+@media (max-width: 720px) {
+  .nav-links a { padding: 8px 10px; font-size: 14px; }
+  .brand span { display: none; }
+}

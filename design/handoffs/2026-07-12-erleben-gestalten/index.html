@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Erleben gestalten – Home</title>
+<link rel="stylesheet" href="homepage.css">
+<link rel="icon" href="bilder/logo.png">
+<style>
+  /* ---------- Hero ---------- */
+  .hero { padding: 96px 0 24px; text-align: center; }
+  .hero h1 {
+    font-family: var(--font-hand);
+    font-weight: 700;
+    font-size: clamp(64px, 9vw, 112px);
+    line-height: .95;
+    margin: 0 auto;
+    max-width: 900px;
+    text-wrap: balance;
+  }
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(transparent 58%, var(--sun) 58%, var(--sun) 96%, transparent 96%);
+    padding: 0 6px;
+  }
+  .hero p {
+    max-width: 560px;
+    margin: 22px auto 0;
+    font-size: 19px;
+    color: var(--ink-2);
+    text-wrap: pretty;
+  }
+
+  /* ---------- Dreier-Sujet ---------- */
+  .sujet { padding: 56px 0 40px; }
+  .sujet-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+  .hinweis {
+    text-align: center;
+    margin: 36px 0 0;
+    font-size: 15px;
+    color: var(--ink-3);
+  }
+  @media (max-width: 860px) {
+    .sujet-grid { grid-template-columns: 1fr; gap: 8px; }
+    .hero { padding-top: 64px; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="index.html" aria-label="Startseite">
+        <img src="bilder/logo.png" alt="">
+        <span>Erleben gestalten</span>
+      </a>
+      <nav class="nav-links" aria-label="Hauptnavigation">
+        <a href="psyche.html">Psyche</a>
+        <a href="herausforderungen.html">Herausforderungen</a>
+        <a href="erleben.html">Erleben</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="sujet wrap" data-screen-label="Dreier-Sujet" aria-label="Die drei Teile">
+      <div class="sujet-grid">
+
+        <a class="teil" href="psyche.html" id="teil-psyche">
+          <img src="bilder/1-psyche.svg" alt="Sitzende Figur als schwarze Kontur – das Grundgerüst der Psyche">
+          <svg class="strich" viewBox="0 0 220 14" aria-hidden="true" focusable="false">
+            <path d="M 5 9 C 40 3 78 12 118 7 C 152 3 190 8 215 7" fill="none" stroke-width="4" stroke-linecap="round"></path>
+          </svg>
+          <span class="label">Psyche: Was wir sind</span>
+        </a>
+
+        <a class="teil" href="herausforderungen.html" id="teil-herausforderungen">
+          <img src="bilder/2-herausforderung-animiert.svg" alt="Rotes, böses Grinsen zwischen gegenläufigen Pfeilen – animiert">
+          <svg class="strich" viewBox="0 0 220 14" aria-hidden="true" focusable="false">
+            <path d="M 5 7 C 44 11 80 4 120 8 C 156 11 192 5 215 8" fill="none" stroke-width="4" stroke-linecap="round"></path>
+          </svg>
+          <span class="label">Herausforderungen: Woran Glück scheitert</span>
+        </a>
+
+        <a class="teil" href="erleben.html" id="teil-erleben">
+          <img src="bilder/3-erleben.svg" alt="Gelbe Silhouette der sitzenden Person – das nicht greifbare Erleben">
+          <svg class="strich" viewBox="0 0 220 14" aria-hidden="true" focusable="false">
+            <path d="M 5 8 C 38 4 84 11 122 6 C 158 2 194 9 215 6" fill="none" stroke-width="4" stroke-linecap="round"></path>
+          </svg>
+          <span class="label">Erleben: Wie Glück gestalten</span>
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-in">
+      <span>© 2026 Erleben gestalten</span>
+      <nav aria-label="Fussnavigation">
+        <a href="psyche.html">Psyche</a>
+        <a href="herausforderungen.html">Herausforderungen</a>
+        <a href="erleben.html">Erleben</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>

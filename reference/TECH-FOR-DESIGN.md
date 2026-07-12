@@ -31,6 +31,9 @@
 - **Responsiv** bis Mobile.
 - **Barrierefrei:** sichtbarer Fokus, Tastaturbedienung, sinnvolle Alternativtexte.
 - **`prefers-reduced-motion`** respektieren (Animationen abschaltbar).
-- **Schriften:** Google Fonts **Spectral** (Serif) + **Space Grotesk** (Labels) — schon eingebunden.
+- **Schriften:** kommen mit dem Design-Hand-off. Aktuell live: **Avenir** (Text) +
+  **Amatic SC** (Labels/Titel), selbst gehostet unter `site/public/fonts/`. Bei neuen
+  Fonts die Dateien mitliefern. ⚠️ Bei kommerziellen Fonts (z. B. Avenir) Web-Lizenz
+  vor Launch prüfen.
 - **Inhaltssprache: Deutsch.**
 - Abhängigkeiten sparsam halten — simple Effekte ohne externe Libraries lösen.

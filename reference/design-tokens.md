@@ -1,5 +1,11 @@
 # Design-Tokens — Richtung «Kraftfeld»
 
+> ⚠️ **Überholt (Stand 2026-07-12).** Das live umgesetzte Design ist inzwischen
+> **«Erleben gestalten»** aus dem Claude-Design-Hand-off
+> (`design/handoffs/2026-07-12-erleben-gestalten/`). Die verbindlichen Tokens leben jetzt in
+> **`site/src/styles/homepage.css`** (Sonnengelb-Palette, Avenir + Amatic SC). Dieses
+> «Kraftfeld»-Dokument bleibt nur als frühe Design-Notiz erhalten.
+
 Die **gemeinsame Sprache** von Claude Design und Claude Code. Farben, Schriften und
 Abstände sind hier *einmal* definiert. In Claude Design benennst du sie beim Namen
 ("Hintergrund = `--paper`"), im Code liegen exakt dieselben Werte

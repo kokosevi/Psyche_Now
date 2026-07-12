@@ -85,7 +85,12 @@ Der Hand-off läuft in **zwei Richtungen**:
   Stand (Design-System, was schon existiert, Grenzen, Aufgabe). Diese Datei kommt **einmal**
   ins Claude.ai-**Projektwissen** und gilt dann für jede Session automatisch — nicht jedes
   Mal neu einfügen. Bei Änderungen am Design-System aktualisieren und im Projektwissen ersetzen.
-- **Design → Code:** `design/HANDOFF.md` + Artifact-Code + Screenshot (siehe oben).
+- **Design → Code:** Claude Design liefert ein **selbst-enthaltendes Bündel** (HTML/CSS,
+  `bilder/`, `fonts/`, plus eigenes `HANDOFF.md`). Ablage: **ein Ordner pro Hand-off** unter
+  **`design/handoffs/<JJJJ-MM-TT>-<kurzname>/`** (Beispiel:
+  `design/handoffs/2026-07-12-erleben-gestalten/`). Danach in Claude Code sagen:
+  *„Setze den Hand-off in `design/handoffs/<…>` um."* Ich kopiere Assets nach `site/public/`
+  und überführe HTML/CSS in Astro.
 
 ---
 
@@ -99,11 +104,12 @@ Der Hand-off läuft in **zwei Richtungen**:
 4. Netlify mit dem GitHub-Repo verbinden (Auto-Deploy).
 5. Umami-Konto anlegen und Tracking-Snippet einbauen.
 
-> Status: **Schritte 1–4 erledigt.** Astro-Projekt (`site/`) mit 6 Beispiel-Themen,
-> Startseite, Themen-Filter, Detailseiten, Graph-View.
-> Repo: https://github.com/kokosevi/Psyche_Now (public, Default-Branch `main`).
-> **Live: https://psychenow.netlify.app** (Auto-Deploy bei jedem Push).
-> Offen: Umami einrichten (5).
+> Status: **Schritte 1–5 erledigt + erster Design-Hand-off umgesetzt.**
+> Live: https://psychenow.netlify.app · Repo: https://github.com/kokosevi/Psyche_Now
+> (public, `main`, Auto-Deploy). Umami aktiv (bei gesetzten `PUBLIC_UMAMI_*`).
+> Aktuelles Design: **«Erleben gestalten»** (4 Seiten: Landing + Psyche/Herausforderungen/
+> Erleben) aus `design/handoffs/2026-07-12-erleben-gestalten/`. Das frühere «Kraftfeld»-
+> Scaffold wurde ersetzt (in der Git-Historie erhalten).
 
 ### Phase 1 — Inhalt vorbereiten (du)
 

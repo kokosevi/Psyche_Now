@@ -1,101 +1,33 @@
 ---
-import { getCollection } from 'astro:content';
-import Base from '../layouts/Base.astro';
-import GraphField from '../components/GraphField.astro';
-import TopicCard from '../components/TopicCard.astro';
-import { buildGraph } from '../lib/graph';
-
-const entries = (await getCollection('themen')).filter((e) => !e.data.draft);
-const graph = buildGraph(entries);
-const featured = [...entries].sort((a, b) => b.data.weight - a.data.weight);
+import Site from '../layouts/Site.astro';
+import { PARTS } from '../site';
 ---
 
-<Base title="Psyche Now — Ein Kraftfeld psychologischer Themen">
-  <section class="hero wrap">
-    <p class="eyebrow">Allgemeine Psychologie · Hypnosystemik · Mythos & Psyche</p>
-    <h1 class="hero-title">
-      Die Psyche ist kein Ding.<br />
-      Sie ist ein <span class="accent">Kraftfeld</span>.
-    </h1>
-    <p class="hero-lede prose">
-      Themen ziehen und stoßen sich ab, halten sich die Waage, verweisen aufeinander.
-      Hier stehen sie nicht als Liste, sondern als Feld — jedes Thema ein Pol, jede
-      Verbindung eine Kraftlinie. Fang irgendwo an und folge der Spannung.
-    </p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="/graph">Das Feld erkunden</a>
-      <a class="btn btn-ghost" href="/themen">Alle Themen</a>
-    </div>
-  </section>
-
-  <section class="wrap field-teaser">
-    <GraphField data={graph} height="460px" compact={true} />
-    <p class="teaser-cap">
-      <span class="eyebrow">Signatur</span>
-      Sechs Themen, ihre Verbindungen. Klick auf einen Knoten führt ins Thema —
-      die ganze Ansicht liegt im <a href="/graph">Graph</a>.
-    </p>
-  </section>
-
-  <section class="wrap themen">
-    <div class="sec-head">
-      <h2>Themen im Feld</h2>
-      <a class="more" href="/themen">Filtern & durchsuchen →</a>
-    </div>
-    <div class="grid">
-      {featured.map((e) => (
-        <TopicCard
-          url={`/themen/${e.id}`}
-          title={e.data.title}
-          summary={e.data.summary}
-          category={e.data.category}
-        />
+<Site title="Erleben gestalten – Home" current="home">
+  <section class="sujet wrap" aria-label="Die drei Teile">
+    <div class="sujet-grid">
+      {PARTS.map((p) => (
+        <a class="teil" href={p.href} id={`teil-${p.id}`}>
+          <img src={p.imageAnim} alt={p.alt} width="340" height="340" />
+          <svg class="strich" viewBox="0 0 220 14" aria-hidden="true" focusable="false">
+            <path d={p.strich} fill="none" stroke-width="4" stroke-linecap="round"></path>
+          </svg>
+          <span class="label">{p.label}</span>
+        </a>
       ))}
     </div>
   </section>
-</Base>
+</Site>
 
 <style>
-  .hero { padding-top: var(--space-24); padding-bottom: var(--space-8); }
-  .hero-title {
-    font-size: var(--text-4xl);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    max-width: 15ch;
-    margin: var(--space-4) 0 var(--space-6);
-  }
-  .accent {
-    font-style: italic;
-    background: linear-gradient(100deg, var(--indigo), var(--amber));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-  .hero-lede { color: var(--muted); font-size: var(--text-lg); }
-  .hero-cta { display: flex; gap: var(--space-3); margin-top: var(--space-8); flex-wrap: wrap; }
-
-  .field-teaser { margin-top: var(--space-12); }
-  .teaser-cap {
-    margin: var(--space-4) 0 0;
-    color: var(--muted);
-    font-size: var(--text-base);
-    max-width: 60ch;
-  }
-  .teaser-cap .eyebrow { display: block; color: var(--amber); margin-bottom: 4px; }
-
-  .themen { margin-top: var(--space-24); }
-  .sec-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--space-4);
-    margin-bottom: var(--space-8);
-  }
-  .sec-head h2 { margin: 0; }
-  .more { font-family: var(--font-mono); font-size: var(--text-sm); white-space: nowrap; }
-  .grid {
+  .sujet { padding: 56px 0 40px; }
+  .sujet-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: var(--space-6);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 860px) {
+    .sujet-grid { grid-template-columns: 1fr; gap: 8px; }
   }
 </style>
