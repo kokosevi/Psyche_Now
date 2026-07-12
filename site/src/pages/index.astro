@@ -8,7 +8,26 @@ import { PARTS } from '../site';
     <div class="sujet-grid">
       {PARTS.map((p) => (
         <a class="teil" href={p.href} id={`teil-${p.id}`}>
-          <img src={p.imageAnim} alt={p.alt} width="340" height="340" />
+          {p.id === 'herausforderungen' ? (
+            <span class="anim-wrap">
+              <video
+                class="anim"
+                autoplay
+                muted
+                loop
+                playsinline
+                poster="/bilder/herausforderung-anim-poster.png"
+                width="340"
+                height="340"
+                aria-hidden="true"
+              >
+                <source src="/bilder/herausforderung-anim.mp4" type="video/mp4" />
+              </video>
+              <img class="anim-fallback" src="/bilder/herausforderung-anim-poster.png" alt={p.alt} width="340" height="340" />
+            </span>
+          ) : (
+            <img src={p.imageAnim} alt={p.alt} width="340" height="340" />
+          )}
           <svg class="strich" viewBox="0 0 220 14" aria-hidden="true" focusable="false">
             <path d={p.strich} fill="none" stroke-width="4" stroke-linecap="round"></path>
           </svg>
@@ -29,5 +48,20 @@ import { PARTS } from '../site';
   }
   @media (max-width: 860px) {
     .sujet-grid { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  /* Animierte "Herausforderungen"-Figur: schwebt via Multiply auf dem Papier. */
+  .anim-wrap { width: 100%; max-width: 340px; display: block; }
+  .anim,
+  .anim-fallback {
+    width: 100%;
+    height: auto;
+    display: block;
+    mix-blend-mode: multiply;
+  }
+  .anim-fallback { display: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .anim { display: none; }
+    .anim-fallback { display: block; }
   }
 </style>
