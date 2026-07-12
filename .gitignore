@@ -27,3 +27,6 @@ Bibliothek/*
 # Logs
 *.log
 npm-debug.log*
+
+# Kommerzielle Avenir-Fonts nicht ins öffentliche Repo (lokal erhalten)
+design/handoffs/**/Avenir_*.ttf

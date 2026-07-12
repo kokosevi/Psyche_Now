@@ -1,7 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 540" width="540" height="540" role="img" aria-label="Herausforderungen – animiertes böses Grinsen (5s Loop)">
   
   <defs>
-    
+    <style>
+      /* 5s-Loop, dezent. Läuft auch bei &lt;img&gt;-Einbettung (CSS-Animation im SVG). */
+      #wobble { transform-box: fill-box; transform-origin: center; animation: wobble 5s ease-in-out infinite; }
+      #wash   { transform-box: fill-box; transform-origin: center; animation: breathe 5s ease-in-out infinite; }
+      #pfeile { transform-box: fill-box; transform-origin: center; animation: pulse 5s ease-in-out infinite; }
+      @keyframes wobble {
+        0%, 100% { transform: rotate(-2deg); }
+        50%      { transform: rotate(2deg); }
+      }
+      @keyframes breathe {
+        0%, 100% { transform: scale(1);    opacity: .88; }
+        50%      { transform: scale(1.05); opacity: 1; }
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: .55; }
+        50%      { opacity: 1; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #wobble, #wash, #pfeile { animation: none; }
+      }
+    </style>
   </defs>
 
   <g id="alles">

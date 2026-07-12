@@ -5,10 +5,8 @@
    (Font-Pfade auf /fonts/ angepasst — Assets liegen in site/public/fonts/.)
    ============================================================ */
 
-@font-face { font-family: 'Avenir'; src: url('/fonts/Avenir_Book.ttf') format('truetype');    font-weight: 400; font-display: swap; }
-@font-face { font-family: 'Avenir'; src: url('/fonts/Avenir_Regular.ttf') format('truetype'); font-weight: 500; font-display: swap; }
-@font-face { font-family: 'Avenir'; src: url('/fonts/Avenir_Heavy.ttf') format('truetype');   font-weight: 700; font-display: swap; }
-@font-face { font-family: 'Avenir'; src: url('/fonts/Avenir_Black.ttf') format('truetype');   font-weight: 900; font-display: swap; }
+/* Mulish (freie, Avenir-ähnliche Schrift) wird via Google Fonts im Layout geladen.
+   Amatic SC bleibt selbst gehostet (freie Schrift, SIL OFL). */
 @font-face { font-family: 'Amatic SC'; src: url('/fonts/AmaticSC-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
 
 :root {
@@ -24,7 +22,7 @@
   --hairline: #EBE6DB;
 
   /* Schrift */
-  --font-sans: 'Avenir', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Mulish', ui-sans-serif, system-ui, sans-serif;
   --font-hand: 'Amatic SC', cursive;
 
   /* Bewegung */

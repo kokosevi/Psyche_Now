@@ -34,6 +34,12 @@ const umamiId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <link rel="icon" href="/bilder/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
     {umamiSrc && umamiId && (
       <script defer src={umamiSrc} data-website-id={umamiId}></script>
     )}

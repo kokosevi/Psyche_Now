@@ -31,9 +31,9 @@
 - **Responsiv** bis Mobile.
 - **Barrierefrei:** sichtbarer Fokus, Tastaturbedienung, sinnvolle Alternativtexte.
 - **`prefers-reduced-motion`** respektieren (Animationen abschaltbar).
-- **Schriften:** kommen mit dem Design-Hand-off. Aktuell live: **Avenir** (Text) +
-  **Amatic SC** (Labels/Titel), selbst gehostet unter `site/public/fonts/`. Bei neuen
-  Fonts die Dateien mitliefern. ⚠️ Bei kommerziellen Fonts (z. B. Avenir) Web-Lizenz
-  vor Launch prüfen.
+- **Schriften:** Aktuell live: **Mulish** (Text, via Google Fonts) + **Amatic SC**
+  (Labels/Titel, selbst gehostet, SIL OFL). Avenir aus dem ersten Hand-off wurde aus
+  Lizenzgründen durch das freie Mulish ersetzt. ⚠️ Bei neuen Fonts: **nur freie/lizenzierte**
+  vorschlagen (Google Fonts / SIL OFL bevorzugt); kommerzielle Fonts vor Nutzung klären.
 - **Inhaltssprache: Deutsch.**
 - Abhängigkeiten sparsam halten — simple Effekte ohne externe Libraries lösen.
