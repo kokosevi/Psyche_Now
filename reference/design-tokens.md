@@ -1,82 +1,70 @@
-# Design-Tokens
+# Design-Tokens — Richtung «Kraftfeld»
 
-Die **gemeinsame Sprache** von Claude Design und Claude Code. Hier sind Farben,
-Schriften und Abstände *einmal* definiert. In Claude Design benennst du sie
-("Hintergrund = `--color-bg`"), im Code sind exakt dieselben Werte hinterlegt —
-so sieht das gebaute Ergebnis aus wie dein Mockup.
+Die **gemeinsame Sprache** von Claude Design und Claude Code. Farben, Schriften und
+Abstände sind hier *einmal* definiert. In Claude Design benennst du sie beim Namen
+("Hintergrund = `--paper`"), im Code liegen exakt dieselben Werte
+(`site/src/styles/tokens.css`) — so sieht das Gebaute aus wie dein Mockup.
 
-> Dies ist ein **Startpunkt**. Verfeinere Palette und Schriften in Claude Design;
-> wenn sie sitzen, aktualisieren wir diese Datei — sie bleibt die Quelle der Wahrheit.
+## Die Idee dahinter
+
+Psyche als **Feld aus wirkenden Kräften** — hergeleitet aus dem Quellmaterial
+(Bischof, *Das Kraftfeld der Mythen*; Hypnosystemik: Ambivalenz, Pole, innere Anteile).
+Zwei Pole in Spannung geben die Palette vor: **Indigo** (Tiefe/Unbewusstes) und
+**Bernstein** (Energie/Ladung). Der Themen-**Graph** ist das Signature-Element und lebt
+auf tiefem Nachtindigo.
+
+> Bewusst **nicht** der übliche „warmes Creme + Terrakotta-Serif"-Look. Verfeinere in
+> Claude Design; wenn es sitzt, aktualisieren wir diese Datei.
 
 ---
 
-## Farben
+## Farben — Lesemodus (helle Flächen)
 
-Ruhige, nachdenkliche Palette — warme Neutraltöne, tiefe „Tinte", ein Akzent.
+| Token         | Wert       | Verwendung                             |
+|---------------|------------|----------------------------------------|
+| `--paper`     | `#EEECF4`  | Seitenhintergrund (kühles Lila-Grau)   |
+| `--surface`   | `#FBFAFE`  | Karten, erhöhte Flächen                |
+| `--ink`       | `#17141F`  | Haupttext (fast schwarz, leicht violett)|
+| `--muted`     | `#6C6879`  | Sekundärtext, Labels                   |
+| `--line`      | `#DCD9E6`  | Trennlinien, Kartenränder              |
+| `--indigo`    | `#443A8E`  | Links, Buttons, primärer Akzent (Pol 1)|
+| `--indigo-soft`| `#EAE7F6` | zarte Indigo-Fläche (Hover, Chips)     |
+| `--amber`     | `#B5621C`  | Hervorhebung, aktiver Zustand (Pol 2)  |
 
-| Token             | Wert       | Verwendung                          |
-|-------------------|------------|-------------------------------------|
-| `--color-bg`      | `#F7F4EF`  | Seitenhintergrund (warmes Papier)   |
-| `--color-surface` | `#FFFFFF`  | Karten, erhöhte Flächen             |
-| `--color-ink`     | `#1F1B16`  | Haupttext (fast schwarz, warm)      |
-| `--color-muted`   | `#6B6459`  | Sekundärtext, Beschriftungen        |
-| `--color-accent`  | `#3A5A66`  | Links, Buttons, Graph-Kanten (Petrol)|
-| `--color-accent-2`| `#B5643C`  | Hervorhebung, aktive Knoten (Terrakotta)|
-| `--color-border`  | `#E3DDD3`  | Trennlinien, Kartenränder           |
+## Farben — Feldmodus (Graph, dunkel)
 
-**Dark Mode** (optional, später):
-| `--color-bg` `#17140F` · `--color-surface` `#211D17` · `--color-ink` `#EDE7DC` · `--color-accent` `#7FA8B4` |
+| Token          | Wert       | Verwendung                         |
+|----------------|------------|------------------------------------|
+| `--void`       | `#0C0E1A`  | Graph-Hintergrund (Nachtindigo)    |
+| `--void-2`     | `#151A33`  | Panels auf dem Feld                |
+| `--node`       | `#8B7DF0`  | Knoten (leuchtendes Indigo)        |
+| `--node-hot`   | `#E8A24A`  | aktiver/gehighlighteter Knoten     |
+| `--edge`       | `rgba(150,140,230,.28)` | Kanten/Kraftlinien    |
+| `--on-void`    | `#E7E5F2`  | Text auf dunklem Feld              |
 
 ## Schrift
 
-| Token           | Wert                                   | Verwendung          |
-|-----------------|----------------------------------------|---------------------|
-| `--font-serif`  | z. B. "Fraunces", Georgia, serif       | Überschriften, Zitate |
-| `--font-sans`   | z. B. "Inter", system-ui, sans-serif   | Fließtext, UI       |
+| Token          | Wert                                   | Verwendung                |
+|----------------|----------------------------------------|---------------------------|
+| `--font-serif` | "Spectral", Georgia, serif             | Fließtext, Überschriften  |
+| `--font-mono`  | "Space Grotesk", system-ui, sans-serif | Labels, Nav, Daten, Graph-UI |
 
-**Skala** (Fließtext 18px als Basis):
-`--text-sm` 15px · `--text-base` 18px · `--text-lg` 22px · `--text-xl` 28px · `--text-2xl` 40px · `--text-3xl` 56px
+Literarische Serif trifft technisch-instrumenthafte Grotesk. Labels/Eyebrows in
+`--font-mono`, GROSSBUCHSTABEN, weit gesperrt — kodieren die echte Taxonomie
+(z. B. „HYPNOSYSTEMIK").
 
-## Abstände
+**Skala** (Basis 18px): `--text-sm` 15px · `--text-base` 18px · `--text-lg` 21px ·
+`--text-xl` 27px · `--text-2xl` 38px · `--text-3xl` 54px · `--text-4xl` 76px
 
-4px-Raster: `--space-1` 4px · `--space-2` 8px · `--space-3` 12px · `--space-4` 16px ·
-`--space-6` 24px · `--space-8` 32px · `--space-12` 48px · `--space-16` 64px
+## Raster, Radius, Schatten
 
-## Radius & Schatten
+Abstände (4px-Raster): `--space-1…16` = 4/8/12/16/24/32/48/64px
+Radius: `--radius-sm` 6px · `--radius-md` 12px · `--radius-lg` 20px · `--radius-pill` 999px
+Schatten: `--shadow-card` = `0 1px 2px rgba(23,20,31,.06), 0 12px 32px rgba(23,20,31,.08)`
+Breiten: `--max-prose` 66ch · `--max-page` 1180px
 
-`--radius-sm` 6px · `--radius-md` 12px · `--radius-lg` 20px
-`--shadow-card` `0 1px 3px rgba(31,27,22,.08), 0 8px 24px rgba(31,27,22,.06)`
+## Motion
 
-## Maximale Breiten
-
-`--max-prose` 68ch (Lesetext) · `--max-page` 1200px (Layout)
-
----
-
-## Als CSS (kommt beim Scaffold in `site/src/styles/tokens.css`)
-
-```css
-:root {
-  --color-bg: #F7F4EF;
-  --color-surface: #FFFFFF;
-  --color-ink: #1F1B16;
-  --color-muted: #6B6459;
-  --color-accent: #3A5A66;
-  --color-accent-2: #B5643C;
-  --color-border: #E3DDD3;
-
-  --font-serif: "Fraunces", Georgia, serif;
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-
-  --text-sm: .9375rem; --text-base: 1.125rem; --text-lg: 1.375rem;
-  --text-xl: 1.75rem; --text-2xl: 2.5rem; --text-3xl: 3.5rem;
-
-  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
-  --space-6: 24px; --space-8: 32px; --space-12: 48px; --space-16: 64px;
-
-  --radius-sm: 6px; --radius-md: 12px; --radius-lg: 20px;
-  --shadow-card: 0 1px 3px rgba(31,27,22,.08), 0 8px 24px rgba(31,27,22,.06);
-
-  --max-prose: 68ch; --max-page: 1200px;
-}
-```
+Übergänge ruhig (150–450ms, `ease`/`cubic-bezier(.2,.7,.2,1)`). Graph-Physik läuft
+kontinuierlich. **`prefers-reduced-motion` wird respektiert** (keine Reveals, Graph
+startet statisch positioniert).

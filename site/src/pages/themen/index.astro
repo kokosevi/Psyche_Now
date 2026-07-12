@@ -1,0 +1,141 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import TopicCard from '../../components/TopicCard.astro';
+import { categoryColor } from '../../lib/graph';
+
+const entries = (await getCollection('themen')).filter((e) => !e.data.draft);
+const sorted = [...entries].sort((a, b) => a.data.title.localeCompare(b.data.title, 'de'));
+const categories = Object.keys(categoryColor);
+---
+
+<Base title="Themen — Psyche Now" description="Alle Themen im Kraftfeld, filterbar nach Bereich und durchsuchbar.">
+  <section class="wrap head">
+    <p class="eyebrow">Übersicht</p>
+    <h1>Themen im Feld</h1>
+    <p class="prose lede">Filter nach Bereich oder such nach einem Begriff. Für die vernetzte Ansicht: der <a href="/graph">Graph</a>.</p>
+  </section>
+
+  <section class="wrap controls" aria-label="Filter">
+    <div class="chips" role="group" aria-label="Nach Bereich filtern">
+      <button class="chip" data-cat="*" aria-pressed="true">Alle</button>
+      {categories.map((c) => (
+        <button class="chip" data-cat={c} aria-pressed="false" style={`--accent:${categoryColor[c]}`}>{c}</button>
+      ))}
+    </div>
+    <label class="search">
+      <span class="sr-only">Themen durchsuchen</span>
+      <input type="search" id="q" placeholder="Suchen … (z. B. Ambivalenz, Mythos)" autocomplete="off" />
+    </label>
+  </section>
+
+  <p class="wrap count" id="count" aria-live="polite"></p>
+
+  <section class="wrap">
+    <ul class="grid" id="grid">
+      {sorted.map((e) => (
+        <li
+          class="cell"
+          data-category={e.data.category}
+          data-text={`${e.data.title} ${e.data.summary} ${e.data.tags.join(' ')}`.toLowerCase()}
+        >
+          <TopicCard
+            url={`/themen/${e.id}`}
+            title={e.data.title}
+            summary={e.data.summary}
+            category={e.data.category}
+          />
+        </li>
+      ))}
+    </ul>
+    <p class="empty" id="empty" hidden>Keine Themen passen zu dieser Auswahl. Filter zurücksetzen?</p>
+  </section>
+</Base>
+
+<style>
+  .head { padding-top: var(--space-16); }
+  .head h1 { margin: var(--space-2) 0 var(--space-3); }
+  .lede { color: var(--muted); font-size: var(--text-lg); }
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .chip[aria-pressed='true'][data-cat]:not([data-cat='*']) {
+    background: var(--accent, var(--indigo));
+    border-color: var(--accent, var(--indigo));
+    color: #fff;
+  }
+  .search input {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    padding: 10px 16px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    min-width: 260px;
+  }
+  .count { font-family: var(--font-mono); font-size: var(--text-sm); color: var(--muted); margin: var(--space-6) 0 var(--space-4); }
+  .grid {
+    list-style: none; padding: 0; margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-6);
+  }
+  .cell[hidden] { display: none; }
+  .empty { color: var(--muted); font-size: var(--text-lg); margin-top: var(--space-8); }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+</style>
+
+<script>
+  const grid = document.getElementById('grid');
+  const cells = Array.from(grid.querySelectorAll('.cell'));
+  const chips = Array.from(document.querySelectorAll('.chip'));
+  const q = document.getElementById('q');
+  const count = document.getElementById('count');
+  const empty = document.getElementById('empty');
+
+  let activeCats = new Set(); // leer = alle
+
+  function apply() {
+    const query = q.value.trim().toLowerCase();
+    let visible = 0;
+    for (const cell of cells) {
+      const catOk = activeCats.size === 0 || activeCats.has(cell.dataset.category);
+      const textOk = query === '' || cell.dataset.text.includes(query);
+      const show = catOk && textOk;
+      cell.hidden = !show;
+      if (show) visible++;
+    }
+    count.textContent = `${visible} von ${cells.length} Themen`;
+    empty.hidden = visible !== 0;
+  }
+
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const cat = chip.dataset.cat;
+      if (cat === '*') {
+        activeCats.clear();
+      } else if (activeCats.has(cat)) {
+        activeCats.delete(cat);
+      } else {
+        activeCats.add(cat);
+      }
+      // "Alle" ist gedrückt, wenn keine Kategorie aktiv ist
+      chips.forEach((c) => {
+        const isAll = c.dataset.cat === '*';
+        const pressed = isAll ? activeCats.size === 0 : activeCats.has(c.dataset.cat);
+        c.setAttribute('aria-pressed', String(pressed));
+      });
+      apply();
+    });
+  });
+
+  q.addEventListener('input', apply);
+  apply();
+</script>

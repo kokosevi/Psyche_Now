@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import GraphField from '../components/GraphField.astro';
+import { buildGraph } from '../lib/graph';
+
+const entries = (await getCollection('themen')).filter((e) => !e.data.draft);
+const graph = buildGraph(entries);
+---
+
+<Base title="Graph — Psyche Now" description="Alle Themen als Kraftfeld: Knoten sind Themen, Linien ihre Verbindungen." field={true}>
+  <section class="wrap ghead">
+    <p class="eyebrow">Das ganze Feld</p>
+    <h1>Kraftfeld der Themen</h1>
+    <p class="lede">
+      {graph.nodes.length} Themen, {graph.links.length} Verbindungen. Nichts steht für sich —
+      jeder Knoten wird erst durch seine Kanten zu dem, was er ist.
+    </p>
+  </section>
+
+  <section class="wrap gwrap">
+    <GraphField data={graph} height="70vh" />
+  </section>
+</Base>
+
+<style>
+  .ghead { padding-top: var(--space-16); }
+  .ghead h1 { margin: var(--space-2) 0 var(--space-3); color: var(--on-void); }
+  .ghead .eyebrow { color: var(--amber); }
+  .lede { color: rgba(231, 229, 242, 0.72); font-size: var(--text-lg); max-width: 60ch; }
+  .gwrap { margin-top: var(--space-8); }
+</style>

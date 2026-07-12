@@ -1,0 +1,95 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import TopicCard from '../../components/TopicCard.astro';
+import { categoryColor } from '../../lib/graph';
+
+export async function getStaticPaths() {
+  const entries = (await getCollection('themen')).filter((e) => !e.data.draft);
+  const byId = new Map(entries.map((e) => [e.id, e]));
+  return entries.map((entry) => ({
+    params: { id: entry.id },
+    props: {
+      entry,
+      related: entry.data.related
+        .map((rid) => byId.get(rid))
+        .filter((e) => e !== undefined),
+    },
+  }));
+}
+
+const { entry, related } = Astro.props;
+const { Content } = await render(entry);
+const color = categoryColor[entry.data.category];
+---
+
+<Base title={`${entry.data.title} — Psyche Now`} description={entry.data.summary}>
+  <article>
+    <header class="wrap thead" style={`--accent:${color}`}>
+      <p class="crumbs"><a href="/themen">Themen</a> <span aria-hidden="true">/</span> <span class="eyebrow cat">{entry.data.category}</span></p>
+      <h1>{entry.data.title}</h1>
+      <p class="lede prose">{entry.data.summary}</p>
+      {entry.data.tags.length > 0 && (
+        <ul class="tags" aria-label="Schlagworte">
+          {entry.data.tags.map((t) => <li class="tag-pill">{t}</li>)}
+        </ul>
+      )}
+    </header>
+
+    <div class="wrap body prose">
+      <Content />
+    </div>
+  </article>
+
+  {related.length > 0 && (
+    <section class="wrap related">
+      <h2 class="eyebrow">Verwandte Kräfte</h2>
+      <div class="grid">
+        {related.map((e) => (
+          <TopicCard
+            url={`/themen/${e.id}`}
+            title={e.data.title}
+            summary={e.data.summary}
+            category={e.data.category}
+          />
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section class="wrap back">
+    <a class="btn btn-ghost" href="/graph">Im Kraftfeld zeigen →</a>
+  </section>
+</Base>
+
+<style>
+  .thead {
+    padding-top: var(--space-16);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: var(--space-8);
+    position: relative;
+  }
+  .thead::before {
+    content: '';
+    position: absolute; left: 0; bottom: -1px;
+    width: 72px; height: 3px; background: var(--accent);
+  }
+  .crumbs { font-family: var(--font-mono); font-size: var(--text-sm); color: var(--muted); margin: 0 0 var(--space-4); }
+  .crumbs .cat { color: var(--accent); }
+  .thead h1 { margin: 0 0 var(--space-4); max-width: 20ch; }
+  .lede { font-size: var(--text-xl); color: var(--ink); line-height: 1.4; }
+  .tags { list-style: none; display: flex; flex-wrap: wrap; gap: var(--space-2); padding: 0; margin: var(--space-6) 0 0; }
+  .tag-pill {
+    font-family: var(--font-mono); font-size: var(--text-sm); color: var(--muted);
+    border: 1px solid var(--line); border-radius: var(--radius-pill); padding: 3px 12px; background: var(--surface);
+  }
+
+  .body { margin-top: var(--space-8); }
+  .body :global(h2) { margin-top: var(--space-8); }
+  .body :global(a) { text-decoration: underline; }
+
+  .related { margin-top: var(--space-24); }
+  .related h2 { color: var(--amber); margin-bottom: var(--space-6); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-6); }
+  .back { margin-top: var(--space-12); }
+</style>

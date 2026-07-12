@@ -1,0 +1,26 @@
+---
+const year = 2026;
+---
+
+<footer class="site-footer">
+  <div class="wrap inner">
+    <p class="tag">
+      <strong>Psyche Now</strong> — ein Kraftfeld psychologischer Themen.
+    </p>
+    <p class="meta">
+      © {year} Severin Sager · Inhalte als offene Landkarte, kein Ersatz für Beratung oder Therapie.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--line);
+    margin-top: var(--space-24);
+    padding-block: var(--space-12);
+  }
+  body[data-field='true'] .site-footer { border-color: rgba(150, 140, 230, 0.18); }
+  .inner { display: flex; flex-direction: column; gap: var(--space-2); }
+  .tag { font-size: var(--text-base); margin: 0; }
+  .meta { font-family: var(--font-mono); font-size: var(--text-sm); color: var(--muted); margin: 0; }
+</style>

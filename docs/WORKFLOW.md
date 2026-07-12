@@ -91,7 +91,9 @@ verlassen:
 4. Netlify mit dem GitHub-Repo verbinden (Auto-Deploy).
 5. Umami-Konto anlegen und Tracking-Snippet einbauen.
 
-> Status: Ordnerstruktur + Doku stehen. Astro-Scaffold ist der nächste geplante Schritt.
+> Status: **Schritt 1 erledigt** — Astro-Projekt (`site/`) scaffoldet, baut sauber,
+> mit 6 Beispiel-Themen, Startseite, Themen-Filter, Detailseiten und der Graph-View.
+> Offen: GitHub-Remote verbinden (3), Netlify verbinden (4), Umami einrichten (5).
 
 ### Phase 1 — Inhalt vorbereiten (du)
 

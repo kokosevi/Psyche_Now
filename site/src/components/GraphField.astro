@@ -1,0 +1,251 @@
+---
+import type { GraphData } from '../lib/graph';
+import { categoryColor } from '../lib/graph';
+
+interface Props {
+  data: GraphData;
+  /** Höhe des Feldes (CSS-Wert) */
+  height?: string;
+  /** Kompakter Teaser (weniger UI) vs. volle Ansicht */
+  compact?: boolean;
+}
+const { data, height = '520px', compact = false } = Astro.props;
+
+const categories = Object.entries(categoryColor);
+---
+
+<div
+  class="graphfield"
+  data-graph={JSON.stringify(data)}
+  data-compact={compact ? 'true' : 'false'}
+  style={`--gf-height:${height}`}
+>
+  <svg class="gf-svg" role="img" aria-label="Kräftefeld der Themen: Knoten sind Themen, Linien ihre Verbindungen.">
+    <g class="gf-viewport">
+      <g class="gf-links"></g>
+      <g class="gf-nodes"></g>
+    </g>
+  </svg>
+
+  {!compact && (
+    <div class="gf-legend" aria-hidden="true">
+      {categories.map(([name, color]) => (
+        <span class="gf-legend-item">
+          <span class="gf-dot" style={`background:${color}`}></span>{name}
+        </span>
+      ))}
+    </div>
+  )}
+
+  <p class="gf-hint">
+    {compact ? 'Ziehen, zoomen, klicken.' : 'Knoten ziehen · scrollen zum Zoomen · klicken öffnet das Thema.'}
+  </p>
+
+  <!-- Barrierearme Alternative: dieselben Verbindungen als Liste -->
+  <ul class="gf-fallback">
+    {data.nodes.map((n) => (
+      <li><a href={n.url}>{n.title}</a></li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .graphfield {
+    position: relative;
+    width: 100%;
+    height: var(--gf-height);
+    border-radius: var(--radius-lg);
+    background:
+      radial-gradient(120% 120% at 50% 0%, #171d3a 0%, var(--void) 60%);
+    border: 1px solid rgba(150, 140, 230, 0.18);
+    overflow: hidden;
+  }
+  .gf-svg { width: 100%; height: 100%; display: block; cursor: grab; }
+  .gf-svg:active { cursor: grabbing; }
+
+  .gf-link { stroke: var(--edge); stroke-width: 1; transition: stroke 0.2s, stroke-width 0.2s; }
+  .gf-link.is-hot { stroke: rgba(232, 162, 74, 0.8); stroke-width: 1.6; }
+
+  .gf-node { cursor: pointer; }
+  .gf-node circle {
+    stroke: var(--void);
+    stroke-width: 1.5;
+    transition: r 0.15s var(--ease), filter 0.2s;
+  }
+  .gf-node:hover circle,
+  .gf-node.is-hot circle { filter: drop-shadow(0 0 8px currentColor); }
+  .gf-node.is-dim { opacity: 0.28; }
+  .gf-node text {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    fill: var(--on-void);
+    pointer-events: none;
+    paint-order: stroke;
+    stroke: var(--void);
+    stroke-width: 3px;
+  }
+
+  .gf-legend {
+    position: absolute;
+    left: var(--space-4);
+    bottom: var(--space-4);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--on-void);
+  }
+  .gf-legend-item { display: inline-flex; align-items: center; gap: 6px; }
+  .gf-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+  .gf-hint {
+    position: absolute;
+    right: var(--space-4);
+    top: var(--space-4);
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: rgba(231, 229, 242, 0.6);
+  }
+
+  /* Fallback-Liste nur für Screenreader / no-JS sichtbar */
+  .gf-fallback { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .graphfield.no-js .gf-fallback {
+    position: static; width: auto; height: auto; clip: auto;
+    padding: var(--space-6); color: var(--on-void);
+  }
+  .graphfield.no-js .gf-svg { display: none; }
+
+  @media (max-width: 640px) {
+    .gf-hint { display: none; }
+    .gf-node text { font-size: 11px; }
+  }
+</style>
+
+<script>
+  import { forceSimulation, forceLink, forceManyBody, forceCenter, forceCollide } from 'd3-force';
+  import { select } from 'd3-selection';
+  import { drag } from 'd3-drag';
+  import { zoom } from 'd3-zoom';
+  import { categoryColor } from '../lib/graph';
+
+  function initGraph(root) {
+    const data = JSON.parse(root.dataset.graph);
+    const svgEl = root.querySelector('.gf-svg');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const svg = select(svgEl);
+    const viewport = svg.select('.gf-viewport');
+    const linkG = svg.select('.gf-links');
+    const nodeG = svg.select('.gf-nodes');
+
+    // Adjazenz für Hover-Highlight
+    const adj = new Map(data.nodes.map((n) => [n.id, new Set()]));
+    data.links.forEach((l) => {
+      adj.get(l.source)?.add(l.target);
+      adj.get(l.target)?.add(l.source);
+    });
+
+    const radius = (n) => 7 + n.weight * 4;
+
+    const link = linkG
+      .selectAll('line')
+      .data(data.links)
+      .join('line')
+      .attr('class', 'gf-link');
+
+    const node = nodeG
+      .selectAll('g')
+      .data(data.nodes)
+      .join('g')
+      .attr('class', 'gf-node')
+      .attr('tabindex', 0)
+      .attr('role', 'link')
+      .attr('aria-label', (d) => `Thema öffnen: ${d.title}`)
+      .style('color', (d) => categoryColor[d.category]);
+
+    node.append('circle')
+      .attr('r', (d) => radius(d))
+      .attr('fill', (d) => categoryColor[d.category]);
+
+    node.append('text')
+      .attr('x', (d) => radius(d) + 6)
+      .attr('y', 4)
+      .text((d) => d.title);
+
+    const go = (d) => { window.location.href = d.url; };
+    node.on('click', (_e, d) => go(d));
+    node.on('keydown', (e, d) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(d); } });
+
+    // Hover-Highlight: Nachbarn hervorheben, Rest dimmen
+    node.on('mouseenter', (_e, d) => highlight(d.id))
+        .on('mouseleave', () => clearHighlight())
+        .on('focus', (_e, d) => highlight(d.id))
+        .on('blur', () => clearHighlight());
+
+    function highlight(id) {
+      const near = adj.get(id) ?? new Set();
+      node.classed('is-hot', (n) => n.id === id)
+          .classed('is-dim', (n) => n.id !== id && !near.has(n.id));
+      link.classed('is-hot', (l) => srcId(l) === id || tgtId(l) === id);
+    }
+    function clearHighlight() {
+      node.classed('is-hot', false).classed('is-dim', false);
+      link.classed('is-hot', false);
+    }
+    const srcId = (l) => (typeof l.source === 'object' ? l.source.id : l.source);
+    const tgtId = (l) => (typeof l.target === 'object' ? l.target.id : l.target);
+
+    const sim = forceSimulation(data.nodes)
+      .force('link', forceLink(data.links).id((d) => d.id).distance(90).strength(0.6))
+      .force('charge', forceManyBody().strength(-260))
+      .force('collide', forceCollide((d) => radius(d) + 14))
+      .force('center', forceCenter(0, 0));
+
+    function ticked() {
+      link.attr('x1', (l) => l.source.x).attr('y1', (l) => l.source.y)
+          .attr('x2', (l) => l.target.x).attr('y2', (l) => l.target.y);
+      node.attr('transform', (d) => `translate(${d.x},${d.y})`);
+    }
+    sim.on('tick', ticked);
+
+    // Reduced Motion: schnell settlen, dann anhalten
+    if (reduce) {
+      sim.stop();
+      for (let i = 0; i < 200; i++) sim.tick();
+      ticked();
+    }
+
+    // Drag
+    node.call(
+      drag()
+        .on('start', (e, d) => { if (!e.active && !reduce) sim.alphaTarget(0.25).restart(); d.fx = d.x; d.fy = d.y; })
+        .on('drag', (e, d) => { d.fx = e.x; d.fy = e.y; if (reduce) ticked(); })
+        .on('end', (e, d) => { if (!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; })
+    );
+
+    // Zoom / Pan — auf Viewport-Gruppe angewandt
+    const zoomBehavior = zoom()
+      .scaleExtent([0.4, 3])
+      .on('zoom', (e) => viewport.attr('transform', e.transform));
+    svg.call(zoomBehavior);
+
+    // Größe/Center an Container koppeln
+    function fit() {
+      const r = svgEl.getBoundingClientRect();
+      svg.attr('viewBox', `${-r.width / 2} ${-r.height / 2} ${r.width} ${r.height}`);
+    }
+    fit();
+    if (window.ResizeObserver) new ResizeObserver(fit).observe(svgEl);
+  }
+
+  document.querySelectorAll('.graphfield').forEach((el) => {
+    try {
+      initGraph(el);
+    } catch (err) {
+      console.error('Graph konnte nicht initialisiert werden:', err);
+      el.classList.add('no-js'); // zeigt die Fallback-Liste
+    }
+  });
+</script>
