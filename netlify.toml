@@ -8,7 +8,8 @@
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "20"
+  # Astro 7 benötigt Node >= 22.12.
+  NODE_VERSION = "22.12.0"
 
 # Astro erzeugt saubere URLs; dieses Redirect fängt unbekannte Pfade als 404 ab.
 # (Bei Bedarf später anpassen.)
