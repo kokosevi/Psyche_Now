@@ -79,6 +79,14 @@ verlassen:
    interaktiv? Woher kommt der Inhalt? Was ist echt, was Platzhalter?* Template und
    Beispiel liegen in der Datei.
 
+Der Hand-off läuft in **zwei Richtungen**:
+
+- **Code → Design:** `reference/DESIGN-BRIEF.md` bringt Claude Design auf den aktuellen
+  Stand (Design-System, was schon existiert, Grenzen, Aufgabe). Diese Datei kommt **einmal**
+  ins Claude.ai-**Projektwissen** und gilt dann für jede Session automatisch — nicht jedes
+  Mal neu einfügen. Bei Änderungen am Design-System aktualisieren und im Projektwissen ersetzen.
+- **Design → Code:** `design/HANDOFF.md` + Artifact-Code + Screenshot (siehe oben).
+
 ---
 
 ## Schritt für Schritt
