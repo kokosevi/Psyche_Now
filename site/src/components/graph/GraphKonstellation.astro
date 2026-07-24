@@ -6,6 +6,16 @@ const { graph } = Astro.props;
 const pos = new Map(graph.nodes.map((n) => [n.slug, n]));
 const colorOf = (slug: string) =>
   CLUSTER_META.find((c) => c.id === pos.get(slug)!.cluster)!.colorVar;
+
+// Pro Knoten eine :has()-Regel: Hover/Fokus auf einen Knoten färbt seine Kanten gold.
+const goldHoverCss = graph.nodes
+  .map((n) => {
+    const rule = (state: string) =>
+      `.konstellation:has(.node[data-slug="${n.slug}"]:${state}) line[data-a="${n.slug}"],` +
+      `.konstellation:has(.node[data-slug="${n.slug}"]:${state}) line[data-b="${n.slug}"]`;
+    return `${rule('hover')},${rule('focus-visible')}{stroke:var(--sun-deep);stroke-width:.9;}`;
+  })
+  .join('');
 ---
 <div class="konstellation" role="group" aria-label="Wissenskarte der Hypnosystemik">
   <svg class="edges" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
@@ -25,6 +35,7 @@ const colorOf = (slug: string) =>
       <span class="label">{n.title}</span>
     </a>
   ))}
+  <style is:inline set:html={goldHoverCss}></style>
 </div>
 
 <style>
@@ -43,7 +54,10 @@ const colorOf = (slug: string) =>
   }
   .node .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--c); border: 2px solid var(--paper); box-shadow: var(--shadow-md); }
   .node .label { font-family: var(--font-hand); font-weight: 700; font-size: 17px; line-height: 1.05; }
-  .node:hover, .node:focus-visible { transform: translate(-50%, -50%) scale(1.12); z-index: 2; }
+  .node:hover, .node:focus-visible { transform: translate(-50%, calc(-50% - 4px)) scale(1.08); z-index: 2; }
   @media (max-width: 720px) { .node .label { font-size: 14px; } .node { max-width: 90px; } }
-  @media (prefers-reduced-motion: reduce) { .node { transition: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .node { transition: none; }
+    .node:hover, .node:focus-visible { transform: translate(-50%, -50%); }
+  }
 </style>
