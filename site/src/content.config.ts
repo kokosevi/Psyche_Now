@@ -1,9 +1,10 @@
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 
 export const CLUSTERS = ['grundlagen', 'symptom', 'anwendung', 'prozess', 'selbst'] as const;
 
 const themen = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/themen' }),
   schema: z.object({
     title: z.string(),
     cluster: z.enum(CLUSTERS),
