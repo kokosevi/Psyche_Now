@@ -347,7 +347,7 @@ export async function buildGraph(): Promise<Graph> {
   const { getCollection } = await import('astro:content');
   const entries = await getCollection('themen');
   const nodes: RawNode[] = entries.map((e) => ({
-    slug: e.slug,
+    slug: e.id,
     title: e.data.title,
     cluster: e.data.cluster,
     summary: e.data.summary,
@@ -506,25 +506,25 @@ git commit -m "$(printf 'Erleben: /erleben-Index + Varianten-Umschalter, [teil] 
 
 - [ ] **Step 1: Dynamische Seite anlegen**
 
-Create `site/src/pages/erleben/thema/[slug].astro`:
+Create `site/src/pages/erleben/thema/[slug].astro`. **Astro 7 Content Layer API:** Einträge haben `.id` (nicht `.slug`); Rendern via `render(entry)` (nicht `entry.render()`).
 ```astro
 ---
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import Site from '../../../layouts/Site.astro';
 import { CLUSTER_META } from '../../../lib/graph';
 
 export async function getStaticPaths() {
   const entries = await getCollection('themen');
-  return entries.map((e) => ({ params: { slug: e.slug }, props: { entry: e } }));
+  return entries.map((e) => ({ params: { slug: e.id }, props: { entry: e } }));
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 const cluster = CLUSTER_META.find((c) => c.id === entry.data.cluster)!;
 
 const all = await getCollection('themen');
 const related = entry.data.related
-  .map((slug) => all.find((e) => e.slug === slug))
+  .map((slug) => all.find((e) => e.id === slug))
   .filter((e): e is NonNullable<typeof e> => Boolean(e));
 ---
 <Site title={entry.data.title} current="erleben">
@@ -542,7 +542,7 @@ const related = entry.data.related
       <ul>
         {related.map((r) => (
           <li>
-            <a href={`/erleben/thema/${r.slug}`}>
+            <a href={`/erleben/thema/${r.id}`}>
               <span class="dot" style={`background: var(${CLUSTER_META.find((c) => c.id === r.data.cluster)!.colorVar})`}></span>
               <strong>{r.data.title}</strong> — {r.data.summary}
             </a>
