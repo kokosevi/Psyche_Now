@@ -302,10 +302,8 @@ Expected: FAIL — `assembleGraph` bzw. `./graph` nicht gefunden.
 
 - [ ] **Step 3: `graph.ts` implementieren**
 
-Create `site/src/lib/graph.ts`:
+Create `site/src/lib/graph.ts`. **Wichtig:** `astro:content` wird **dynamisch** in `buildGraph` importiert (nicht am Modulanfang), damit die vitest-Tests von `assembleGraph` das Modul laden können, ohne das virtuelle `astro:content` aufzulösen.
 ```ts
-import { getCollection } from 'astro:content';
-
 export type Cluster = 'grundlagen' | 'symptom' | 'anwendung' | 'prozess' | 'selbst';
 
 export interface RawNode {
@@ -346,6 +344,7 @@ export function assembleGraph(nodes: RawNode[]): Graph {
 }
 
 export async function buildGraph(): Promise<Graph> {
+  const { getCollection } = await import('astro:content');
   const entries = await getCollection('themen');
   const nodes: RawNode[] = entries.map((e) => ({
     slug: e.slug,
