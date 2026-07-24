@@ -1,0 +1,41 @@
+---
+import Site from '../../layouts/Site.astro';
+import VariantSwitcher from '../../components/graph/VariantSwitcher.astro';
+import { buildGraph } from '../../lib/graph';
+
+const graph = await buildGraph();
+---
+<Site title="Erleben: Wie Glück gestalten" current="erleben">
+  <section class="pagehead wrap">
+    <p class="overline">Teil 3</p>
+    <h1>Erleben: Wie Glück gestalten</h1>
+  </section>
+  <section class="wrap erleben-intro">
+    <p>
+      Die Hypnosystemik versteht Erleben als Netzwerk aus verbundenen inneren
+      Seiten. Genau so kannst du sie hier erkunden: als Karte aus Konzepten, die
+      miteinander verbunden sind. Wähle eine Darstellung und klicke einen Knoten an.
+    </p>
+    <VariantSwitcher active="index" />
+    <p class="hint">
+      Drei Darstellungen zum Vergleich —
+      <a href="/erleben/konstellation">Konstellation</a>,
+      <a href="/erleben/graph">Force-Graph</a> oder
+      <a href="/erleben/hybrid">Hybrid</a>.
+    </p>
+    <ul class="legende" aria-label="Themenfelder">
+      {graph.clusters.map((c) => (
+        <li><span class="dot" style={`background: var(${c.colorVar})`}></span>{c.label}</li>
+      ))}
+    </ul>
+  </section>
+</Site>
+
+<style>
+  .erleben-intro { text-align: center; max-width: 640px; }
+  .erleben-intro p { color: var(--ink-2); }
+  .erleben-intro .hint { font-size: 14px; color: var(--ink-3); }
+  .legende { list-style: none; padding: 0; display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; font-size: 14px; color: var(--ink-2); }
+  .legende li { display: flex; align-items: center; gap: 7px; }
+  .legende .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+</style>

@@ -3,7 +3,9 @@ import Site from '../layouts/Site.astro';
 import { PARTS } from '../site';
 
 export function getStaticPaths() {
-  return PARTS.map((p) => ({ params: { teil: p.id }, props: { part: p } }));
+  return PARTS
+    .filter((p) => p.id !== 'erleben')
+    .map((p) => ({ params: { teil: p.id }, props: { part: p } }));
 }
 
 const { part } = Astro.props;
