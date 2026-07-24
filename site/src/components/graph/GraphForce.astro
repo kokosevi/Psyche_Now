@@ -28,10 +28,14 @@ const grouped = CLUSTER_META.map((c) => ({
 </div>
 
 <style>
-  .force { width: 100%; max-width: 1000px; margin: 0 auto; }
+  .force { position: relative; width: 100%; max-width: 1000px; margin: 0 auto; }
   .force-canvas { display: none; width: 100%; aspect-ratio: 3 / 2; background: var(--paper-2); border-radius: 20px; touch-action: none; }
   .force.enhanced .force-canvas { display: block; }
-  .force.enhanced .force-fallback { display: none; }
+  /* Beim Enhancen bleibt die Fallback-Liste für Tastatur/Screenreader erhalten (visuell versteckt). */
+  .force.enhanced .force-fallback {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0;
+  }
   .force-fallback { list-style: none; padding: 0; columns: 2; gap: 24px; }
   .force-fallback > li { break-inside: avoid; margin-bottom: 14px; }
   .force-fallback .grp { font-family: var(--font-hand); font-size: 22px; font-weight: 700; }
@@ -74,6 +78,7 @@ const grouped = CLUSTER_META.map((c) => ({
       const g = document.createElementNS(NS, 'a') as SVGAElement;
       g.setAttribute('href', `/erleben/thema/${n.slug}`);
       g.setAttribute('class', 'force-node');
+      g.setAttribute('tabindex', '-1');
       const c = document.createElementNS(NS, 'circle');
       c.setAttribute('r', '9'); c.setAttribute('stroke', 'var(--paper)'); c.setAttribute('stroke-width', '2');
       c.setAttribute('fill', `var(${n.colorVar})`);
@@ -93,14 +98,23 @@ const grouped = CLUSTER_META.map((c) => ({
         nodeEls.forEach(({ g, n }) => g.setAttribute('transform', `translate(${n.x},${n.y})`));
       });
 
-    // Ziehen
+    // Ziehen (mit Klick-Unterdrückung nach echtem Ziehen)
     let drag: N | null = null;
+    let dragMoved = false;
+    let startX = 0, startY = 0;
     const toSvg = (ev: PointerEvent) => { const r = svg.getBoundingClientRect(); return { x: (ev.clientX - r.left) / r.width * W, y: (ev.clientY - r.top) / r.height * H }; };
+    const endDrag = () => { if (!drag) return; drag.fx = null; drag.fy = null; drag = null; sim.alphaTarget(0); };
     nodeEls.forEach(({ g, n }) => {
-      g.addEventListener('pointerdown', (ev) => { ev.preventDefault(); drag = n; sim.alphaTarget(.2).restart(); (g as any).setPointerCapture?.(ev.pointerId); });
+      g.addEventListener('pointerdown', (ev) => { ev.preventDefault(); drag = n; dragMoved = false; startX = ev.clientX; startY = ev.clientY; sim.alphaTarget(.2).restart(); (g as any).setPointerCapture?.(ev.pointerId); });
+      g.addEventListener('click', (ev) => { if (dragMoved) { ev.preventDefault(); dragMoved = false; } });
     });
-    svg.addEventListener('pointermove', (ev) => { if (!drag) return; const p = toSvg(ev); drag.fx = p.x; drag.fy = p.y; });
-    svg.addEventListener('pointerup', () => { if (!drag) return; drag.fx = null; drag.fy = null; drag = null; sim.alphaTarget(0); });
+    svg.addEventListener('pointermove', (ev) => {
+      if (!drag) return;
+      if (Math.hypot(ev.clientX - startX, ev.clientY - startY) > 4) dragMoved = true;
+      const p = toSvg(ev); drag.fx = p.x; drag.fy = p.y;
+    });
+    svg.addEventListener('pointerup', endDrag);
+    svg.addEventListener('pointercancel', endDrag);
 
     el.classList.add('enhanced');
   }
