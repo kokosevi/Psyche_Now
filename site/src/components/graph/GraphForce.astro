@@ -1,0 +1,107 @@
+---
+import type { Graph } from '../../lib/graph';
+import { CLUSTER_META } from '../../lib/graph';
+interface Props { graph: Graph; }
+const { graph } = Astro.props;
+const colorHexVarName = (cluster: string) => CLUSTER_META.find((c) => c.id === cluster)!.colorVar;
+// Serialisierter Graph für die Client-Island (inkl. Cluster-CSS-Var-Name).
+const payload = JSON.stringify({
+  nodes: graph.nodes.map((n) => ({ slug: n.slug, title: n.title, colorVar: colorHexVarName(n.cluster) })),
+  edges: graph.edges,
+});
+const grouped = CLUSTER_META.map((c) => ({
+  meta: c, nodes: graph.nodes.filter((n) => n.cluster === c.id),
+}));
+---
+<div class="force" data-graph={payload}>
+  <svg class="force-canvas" aria-hidden="true"></svg>
+  <ul class="force-fallback" aria-label="Konzepte nach Themenfeld">
+    {grouped.map((g) => (
+      <li>
+        <span class="grp" style={`color: var(${g.meta.colorVar})`}>{g.meta.label}</span>
+        <ul>
+          {g.nodes.map((n) => <li><a href={`/erleben/thema/${n.slug}`}>{n.title}</a></li>)}
+        </ul>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .force { width: 100%; max-width: 1000px; margin: 0 auto; }
+  .force-canvas { display: none; width: 100%; aspect-ratio: 3 / 2; background: var(--paper-2); border-radius: 20px; touch-action: none; }
+  .force.enhanced .force-canvas { display: block; }
+  .force.enhanced .force-fallback { display: none; }
+  .force-fallback { list-style: none; padding: 0; columns: 2; gap: 24px; }
+  .force-fallback > li { break-inside: avoid; margin-bottom: 14px; }
+  .force-fallback .grp { font-family: var(--font-hand); font-size: 22px; font-weight: 700; }
+  .force-fallback ul { list-style: none; padding: 0; }
+  .force-fallback a { text-decoration: none; color: var(--ink-2); font-size: 15px; }
+  .force-fallback a:hover { color: var(--ink); }
+  :global(.force-node) { cursor: grab; }
+  :global(.force-label) { font-family: var(--font-hand); font-size: 13px; fill: var(--ink); pointer-events: none; }
+  :global(.force-edge) { stroke: var(--hairline); stroke-width: 1; }
+</style>
+
+<script>
+  import { forceSimulation, forceLink, forceManyBody, forceCenter, forceCollide } from 'd3-force';
+
+  type N = { slug: string; title: string; colorVar: string; x?: number; y?: number; fx?: number | null; fy?: number | null };
+  type E = { a: string; b: string };
+
+  const el = document.querySelector<HTMLElement>('.force');
+  if (el && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const data = JSON.parse(el.dataset.graph!) as { nodes: N[]; edges: E[] };
+    const svg = el.querySelector<SVGSVGElement>('.force-canvas')!;
+    const W = 1000, H = 667;
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    const NS = 'http://www.w3.org/2000/svg';
+
+    // Deterministische Startpositionen (kein Math.random): Kreis nach Index.
+    data.nodes.forEach((n, i) => {
+      const t = (i / data.nodes.length) * Math.PI * 2;
+      n.x = W / 2 + Math.cos(t) * 220;
+      n.y = H / 2 + Math.sin(t) * 160;
+    });
+    const bySlug = new Map(data.nodes.map((n) => [n.slug, n]));
+    const links = data.edges.map((e) => ({ source: bySlug.get(e.a)!, target: bySlug.get(e.b)! }));
+
+    const gEdges = document.createElementNS(NS, 'g');
+    const gNodes = document.createElementNS(NS, 'g');
+    svg.append(gEdges, gNodes);
+    const lineEls = links.map(() => { const l = document.createElementNS(NS, 'line'); l.setAttribute('class', 'force-edge'); gEdges.append(l); return l; });
+    const nodeEls = data.nodes.map((n) => {
+      const g = document.createElementNS(NS, 'a') as SVGAElement;
+      g.setAttribute('href', `/erleben/thema/${n.slug}`);
+      g.setAttribute('class', 'force-node');
+      const c = document.createElementNS(NS, 'circle');
+      c.setAttribute('r', '9'); c.setAttribute('stroke', 'var(--paper)'); c.setAttribute('stroke-width', '2');
+      c.setAttribute('fill', `var(${n.colorVar})`);
+      const t = document.createElementNS(NS, 'text');
+      t.setAttribute('class', 'force-label'); t.setAttribute('text-anchor', 'middle'); t.setAttribute('dy', '-14');
+      t.textContent = n.title;
+      g.append(c, t); gNodes.append(g); return { g, c, t, n };
+    });
+
+    const sim = forceSimulation(data.nodes as any)
+      .force('link', forceLink(links as any).distance(90).strength(.4))
+      .force('charge', forceManyBody().strength(-260))
+      .force('center', forceCenter(W / 2, H / 2))
+      .force('collide', forceCollide(28))
+      .on('tick', () => {
+        links.forEach((lk, i) => { lineEls[i].setAttribute('x1', lk.source.x!.toString()); lineEls[i].setAttribute('y1', lk.source.y!.toString()); lineEls[i].setAttribute('x2', lk.target.x!.toString()); lineEls[i].setAttribute('y2', lk.target.y!.toString()); });
+        nodeEls.forEach(({ g, n }) => g.setAttribute('transform', `translate(${n.x},${n.y})`));
+      });
+
+    // Ziehen
+    let drag: N | null = null;
+    const toSvg = (ev: PointerEvent) => { const r = svg.getBoundingClientRect(); return { x: (ev.clientX - r.left) / r.width * W, y: (ev.clientY - r.top) / r.height * H }; };
+    nodeEls.forEach(({ g, n }) => {
+      g.addEventListener('pointerdown', (ev) => { ev.preventDefault(); drag = n; sim.alphaTarget(.2).restart(); (g as any).setPointerCapture?.(ev.pointerId); });
+    });
+    svg.addEventListener('pointermove', (ev) => { if (!drag) return; const p = toSvg(ev); drag.fx = p.x; drag.fy = p.y; });
+    svg.addEventListener('pointerup', () => { if (!drag) return; drag.fx = null; drag.fy = null; drag = null; sim.alphaTarget(0); });
+
+    el.classList.add('enhanced');
+  }
+</script>
