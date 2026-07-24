@@ -1,0 +1,15 @@
+---
+import Site from '../../layouts/Site.astro';
+import VariantSwitcher from '../../components/graph/VariantSwitcher.astro';
+import GraphKonstellation from '../../components/graph/GraphKonstellation.astro';
+import { buildGraph } from '../../lib/graph';
+const graph = await buildGraph();
+---
+<Site title="Erleben — Konstellation" current="erleben">
+  <section class="wrap" style="padding-top:32px">
+    <VariantSwitcher active="konstellation" />
+  </section>
+  <section class="wrap">
+    <GraphKonstellation graph={graph} />
+  </section>
+</Site>
