@@ -2,7 +2,7 @@
 title: "Symptomverständnis"
 cluster: k2
 summary: "Ein Symptom als sinnvolle Leistung verstehen statt als Defekt."
-related: []
+related: [haltung]
 x: 61.39
 y: 35.12
 status: stub

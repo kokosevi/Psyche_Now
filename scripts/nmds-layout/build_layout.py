@@ -90,7 +90,7 @@ def build(doc_path):
     excluded = {s for s in slugs if wc[s] > 4 * med}
     if excluded:
         print("Kanten-Ausschluss (Längen-Ausreißer):", ", ".join(sorted(excluded)))
-    # Cross-Cluster-Kanten-Vorschläge
+    # Cross-Cluster-Kanten-Vorschläge (die "starken" Verbindungen)
     sim = mat @ mat.T
     edges = []
     for i in range(len(slugs)):
@@ -105,7 +105,32 @@ def build(doc_path):
                 edges.append({"a": a, "b": b, "sim": round(sc, 4)})
     edges.sort(key=lambda e: (-e["sim"], e["a"], e["b"]))
     edges = edges[:CROSS_EDGE_TOPK]
-    return {"nodes": nodes, "edges_suggested": edges}
+    # Abdeckungs-Set: für JEDEN noch unverbundenen Knoten seine besten
+    # cross-cluster-Kandidaten (Top-N) aufnehmen, damit die Kuratierung jedem
+    # Knoten ≥1 Kante geben und dabei den Partner mit geringstem Grad wählen
+    # kann (verhindert Hubs). Der Längen-Ausreißer bleibt aus der Hub-Bildung
+    # heraus (kein Partner für andere), erhält aber selbst seine Partner.
+    COVER_TOPN = 3
+    def top_partners(i, k):
+        cands = []
+        for j in range(len(slugs)):
+            if j == i or nodes[slugs[i]]["cluster"] == nodes[slugs[j]]["cluster"]:
+                continue
+            if slugs[j] in excluded and slugs[i] not in excluded:
+                continue
+            cands.append((slugs[j], float(sim[i, j])))
+        cands.sort(key=lambda c: (-c[1], c[0]))
+        return cands[:k]
+    covered = {e["a"] for e in edges} | {e["b"] for e in edges}
+    by_key = {(e["a"], e["b"]): e for e in edges}
+    for i, s in enumerate(slugs):
+        if s in covered:
+            continue
+        for partner, sc in top_partners(i, COVER_TOPN):
+            a, b = sorted((s, partner))
+            by_key.setdefault((a, b), {"a": a, "b": b, "sim": round(sc, 4)})
+    merged = sorted(by_key.values(), key=lambda e: (-e["sim"], e["a"], e["b"]))
+    return {"nodes": nodes, "edges_suggested": merged}
 
 
 if __name__ == "__main__":

@@ -39,17 +39,22 @@ for e in sugg:
         add(a, b)
         chosen.add(tuple(sorted((a, b))))
 
-# K4-Abdeckung sicherstellen
-k4 = [s for s, n in BY_SLUG.items() if n["cluster"] == "k4"]
+# Abdeckung sicherstellen: JEDER Knoten bekommt ≥1 Kante. Unter den Vorschlägen,
+# die den Knoten enthalten, den Partner mit dem geringsten aktuellen Grad wählen
+# (verteilt die Zwangskanten, verhindert Hubs); als Tie-Break die Ähnlichkeit.
 linked = {x for e in edges for x in e}
-for s in k4:
-    if s not in linked:
-        for e in sugg:
-            if s in (e["a"], e["b"]):
-                add(e["a"], e["b"])
-                linked.add(e["a"])
-                linked.add(e["b"])
-                break
+for s in BY_SLUG:
+    if s in linked:
+        continue
+    cands = [e for e in sugg if s in (e["a"], e["b"])]
+    if not cands:
+        continue
+    def partner(e):
+        return e["b"] if e["a"] == s else e["a"]
+    best = min(cands, key=lambda e: (deg.get(partner(e), 0), -e["sim"]))
+    add(best["a"], best["b"])
+    linked.add(best["a"])
+    linked.add(best["b"])
 
 final = sorted({tuple(sorted(e)) for e in edges})
 # Validierung: alle cross-cluster, Slugs existieren
@@ -60,6 +65,7 @@ for a, b in final:
 json.dump([list(e) for e in final],
           open(os.path.join(HERE, "out", "edges.curated.json"), "w"),
           ensure_ascii=False, indent=2)
-missing = [s for s in k4 if s not in {x for e in final for x in e}]
-print(f"edges.curated.json: {len(final)} Kanten; K4 ohne Kante: {missing or 'keine'}")
+linked_final = {x for e in final for x in e}
+missing = [s for s in BY_SLUG if s not in linked_final]
+print(f"edges.curated.json: {len(final)} Kanten; Knoten ohne Kante: {missing or 'keine'}")
 print("Grad-Verteilung (Top):", sorted(deg.items(), key=lambda x: -x[1])[:6])

@@ -2,7 +2,7 @@
 title: "Wie erzeugen wir unser Erleben?"
 cluster: k1
 summary: "Erleben ist kein Abbild der Realität, sondern ein aktiver innerer Konstruktionsprozess."
-related: []
+related: [interventionen]
 x: 35.89
 y: 39.67
 status: full

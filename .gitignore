@@ -36,4 +36,5 @@ scripts/nmds-layout/source/
 scripts/nmds-layout/corpus/
 scripts/nmds-layout/cache/
 
-scripts/nmds-layout/__pycache__/
+scripts/nmds-layout/**/__pycache__/
+scripts/nmds-layout/.venv/

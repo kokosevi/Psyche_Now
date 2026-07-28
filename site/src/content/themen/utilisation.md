@@ -2,7 +2,7 @@
 title: "Utilisation"
 cluster: k3
 summary: "Alles Vorhandene als Ressource nutzen — auch das „Störende\"."
-related: []
+related: [ursachen]
 x: 19.9
 y: 66.26
 status: stub

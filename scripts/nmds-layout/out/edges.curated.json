@@ -1,7 +1,27 @@
 [
   [
+    "abgrenzung",
+    "eigene-wahrgebung"
+  ],
+  [
+    "abgrenzung",
+    "hypnosystemischer-ansatz"
+  ],
+  [
+    "abgrenzung",
+    "zugang-kompetenzen"
+  ],
+  [
+    "abschluss-transfer",
+    "loesung-aller-probleme"
+  ],
+  [
     "angst",
     "depression"
+  ],
+  [
+    "angst",
+    "fallanalyse-ungewisses"
   ],
   [
     "angst",
@@ -20,6 +40,14 @@
     "ursachen"
   ],
   [
+    "beratungssystem",
+    "haltung"
+  ],
+  [
+    "burnout",
+    "zuweisungsdynamik"
+  ],
+  [
     "depression",
     "diagnosen"
   ],
@@ -28,15 +56,51 @@
     "selbsterfahrung"
   ],
   [
+    "entscheidungen",
+    "rollenverstaendnis"
+  ],
+  [
+    "erleben-erzeugen",
+    "interventionen"
+  ],
+  [
     "essverhalten",
+    "utilisation-ambivalenzen"
+  ],
+  [
+    "fallanalyse-ungewisses",
     "netzwerk-modell"
   ],
   [
+    "fallanalyse-ungewisses",
+    "selbsterfahrung"
+  ],
+  [
+    "grundlagenmodell",
+    "utilisation-problemsituationen"
+  ],
+  [
     "haltung",
+    "symptomverstaendnis"
+  ],
+  [
+    "hirnforschung",
+    "schmerzen"
+  ],
+  [
+    "hypnosyst-denken",
+    "utilisation-rueckfaelle"
+  ],
+  [
+    "hypnosystemischer-ansatz",
     "paarkonflikt"
   ],
   [
     "imagination-steuerposition",
+    "selbsterfahrung"
+  ],
+  [
+    "innere-weisheit",
     "selbsterfahrung"
   ],
   [
@@ -49,18 +113,6 @@
   ],
   [
     "netzwerk-modell",
-    "schmerzen"
-  ],
-  [
-    "netzwerk-modell",
-    "sucht"
-  ],
-  [
-    "netzwerk-modell",
-    "trauer-schuld"
-  ],
-  [
-    "netzwerk-modell",
     "trauma"
   ],
   [
@@ -68,19 +120,47 @@
     "rollenverstaendnis"
   ],
   [
-    "panik",
-    "selbsterfahrung"
+    "potenzialhypothese",
+    "trauma"
   ],
   [
     "probleme-basteln",
     "ursachen"
   ],
   [
+    "restriktionen",
+    "trauer-schuld"
+  ],
+  [
     "rollenverstaendnis",
     "selbstfuersorge"
   ],
   [
+    "rollenverstaendnis",
+    "unterschiede"
+  ],
+  [
+    "sag-mal-gunther",
+    "sucht"
+  ],
+  [
     "steuerposition",
     "trauma"
+  ],
+  [
+    "sucht",
+    "werdegang-wurzeln"
+  ],
+  [
+    "trance-transparenz",
+    "trauma"
+  ],
+  [
+    "trauer-schuld",
+    "versoehnung"
+  ],
+  [
+    "ursachen",
+    "utilisation"
   ]
 ]
