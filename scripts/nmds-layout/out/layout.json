@@ -1,252 +1,252 @@
 {
   "abgrenzung": {
     "cluster": "k2",
-    "x": 76.36,
-    "y": 20.46
+    "x": 75.94,
+    "y": 24.1
   },
   "abschluss-transfer": {
     "cluster": "k3",
-    "x": 14.16,
-    "y": 77.49
+    "x": 13.58,
+    "y": 81.8
   },
   "angst": {
     "cluster": "k1",
-    "x": 37.03,
-    "y": 35.8
+    "x": 37.73,
+    "y": 38.62
   },
   "auftragsklaerung": {
     "cluster": "k3",
-    "x": 22.24,
-    "y": 69.71
+    "x": 22.46,
+    "y": 74.57
   },
   "beratungssystem": {
     "cluster": "k3",
-    "x": 20.86,
-    "y": 78.34
+    "x": 19.97,
+    "y": 80.59
   },
   "burnout": {
     "cluster": "k2",
-    "x": 90.18,
-    "y": 21.87
+    "x": 87.92,
+    "y": 25.59
   },
   "depression": {
     "cluster": "k4",
-    "x": 88.44,
-    "y": 76.07
+    "x": 86.43,
+    "y": 78.64
   },
   "diagnosen": {
     "cluster": "k2",
-    "x": 59.02,
-    "y": 26.15
+    "x": 61.11,
+    "y": 29.26
   },
   "eigene-wahrgebung": {
     "cluster": "k3",
-    "x": 29.54,
-    "y": 84.79
+    "x": 30.58,
+    "y": 88.1
   },
   "entscheidungen": {
     "cluster": "k2",
-    "x": 90.88,
-    "y": 30.73
+    "x": 88.52,
+    "y": 33.21
   },
   "erleben-erzeugen": {
     "cluster": "k1",
-    "x": 35.48,
-    "y": 16.32
+    "x": 34.82,
+    "y": 19.19
   },
   "essverhalten": {
     "cluster": "k4",
-    "x": 81.21,
-    "y": 84.2
+    "x": 80.2,
+    "y": 85.64
   },
   "fallanalyse-ungewisses": {
     "cluster": "k3",
-    "x": 32.92,
-    "y": 65.79
+    "x": 33.91,
+    "y": 68.7
   },
   "grundlagenmodell": {
     "cluster": "k1",
-    "x": 32.7,
-    "y": 24.07
+    "x": 32.53,
+    "y": 25.27
   },
   "haltung": {
     "cluster": "k1",
-    "x": 16.08,
-    "y": 27.95
+    "x": 16.8,
+    "y": 31.27
   },
   "hirnforschung": {
     "cluster": "k1",
-    "x": 28.52,
-    "y": 13.41
+    "x": 28.16,
+    "y": 18.31
   },
   "hypnosyst-denken": {
     "cluster": "k1",
-    "x": 18.61,
-    "y": 20.74
+    "x": 18.46,
+    "y": 24.61
   },
   "hypnosystemischer-ansatz": {
     "cluster": "k1",
-    "x": 18.47,
-    "y": 38.11
+    "x": 19.52,
+    "y": 39.56
   },
   "imagination-steuerposition": {
     "cluster": "k3",
-    "x": 43.48,
-    "y": 70.95
+    "x": 41.25,
+    "y": 74.11
   },
   "innere-weisheit": {
     "cluster": "k3",
-    "x": 41.16,
-    "y": 81.1
+    "x": 39.08,
+    "y": 83.03
   },
   "interventionen": {
     "cluster": "k3",
-    "x": 34.24,
-    "y": 74.48
+    "x": 35.69,
+    "y": 77.48
   },
   "loesung-aller-probleme": {
     "cluster": "k2",
-    "x": 78.67,
-    "y": 26.93
+    "x": 78.12,
+    "y": 30.22
   },
   "netzwerk-modell": {
     "cluster": "k1",
-    "x": 26.91,
-    "y": 32.72
+    "x": 24.84,
+    "y": 35.7
   },
   "neutralitaet": {
     "cluster": "k2",
-    "x": 70.63,
-    "y": 25.73
+    "x": 71.1,
+    "y": 28.91
   },
   "paarkonflikt": {
     "cluster": "k4",
-    "x": 57.62,
-    "y": 78.76
+    "x": 59.91,
+    "y": 80.96
   },
   "panik": {
     "cluster": "k4",
-    "x": 83.16,
-    "y": 69.88
+    "x": 81.88,
+    "y": 73.35
   },
   "potenzialhypothese": {
     "cluster": "k1",
-    "x": 29.12,
-    "y": 25.94
+    "x": 29.28,
+    "y": 30.9
   },
   "probleme-basteln": {
     "cluster": "k1",
-    "x": 28.98,
-    "y": 39.06
+    "x": 27.06,
+    "y": 41.86
   },
   "restriktionen": {
     "cluster": "k2",
-    "x": 72.96,
-    "y": 38.31
+    "x": 71.89,
+    "y": 40.06
   },
   "rollenverstaendnis": {
     "cluster": "k1",
-    "x": 23.9,
-    "y": 26.11
+    "x": 22.99,
+    "y": 29.27
   },
   "sag-mal-gunther": {
     "cluster": "k1",
-    "x": 8.52,
-    "y": 25.14
+    "x": 10.96,
+    "y": 28.4
   },
   "schmerzen": {
     "cluster": "k4",
-    "x": 67.48,
-    "y": 55.52
+    "x": 68.39,
+    "y": 60.96
   },
   "selbsterfahrung": {
     "cluster": "k1",
-    "x": 31.46,
-    "y": 35.6
+    "x": 31.43,
+    "y": 37.04
   },
   "selbstfuersorge": {
     "cluster": "k3",
-    "x": 25.82,
-    "y": 79.42
+    "x": 25.34,
+    "y": 84.26
   },
   "steuerposition": {
     "cluster": "k3",
-    "x": 28.6,
-    "y": 61.15
+    "x": 29.87,
+    "y": 63.6
   },
   "sucht": {
     "cluster": "k4",
-    "x": 67.71,
-    "y": 88.17
+    "x": 68.59,
+    "y": 89.05
   },
   "symptomverstaendnis": {
     "cluster": "k2",
-    "x": 62.06,
-    "y": 33.18
+    "x": 63.72,
+    "y": 35.31
   },
   "trance-transparenz": {
     "cluster": "k1",
-    "x": 35.63,
-    "y": 28.95
+    "x": 35.72,
+    "y": 31.79
   },
   "trauer-schuld": {
     "cluster": "k4",
-    "x": 82.92,
-    "y": 62.41
+    "x": 81.67,
+    "y": 66.85
   },
   "trauma": {
     "cluster": "k4",
-    "x": 63.46,
-    "y": 68.99
+    "x": 64.93,
+    "y": 72.55
   },
   "unterschiede": {
     "cluster": "k3",
-    "x": 18.87,
-    "y": 63.6
+    "x": 19.04,
+    "y": 64.58
   },
   "ursachen": {
     "cluster": "k2",
-    "x": 61.81,
-    "y": 9.52
+    "x": 63.51,
+    "y": 14.96
   },
   "utilisation": {
     "cluster": "k3",
-    "x": 25.32,
-    "y": 63.99
+    "x": 24.78,
+    "y": 67.64
   },
   "utilisation-ambivalenzen": {
     "cluster": "k3",
-    "x": 15.98,
-    "y": 67.29
+    "x": 14.5,
+    "y": 69.23
   },
   "utilisation-problemsituationen": {
     "cluster": "k3",
-    "x": 27.52,
-    "y": 70.92
+    "x": 28.82,
+    "y": 72.73
   },
   "utilisation-rueckfaelle": {
     "cluster": "k3",
-    "x": 16.28,
-    "y": 84.64
+    "x": 17.92,
+    "y": 86.78
   },
   "versoehnung": {
     "cluster": "k2",
-    "x": 77.42,
-    "y": 37.12
+    "x": 78.17,
+    "y": 38.38
   },
   "werdegang-wurzeln": {
     "cluster": "k1",
-    "x": 18.61,
-    "y": 15.07
+    "x": 19.7,
+    "y": 18.22
   },
   "zugang-kompetenzen": {
     "cluster": "k3",
-    "x": 29.38,
-    "y": 74.59
+    "x": 29.42,
+    "y": 79.2
   },
   "zuweisungsdynamik": {
     "cluster": "k3",
-    "x": 15.61,
-    "y": 72.77
+    "x": 15.8,
+    "y": 75.6
   }
 }

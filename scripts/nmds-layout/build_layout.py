@@ -13,17 +13,54 @@ CROSS_EDGE_MIN_SIM = 0.10   # Schwelle für Kanten-Vorschläge
 CROSS_EDGE_TOPK = 40        # Deckel auf die Vorschlagsliste
 
 
+MIN_DIST = 6.5   # min. Knotenabstand in % (gegen Label-Überlappung)
+TOP_PAD = 6.0    # zusätzlicher Platz oben für den Cluster-Titel
+
+
 def _fit_region(Y, region):
     """Y (n×2) isotrop in die Region skalieren, zentriert, Aspect erhalten."""
     x0, x1, y0, y1 = region
+    y0 = y0 + TOP_PAD  # Knoten nicht unter den Cluster-Titel legen
     if len(Y) == 1:
         return np.array([[(x0 + x1) / 2, (y0 + y1) / 2]])
     Y = Y - Y.mean(axis=0)
     span = np.max(np.abs(Y)) * 2 or 1.0
     w, h = (x1 - x0), (y1 - y0)
-    scale = min(w, h) / span * 0.92
+    scale = min(w, h) / span * 0.94
     Y = Y * scale
     return Y + np.array([(x0 + x1) / 2, (y0 + y1) / 2])
+
+
+def _relax(Y, region, min_dist=MIN_DIST, iters=400):
+    """Schiebt zu nahe Knotenpaare deterministisch auseinander (Floor auf den
+    Abstand), geklemmt in die Region. Bewahrt die NMDS-Anordnung — nur die
+    engsten Paare werden entzerrt."""
+    x0, x1, y0, y1 = region
+    y0 = y0 + TOP_PAD
+    Y = Y.astype(float).copy()
+    n = len(Y)
+    if n < 2:
+        return Y
+    for _ in range(iters):
+        moved = False
+        for i in range(n):
+            for j in range(i + 1, n):
+                d = Y[j] - Y[i]
+                dist = float(np.hypot(*d))
+                if dist < min_dist:
+                    if dist < 1e-9:
+                        d = np.array([min_dist, 0.0])  # deterministischer Split
+                        dist = min_dist
+                    push = (min_dist - dist) / 2.0
+                    u = d / dist
+                    Y[i] -= u * push
+                    Y[j] += u * push
+                    moved = True
+        Y[:, 0] = np.clip(Y[:, 0], x0, x1)
+        Y[:, 1] = np.clip(Y[:, 1], y0, y1)
+        if not moved:
+            break
+    return Y
 
 
 def build(doc_path):
@@ -40,6 +77,7 @@ def build(doc_path):
         D = cosine_dissim(sub)
         Y, _ = nmds(D, seed=42)
         Y = _fit_region(Y, REGIONS[cl])
+        Y = _relax(Y, REGIONS[cl])
         for s, (x, y) in zip(members, Y):
             nodes[s] = {"cluster": cl, "x": round(float(x), 2), "y": round(float(y), 2)}
     # Cross-Cluster-Kanten-Vorschläge
