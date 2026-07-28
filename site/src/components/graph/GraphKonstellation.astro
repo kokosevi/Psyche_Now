@@ -77,21 +77,26 @@ const goldHoverCss = graph.nodes
   .konstellation .edges, .konstellation .node { z-index: 1; }
   .edges { position: absolute; inset: 0; width: 100%; height: 100%; }
   .edges line { stroke: var(--hairline); stroke-width: .4; vector-effect: non-scaling-stroke; }
+  /* Der Knoten ist punktgenau am Anker (x/y) zentriert = Grösse des Punkts.
+     Kanten enden dadurch exakt im Punkt. Das Label hängt absolut darunter und
+     verschiebt den Anker nicht. */
   .node {
     position: absolute; transform: translate(-50%, -50%);
-    display: flex; flex-direction: column; align-items: center; gap: 3px;
-    text-decoration: none; color: var(--ink); max-width: 92px; text-align: center;
+    width: 12px; height: 12px;
+    text-decoration: none; color: var(--ink);
     transition: transform .18s var(--ease);
   }
-  .node .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--c); border: 2px solid var(--paper); box-shadow: var(--shadow-md); }
+  .node .dot { display: block; width: 12px; height: 12px; border-radius: 50%; background: var(--c); border: 2px solid var(--paper); box-shadow: var(--shadow-md); }
   .node .label {
+    position: absolute; top: 15px; left: 50%; transform: translateX(-50%);
+    width: 92px; text-align: center;
     font-family: var(--font-hand); font-weight: 700; font-size: 14px; line-height: 1.0;
     /* Papier-Halo: bleibt lesbar, auch wenn Labels sich in dichten Clustern überlappen */
     text-shadow: 0 0 3px var(--paper), 0 0 3px var(--paper), 0 0 3px var(--paper), 0 0 6px var(--paper);
   }
-  .node:hover, .node:focus-visible { transform: translate(-50%, calc(-50% - 4px)) scale(1.1); z-index: 4; }
+  .node:hover, .node:focus-visible { transform: translate(-50%, -50%) translateY(-4px) scale(1.15); z-index: 4; }
   .node:hover .label, .node:focus-visible .label { text-shadow: none; }
-  @media (max-width: 720px) { .node .label { font-size: 12px; } .node { max-width: 78px; } }
+  @media (max-width: 720px) { .node .label { font-size: 12px; width: 78px; } }
   @media (prefers-reduced-motion: reduce) {
     .node { transition: none; }
     .node:hover, .node:focus-visible { transform: translate(-50%, -50%); }
