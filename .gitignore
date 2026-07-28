@@ -30,3 +30,8 @@ npm-debug.log*
 
 # Kommerzielle Avenir-Fonts nicht ins öffentliche Repo (lokal erhalten)
 design/handoffs/**/Avenir_*.ttf
+
+# NMDS-Pipeline: Quelltranskripte + Zwischenstände bleiben lokal (Urheberrecht)
+scripts/nmds-layout/source/
+scripts/nmds-layout/corpus/
+scripts/nmds-layout/cache/
