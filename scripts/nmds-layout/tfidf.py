@@ -28,12 +28,17 @@ def tfidf_matrix(docs):
     vocab = sorted({t for doc in tokenized for t in doc})
     vindex = {w: i for i, w in enumerate(vocab)}
     n, v = len(docs), len(vocab)
-    tf = np.zeros((n, v))
+    counts = np.zeros((n, v))
     for i, doc in enumerate(tokenized):
         for t in doc:
-            tf[i, vindex[t]] += 1.0
-    tf = np.where(tf > 0, 1.0 + np.log(np.where(tf > 0, tf, 1.0)), 0.0)  # sublineare TF
-    df = (tf > 0).sum(axis=0)
+            counts[i, vindex[t]] += 1.0
+    # Relative Häufigkeit (Längen-Normalisierung): ein Wort wird nach Anteil an der
+    # Dokumentlänge gewichtet, nicht nach absoluter Zahl — 2×/500 Wörter wiegt mehr
+    # als 3×/5000 Wörter. Leere Dokumente bleiben Null.
+    doc_len = counts.sum(axis=1, keepdims=True)
+    doc_len[doc_len == 0] = 1.0
+    tf = counts / doc_len
+    df = (counts > 0).sum(axis=0)
     idf = np.log((1.0 + n) / (1.0 + df)) + 1.0                           # geglättete IDF
     mat = tf * idf
     norms = np.linalg.norm(mat, axis=1, keepdims=True)

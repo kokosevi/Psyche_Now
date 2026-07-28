@@ -1,507 +1,502 @@
 [
   {
-    "a": "fallanalyse-ungewisses",
-    "b": "netzwerk-modell",
-    "sim": 0.2772
-  },
-  {
     "a": "angst",
     "b": "panik",
-    "sim": 0.2763
+    "sim": 0.5168
   },
   {
     "a": "fallanalyse-ungewisses",
-    "b": "selbsterfahrung",
-    "sim": 0.2648
-  },
-  {
-    "a": "angst",
-    "b": "fallanalyse-ungewisses",
-    "sim": 0.2508
-  },
-  {
-    "a": "depression",
-    "b": "selbsterfahrung",
-    "sim": 0.2321
-  },
-  {
-    "a": "auftragsklaerung",
-    "b": "trauma",
-    "sim": 0.2302
-  },
-  {
-    "a": "imagination-steuerposition",
-    "b": "selbsterfahrung",
-    "sim": 0.2278
-  },
-  {
-    "a": "depression",
-    "b": "diagnosen",
-    "sim": 0.2258
-  },
-  {
-    "a": "netzwerk-modell",
-    "b": "trauma",
-    "sim": 0.2227
-  },
-  {
-    "a": "panik",
-    "b": "selbsterfahrung",
-    "sim": 0.2207
-  },
-  {
-    "a": "netzwerk-modell",
-    "b": "panik",
-    "sim": 0.2196
-  },
-  {
-    "a": "rollenverstaendnis",
-    "b": "selbstfuersorge",
-    "sim": 0.2158
-  },
-  {
-    "a": "innere-weisheit",
-    "b": "selbsterfahrung",
-    "sim": 0.215
-  },
-  {
-    "a": "steuerposition",
-    "b": "trauma",
-    "sim": 0.2148
-  },
-  {
-    "a": "netzwerk-modell",
-    "b": "trauer-schuld",
-    "sim": 0.2141
-  },
-  {
-    "a": "auftragsklaerung",
-    "b": "haltung",
-    "sim": 0.2115
-  },
-  {
-    "a": "netzwerk-modell",
-    "b": "schmerzen",
-    "sim": 0.2106
-  },
-  {
-    "a": "depression",
     "b": "netzwerk-modell",
-    "sim": 0.2063
+    "sim": 0.3993
   },
   {
-    "a": "loesung-aller-probleme",
-    "b": "trauer-schuld",
-    "sim": 0.2052
-  },
-  {
-    "a": "auftragsklaerung",
+    "a": "fallanalyse-ungewisses",
     "b": "selbsterfahrung",
-    "sim": 0.2028
+    "sim": 0.3925
   },
   {
-    "a": "angst",
-    "b": "depression",
-    "sim": 0.2025
-  },
-  {
-    "a": "haltung",
-    "b": "trauma",
-    "sim": 0.2022
-  },
-  {
-    "a": "hypnosyst-denken",
-    "b": "trauma",
-    "sim": 0.2017
-  },
-  {
-    "a": "netzwerk-modell",
-    "b": "sucht",
-    "sim": 0.2016
-  },
-  {
-    "a": "selbsterfahrung",
-    "b": "trauma",
-    "sim": 0.2011
-  },
-  {
-    "a": "neutralitaet",
+    "a": "fallanalyse-ungewisses",
     "b": "rollenverstaendnis",
-    "sim": 0.201
-  },
-  {
-    "a": "auftragsklaerung",
-    "b": "ursachen",
-    "sim": 0.2008
-  },
-  {
-    "a": "probleme-basteln",
-    "b": "ursachen",
-    "sim": 0.2003
-  },
-  {
-    "a": "rollenverstaendnis",
-    "b": "trauma",
-    "sim": 0.2002
-  },
-  {
-    "a": "auftragsklaerung",
-    "b": "netzwerk-modell",
-    "sim": 0.1992
-  },
-  {
-    "a": "auftragsklaerung",
-    "b": "rollenverstaendnis",
-    "sim": 0.1991
-  },
-  {
-    "a": "angst",
-    "b": "trauma",
-    "sim": 0.199
-  },
-  {
-    "a": "potenzialhypothese",
-    "b": "trauma",
-    "sim": 0.1989
-  },
-  {
-    "a": "essverhalten",
-    "b": "netzwerk-modell",
-    "sim": 0.1986
-  },
-  {
-    "a": "depression",
-    "b": "haltung",
-    "sim": 0.198
-  },
-  {
-    "a": "haltung",
-    "b": "paarkonflikt",
-    "sim": 0.198
-  },
-  {
-    "a": "netzwerk-modell",
-    "b": "paarkonflikt",
-    "sim": 0.1974
-  },
-  {
-    "a": "innere-weisheit",
-    "b": "netzwerk-modell",
-    "sim": 0.197
+    "sim": 0.3886
   },
   {
     "a": "interventionen",
     "b": "schmerzen",
-    "sim": 0.1967
+    "sim": 0.367
   },
   {
-    "a": "depression",
-    "b": "restriktionen",
-    "sim": 0.1958
-  },
-  {
-    "a": "trance-transparenz",
+    "a": "netzwerk-modell",
     "b": "trauma",
-    "sim": 0.1953
+    "sim": 0.3494
   },
   {
     "a": "restriktionen",
     "b": "trauer-schuld",
-    "sim": 0.195
+    "sim": 0.3491
+  },
+  {
+    "a": "netzwerk-modell",
+    "b": "panik",
+    "sim": 0.3237
+  },
+  {
+    "a": "imagination-steuerposition",
+    "b": "selbsterfahrung",
+    "sim": 0.3235
+  },
+  {
+    "a": "auftragsklaerung",
+    "b": "netzwerk-modell",
+    "sim": 0.319
+  },
+  {
+    "a": "haltung",
+    "b": "trauma",
+    "sim": 0.3186
+  },
+  {
+    "a": "depression",
+    "b": "netzwerk-modell",
+    "sim": 0.3163
+  },
+  {
+    "a": "auftragsklaerung",
+    "b": "trauma",
+    "sim": 0.314
+  },
+  {
+    "a": "auftragsklaerung",
+    "b": "selbsterfahrung",
+    "sim": 0.3104
+  },
+  {
+    "a": "depression",
+    "b": "selbsterfahrung",
+    "sim": 0.3081
+  },
+  {
+    "a": "eigene-wahrgebung",
+    "b": "rollenverstaendnis",
+    "sim": 0.3056
+  },
+  {
+    "a": "netzwerk-modell",
+    "b": "sucht",
+    "sim": 0.3039
+  },
+  {
+    "a": "hypnosyst-denken",
+    "b": "trauma",
+    "sim": 0.3038
+  },
+  {
+    "a": "netzwerk-modell",
+    "b": "unterschiede",
+    "sim": 0.3037
+  },
+  {
+    "a": "panik",
+    "b": "selbsterfahrung",
+    "sim": 0.3037
+  },
+  {
+    "a": "netzwerk-modell",
+    "b": "trauer-schuld",
+    "sim": 0.3035
+  },
+  {
+    "a": "rollenverstaendnis",
+    "b": "trauma",
+    "sim": 0.3034
+  },
+  {
+    "a": "rollenverstaendnis",
+    "b": "selbstfuersorge",
+    "sim": 0.3004
+  },
+  {
+    "a": "steuerposition",
+    "b": "trauma",
+    "sim": 0.3003
+  },
+  {
+    "a": "auftragsklaerung",
+    "b": "haltung",
+    "sim": 0.2966
+  },
+  {
+    "a": "depression",
+    "b": "haltung",
+    "sim": 0.2911
+  },
+  {
+    "a": "auftragsklaerung",
+    "b": "rollenverstaendnis",
+    "sim": 0.2905
+  },
+  {
+    "a": "innere-weisheit",
+    "b": "selbsterfahrung",
+    "sim": 0.2895
+  },
+  {
+    "a": "netzwerk-modell",
+    "b": "paarkonflikt",
+    "sim": 0.2884
   },
   {
     "a": "rollenverstaendnis",
     "b": "unterschiede",
-    "sim": 0.1948
+    "sim": 0.2866
   },
   {
-    "a": "eigene-wahrgebung",
+    "a": "depression",
     "b": "rollenverstaendnis",
-    "sim": 0.1927
+    "sim": 0.286
+  },
+  {
+    "a": "essverhalten",
+    "b": "netzwerk-modell",
+    "sim": 0.2805
   },
   {
     "a": "abgrenzung",
-    "b": "hypnosystemischer-ansatz",
-    "sim": 0.1893
+    "b": "rollenverstaendnis",
+    "sim": 0.2802
   },
   {
-    "a": "erleben-erzeugen",
-    "b": "interventionen",
-    "sim": 0.1849
+    "a": "neutralitaet",
+    "b": "rollenverstaendnis",
+    "sim": 0.2792
+  },
+  {
+    "a": "innere-weisheit",
+    "b": "netzwerk-modell",
+    "sim": 0.2791
+  },
+  {
+    "a": "haltung",
+    "b": "sucht",
+    "sim": 0.2776
+  },
+  {
+    "a": "loesung-aller-probleme",
+    "b": "trauer-schuld",
+    "sim": 0.2737
+  },
+  {
+    "a": "selbsterfahrung",
+    "b": "trauma",
+    "sim": 0.2723
+  },
+  {
+    "a": "probleme-basteln",
+    "b": "ursachen",
+    "sim": 0.2699
+  },
+  {
+    "a": "trauma",
+    "b": "ursachen",
+    "sim": 0.2698
+  },
+  {
+    "a": "haltung",
+    "b": "trauer-schuld",
+    "sim": 0.2688
   },
   {
     "a": "beratungssystem",
     "b": "rollenverstaendnis",
-    "sim": 0.1836
+    "sim": 0.2682
   },
   {
-    "a": "abgrenzung",
-    "b": "rollenverstaendnis",
-    "sim": 0.1811
+    "a": "potenzialhypothese",
+    "b": "trauma",
+    "sim": 0.2682
+  },
+  {
+    "a": "trance-transparenz",
+    "b": "trauma",
+    "sim": 0.2664
   },
   {
     "a": "trauma",
     "b": "werdegang-wurzeln",
-    "sim": 0.179
+    "sim": 0.2612
   },
   {
-    "a": "grundlagenmodell",
-    "b": "trauer-schuld",
-    "sim": 0.1771
+    "a": "depression",
+    "b": "trance-transparenz",
+    "sim": 0.2541
   },
   {
-    "a": "hypnosystemischer-ansatz",
-    "b": "paarkonflikt",
-    "sim": 0.1762
+    "a": "depression",
+    "b": "diagnosen",
+    "sim": 0.2531
+  },
+  {
+    "a": "erleben-erzeugen",
+    "b": "trauma",
+    "sim": 0.2527
+  },
+  {
+    "a": "auftragsklaerung",
+    "b": "trance-transparenz",
+    "sim": 0.2501
+  },
+  {
+    "a": "depression",
+    "b": "grundlagenmodell",
+    "sim": 0.2489
   },
   {
     "a": "grundlagenmodell",
     "b": "trauma",
-    "sim": 0.172
+    "sim": 0.2433
   },
   {
     "a": "burnout",
-    "b": "zuweisungsdynamik",
-    "sim": 0.171
+    "b": "rollenverstaendnis",
+    "sim": 0.2374
   },
   {
     "a": "depression",
     "b": "hypnosystemischer-ansatz",
-    "sim": 0.1707
-  },
-  {
-    "a": "haltung",
-    "b": "symptomverstaendnis",
-    "sim": 0.1692
-  },
-  {
-    "a": "essverhalten",
-    "b": "utilisation-rueckfaelle",
-    "sim": 0.1689
-  },
-  {
-    "a": "abgrenzung",
-    "b": "paarkonflikt",
-    "sim": 0.1684
-  },
-  {
-    "a": "erleben-erzeugen",
-    "b": "trauma",
-    "sim": 0.1675
-  },
-  {
-    "a": "burnout",
-    "b": "sucht",
-    "sim": 0.1672
-  },
-  {
-    "a": "depression",
-    "b": "werdegang-wurzeln",
-    "sim": 0.1672
-  },
-  {
-    "a": "beratungssystem",
-    "b": "haltung",
-    "sim": 0.1669
+    "sim": 0.2366
   },
   {
     "a": "grundlagenmodell",
-    "b": "panik",
-    "sim": 0.1663
-  },
-  {
-    "a": "entscheidungen",
-    "b": "rollenverstaendnis",
-    "sim": 0.1647
-  },
-  {
-    "a": "ursachen",
-    "b": "utilisation",
-    "sim": 0.1647
-  },
-  {
-    "a": "erleben-erzeugen",
     "b": "trauer-schuld",
-    "sim": 0.1641
+    "sim": 0.2358
   },
   {
-    "a": "sucht",
+    "a": "abgrenzung",
     "b": "werdegang-wurzeln",
-    "sim": 0.1635
+    "sim": 0.2313
+  },
+  {
+    "a": "hypnosystemischer-ansatz",
+    "b": "trauma",
+    "sim": 0.2299
   },
   {
     "a": "burnout",
-    "b": "rollenverstaendnis",
-    "sim": 0.1627
-  },
-  {
-    "a": "rollenverstaendnis",
-    "b": "symptomverstaendnis",
-    "sim": 0.1621
-  },
-  {
-    "a": "eigene-wahrgebung",
-    "b": "selbsterfahrung",
-    "sim": 0.1614
-  },
-  {
-    "a": "sucht",
-    "b": "utilisation-ambivalenzen",
-    "sim": 0.1606
-  },
-  {
-    "a": "entscheidungen",
     "b": "netzwerk-modell",
-    "sim": 0.1594
+    "sim": 0.229
   },
   {
-    "a": "essverhalten",
+    "a": "netzwerk-modell",
     "b": "utilisation-ambivalenzen",
-    "sim": 0.1593
+    "sim": 0.2286
   },
   {
-    "a": "entscheidungen",
-    "b": "haltung",
-    "sim": 0.1586
-  },
-  {
-    "a": "selbsterfahrung",
-    "b": "symptomverstaendnis",
-    "sim": 0.1584
-  },
-  {
-    "a": "selbsterfahrung",
-    "b": "utilisation",
-    "sim": 0.1582
-  },
-  {
-    "a": "beratungssystem",
-    "b": "depression",
-    "sim": 0.1566
+    "a": "depression",
+    "b": "erleben-erzeugen",
+    "sim": 0.2282
   },
   {
     "a": "paarkonflikt",
     "b": "utilisation-ambivalenzen",
-    "sim": 0.1552
-  },
-  {
-    "a": "hirnforschung",
-    "b": "schmerzen",
-    "sim": 0.1528
-  },
-  {
-    "a": "restriktionen",
-    "b": "zuweisungsdynamik",
-    "sim": 0.1509
-  },
-  {
-    "a": "depression",
-    "b": "zuweisungsdynamik",
-    "sim": 0.1507
+    "sim": 0.2255
   },
   {
     "a": "abgrenzung",
-    "b": "eigene-wahrgebung",
-    "sim": 0.1474
+    "b": "hypnosystemischer-ansatz",
+    "sim": 0.2252
+  },
+  {
+    "a": "erleben-erzeugen",
+    "b": "trauer-schuld",
+    "sim": 0.2248
+  },
+  {
+    "a": "haltung",
+    "b": "symptomverstaendnis",
+    "sim": 0.2224
+  },
+  {
+    "a": "diagnosen",
+    "b": "netzwerk-modell",
+    "sim": 0.2206
+  },
+  {
+    "a": "depression",
+    "b": "werdegang-wurzeln",
+    "sim": 0.2165
+  },
+  {
+    "a": "rollenverstaendnis",
+    "b": "symptomverstaendnis",
+    "sim": 0.2165
+  },
+  {
+    "a": "burnout",
+    "b": "haltung",
+    "sim": 0.2143
+  },
+  {
+    "a": "netzwerk-modell",
+    "b": "symptomverstaendnis",
+    "sim": 0.212
+  },
+  {
+    "a": "trance-transparenz",
+    "b": "utilisation-ambivalenzen",
+    "sim": 0.212
+  },
+  {
+    "a": "rollenverstaendnis",
+    "b": "zugang-kompetenzen",
+    "sim": 0.2107
+  },
+  {
+    "a": "diagnosen",
+    "b": "rollenverstaendnis",
+    "sim": 0.2099
+  },
+  {
+    "a": "entscheidungen",
+    "b": "netzwerk-modell",
+    "sim": 0.2099
+  },
+  {
+    "a": "entscheidungen",
+    "b": "rollenverstaendnis",
+    "sim": 0.2074
+  },
+  {
+    "a": "entscheidungen",
+    "b": "haltung",
+    "sim": 0.2062
   },
   {
     "a": "sag-mal-gunther",
     "b": "trauma",
-    "sim": 0.1438
-  },
-  {
-    "a": "rollenverstaendnis",
-    "b": "zugang-kompetenzen",
-    "sim": 0.1397
-  },
-  {
-    "a": "sag-mal-gunther",
-    "b": "sucht",
-    "sim": 0.139
-  },
-  {
-    "a": "abschluss-transfer",
-    "b": "loesung-aller-probleme",
-    "sim": 0.1362
-  },
-  {
-    "a": "hirnforschung",
-    "b": "paarkonflikt",
-    "sim": 0.1347
+    "sim": 0.2048
   },
   {
     "a": "abschluss-transfer",
     "b": "haltung",
-    "sim": 0.1345
-  },
-  {
-    "a": "auftragsklaerung",
-    "b": "sag-mal-gunther",
-    "sim": 0.1337
+    "sim": 0.1963
   },
   {
     "a": "abschluss-transfer",
-    "b": "panik",
-    "sim": 0.1323
+    "b": "rollenverstaendnis",
+    "sim": 0.192
   },
   {
-    "a": "depression",
+    "a": "abschluss-transfer",
+    "b": "netzwerk-modell",
+    "sim": 0.1918
+  },
+  {
+    "a": "selbsterfahrung",
     "b": "utilisation",
-    "sim": 0.1319
+    "sim": 0.1894
   },
   {
-    "a": "hypnosyst-denken",
-    "b": "utilisation-rueckfaelle",
-    "sim": 0.1315
+    "a": "sag-mal-gunther",
+    "b": "sucht",
+    "sim": 0.189
   },
   {
-    "a": "netzwerk-modell",
-    "b": "utilisation-rueckfaelle",
-    "sim": 0.13
+    "a": "burnout",
+    "b": "zuweisungsdynamik",
+    "sim": 0.1844
   },
   {
-    "a": "hirnforschung",
-    "b": "ursachen",
-    "sim": 0.1292
+    "a": "innere-weisheit",
+    "b": "sag-mal-gunther",
+    "sim": 0.1834
   },
   {
     "a": "rollenverstaendnis",
     "b": "versoehnung",
-    "sim": 0.1273
-  },
-  {
-    "a": "trauer-schuld",
-    "b": "versoehnung",
-    "sim": 0.1248
-  },
-  {
-    "a": "abgrenzung",
-    "b": "zugang-kompetenzen",
-    "sim": 0.1182
+    "sim": 0.1831
   },
   {
     "a": "haltung",
     "b": "versoehnung",
-    "sim": 0.1165
+    "sim": 0.1806
   },
   {
-    "a": "selbsterfahrung",
+    "a": "essverhalten",
+    "b": "utilisation-rueckfaelle",
+    "sim": 0.178
+  },
+  {
+    "a": "netzwerk-modell",
+    "b": "utilisation",
+    "sim": 0.1778
+  },
+  {
+    "a": "netzwerk-modell",
+    "b": "utilisation-rueckfaelle",
+    "sim": 0.1725
+  },
+  {
+    "a": "haltung",
+    "b": "zuweisungsdynamik",
+    "sim": 0.1712
+  },
+  {
+    "a": "ursachen",
+    "b": "utilisation",
+    "sim": 0.1695
+  },
+  {
+    "a": "hypnosyst-denken",
+    "b": "utilisation-rueckfaelle",
+    "sim": 0.169
+  },
+  {
+    "a": "depression",
+    "b": "zuweisungsdynamik",
+    "sim": 0.166
+  },
+  {
+    "a": "hirnforschung",
+    "b": "schmerzen",
+    "sim": 0.165
+  },
+  {
+    "a": "trauma",
+    "b": "versoehnung",
+    "sim": 0.1635
+  },
+  {
+    "a": "hirnforschung",
+    "b": "trauma",
+    "sim": 0.1603
+  },
+  {
+    "a": "abgrenzung",
     "b": "zugang-kompetenzen",
-    "sim": 0.1141
+    "sim": 0.1579
+  },
+  {
+    "a": "depression",
+    "b": "hirnforschung",
+    "sim": 0.154
+  },
+  {
+    "a": "haltung",
+    "b": "zugang-kompetenzen",
+    "sim": 0.153
   },
   {
     "a": "grundlagenmodell",
     "b": "utilisation-problemsituationen",
-    "sim": 0.1124
+    "sim": 0.1355
   },
   {
-    "a": "panik",
+    "a": "netzwerk-modell",
     "b": "utilisation-problemsituationen",
-    "sim": 0.1066
+    "sim": 0.1325
   },
   {
-    "a": "depression",
+    "a": "rollenverstaendnis",
     "b": "utilisation-problemsituationen",
-    "sim": 0.1042
+    "sim": 0.1265
   }
 ]

@@ -1,4 +1,4 @@
-import re
+import os, re, glob
 from manifest import NODES
 
 # Format der Quelle (Life Lessons - Transkripte.txt):
@@ -51,4 +51,31 @@ def build_corpus(doc_path):
     for nd in NODES:
         parts = [by_key.get(k, "") for k in nd["headings"]]
         corpus[nd["slug"]] = "\n".join(p for p in parts if p).strip()
+    return corpus
+
+
+# --- Ordner-basierter Corpus (aktuelle Quelle für die Karte) -----------------
+# Jeder Knoten hat einen Ordner Bibliothek/Hypnosystemik/<nummer>-<slug>/ mit
+# beliebig vielen *.md (quelle.md, text.md …). Der Corpus eines Knotens ist die
+# Konkatenation ALLER *.md in seinem Ordner. Ändert sich der Ordnerinhalt, ändert
+# sich die Karte.
+
+def toc_number(node):
+    """TOC-Nummer eines Knotens (Buchstaben-Suffix entfernt, erste bei mehreren)."""
+    return re.sub(r"[a-z]+$", "", node["headings"][0])
+
+
+def folder_name(node):
+    return f"{toc_number(node)}-{node['slug']}"
+
+
+def build_corpus_from_folders(bib_dir):
+    """{slug: text} — alle *.md je Knotenordner konkateniert."""
+    corpus = {}
+    for nd in NODES:
+        d = os.path.join(bib_dir, folder_name(nd))
+        texts = []
+        for path in sorted(glob.glob(os.path.join(d, "*.md"))):
+            texts.append(open(path, encoding="utf-8").read())
+        corpus[nd["slug"]] = "\n".join(texts).strip()
     return corpus

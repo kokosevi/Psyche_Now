@@ -1,7 +1,7 @@
 import json, os
 import numpy as np
 from manifest import NODES
-from extract_corpus import build_corpus
+from extract_corpus import build_corpus_from_folders
 from tfidf import tfidf_matrix, cosine_dissim
 from nmds import nmds
 
@@ -63,8 +63,8 @@ def _relax(Y, region, min_dist=MIN_DIST, iters=400):
     return Y
 
 
-def build(doc_path):
-    corpus = build_corpus(doc_path)
+def build(bib_dir):
+    corpus = build_corpus_from_folders(bib_dir)
     slugs = [n["slug"] for n in NODES]
     docs = [corpus[s] for s in slugs]
     mat = tfidf_matrix(docs)                 # globale TF-IDF (ein Vokabular)
@@ -135,8 +135,8 @@ def build(doc_path):
 
 if __name__ == "__main__":
     here = os.path.dirname(__file__)
-    doc = os.path.join(here, "source", "doc.txt")
-    L = build(doc)
+    bib = os.path.normpath(os.path.join(here, "..", "..", "Bibliothek", "Hypnosystemik"))
+    L = build(bib)
     os.makedirs(os.path.join(here, "out"), exist_ok=True)
     json.dump(L["nodes"], open(os.path.join(here, "out", "layout.json"), "w"),
               ensure_ascii=False, indent=2, sort_keys=True)

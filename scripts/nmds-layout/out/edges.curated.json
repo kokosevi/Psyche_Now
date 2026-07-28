@@ -1,11 +1,11 @@
 [
   [
     "abgrenzung",
-    "eigene-wahrgebung"
+    "hypnosystemischer-ansatz"
   ],
   [
     "abgrenzung",
-    "hypnosystemischer-ansatz"
+    "werdegang-wurzeln"
   ],
   [
     "abgrenzung",
@@ -13,15 +13,7 @@
   ],
   [
     "abschluss-transfer",
-    "loesung-aller-probleme"
-  ],
-  [
-    "angst",
-    "depression"
-  ],
-  [
-    "angst",
-    "fallanalyse-ungewisses"
+    "haltung"
   ],
   [
     "angst",
@@ -33,15 +25,15 @@
   ],
   [
     "auftragsklaerung",
-    "trauma"
+    "selbsterfahrung"
   ],
   [
     "auftragsklaerung",
-    "ursachen"
+    "trauma"
   ],
   [
     "beratungssystem",
-    "haltung"
+    "rollenverstaendnis"
   ],
   [
     "burnout",
@@ -53,19 +45,27 @@
   ],
   [
     "depression",
-    "selbsterfahrung"
+    "haltung"
   ],
   [
-    "entscheidungen",
+    "depression",
+    "trance-transparenz"
+  ],
+  [
+    "eigene-wahrgebung",
     "rollenverstaendnis"
   ],
   [
+    "entscheidungen",
+    "netzwerk-modell"
+  ],
+  [
     "erleben-erzeugen",
-    "interventionen"
+    "trauma"
   ],
   [
     "essverhalten",
-    "utilisation-ambivalenzen"
+    "utilisation-rueckfaelle"
   ],
   [
     "fallanalyse-ungewisses",
@@ -73,7 +73,15 @@
   ],
   [
     "fallanalyse-ungewisses",
+    "rollenverstaendnis"
+  ],
+  [
+    "fallanalyse-ungewisses",
     "selbsterfahrung"
+  ],
+  [
+    "grundlagenmodell",
+    "trauer-schuld"
   ],
   [
     "grundlagenmodell",
@@ -84,6 +92,10 @@
     "symptomverstaendnis"
   ],
   [
+    "haltung",
+    "trauma"
+  ],
+  [
     "hirnforschung",
     "schmerzen"
   ],
@@ -92,16 +104,16 @@
     "utilisation-rueckfaelle"
   ],
   [
-    "hypnosystemischer-ansatz",
-    "paarkonflikt"
-  ],
-  [
     "imagination-steuerposition",
     "selbsterfahrung"
   ],
   [
     "innere-weisheit",
-    "selbsterfahrung"
+    "sag-mal-gunther"
+  ],
+  [
+    "interventionen",
+    "schmerzen"
   ],
   [
     "loesung-aller-probleme",
@@ -116,8 +128,16 @@
     "trauma"
   ],
   [
+    "netzwerk-modell",
+    "unterschiede"
+  ],
+  [
     "neutralitaet",
     "rollenverstaendnis"
+  ],
+  [
+    "paarkonflikt",
+    "utilisation-ambivalenzen"
   ],
   [
     "potenzialhypothese",
@@ -137,7 +157,7 @@
   ],
   [
     "rollenverstaendnis",
-    "unterschiede"
+    "versoehnung"
   ],
   [
     "sag-mal-gunther",
@@ -148,16 +168,8 @@
     "trauma"
   ],
   [
-    "sucht",
-    "werdegang-wurzeln"
-  ],
-  [
     "trance-transparenz",
-    "trauma"
-  ],
-  [
-    "trauer-schuld",
-    "versoehnung"
+    "utilisation-ambivalenzen"
   ],
   [
     "ursachen",

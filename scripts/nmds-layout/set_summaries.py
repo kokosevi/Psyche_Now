@@ -30,7 +30,7 @@ S = {
 def main():
     for slug, summ in S.items():
         assert '"' not in summ, ("straight quote in", slug)
-        p = os.path.join(THEMEN, slug + ".md")
+        p = os.path.join(THEMEN, slug, "index.md")
         t = open(p, encoding="utf-8").read()
         t2, n = re.subn(r'^summary: ".*?"$', f'summary: "{summ}"', t, count=1, flags=re.M)
         assert n == 1, ("summary line not found:", slug)
