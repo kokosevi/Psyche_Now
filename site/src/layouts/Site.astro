@@ -18,6 +18,9 @@ const {
 
 const navCurrent = current === 'home' ? undefined : current;
 
+// Canonical-/OG-URL aus der in astro.config.mjs gesetzten `site`-Domain + aktuellem Pfad.
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
+
 // Umami-Tracking: nur aktiv, wenn beide Variablen gesetzt sind (in Netlify hinterlegt).
 const umamiSrc = import.meta.env.PUBLIC_UMAMI_SRC;
 const umamiId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
@@ -33,6 +36,8 @@ const umamiId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    {canonical && <meta property="og:url" content={canonical} />}
     <link rel="icon" href="/bilder/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

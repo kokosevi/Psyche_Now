@@ -3,8 +3,8 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build
 export default defineConfig({
-  // Beim Live-Gang hier die echte Netlify-URL eintragen (für saubere Canonical-/OG-URLs).
-  site: 'https://psyche-now.example',
+  // Live-Domain (für saubere Canonical-/OG-URLs).
+  site: 'https://psychenow.netlify.app',
   // Statische Ausgabe -> nach Netlify (publish = site/dist).
   output: 'static',
 });
