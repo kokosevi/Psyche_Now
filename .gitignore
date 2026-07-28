@@ -35,3 +35,5 @@ design/handoffs/**/Avenir_*.ttf
 scripts/nmds-layout/source/
 scripts/nmds-layout/corpus/
 scripts/nmds-layout/cache/
+
+scripts/nmds-layout/__pycache__/
