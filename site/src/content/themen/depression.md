@@ -1,10 +1,10 @@
 ---
 title: "Depressionen"
 cluster: k4
-summary: "Depressionen — Zusammenfassung folgt."
+summary: "Depression nicht als statische Diagnose, sondern als unwillkürlich selbsterzeugter Prozess — mit den entsprechenden therapeutischen Ansatzpunkten."
 related: [symptomverstaendnis]
-x: 88.44
-y: 76.07
+x: 86.43
+y: 78.64
 status: stub
 ---
 

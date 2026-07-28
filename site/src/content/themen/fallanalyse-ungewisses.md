@@ -1,10 +1,10 @@
 ---
 title: "Fallanalyse: Umgang mit dem Ungewissen"
 cluster: k3
-summary: "Fallanalyse: Umgang mit dem Ungewissen — Zusammenfassung folgt."
+summary: "Eine ausführliche Fallanalyse (Unternehmerin in existenzieller Stresskrise) zeigt die hypnosystemischen Prinzipien im Umgang mit dem Ungewissen."
 related: []
-x: 32.92
-y: 65.79
+x: 33.91
+y: 68.7
 status: stub
 ---
 

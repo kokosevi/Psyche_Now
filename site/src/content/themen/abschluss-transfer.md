@@ -1,10 +1,10 @@
 ---
 title: "Abschluss & Transfer"
 cluster: k3
-summary: "Abschluss & Transfer — Zusammenfassung folgt."
+summary: "Transfer ist keine Schlussphase, sondern Aufgabe jeder Sitzung — gegen die tausendfachen Alltags-Einladungen in die alte Richtung."
 related: []
-x: 14.16
-y: 77.49
+x: 13.58
+y: 81.8
 status: stub
 ---
 

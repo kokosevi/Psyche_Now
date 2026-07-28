@@ -3,8 +3,8 @@ title: "Das Netzwerk-Modell"
 cluster: k1
 summary: "Psychisches Erleben entsteht aus dem Zusammenspiel vieler innerer Seiten in einem Netzwerk."
 related: [erleben-erzeugen, grundlagenmodell, hirnforschung, interventionen, unterschiede, ursachen, utilisation]
-x: 26.91
-y: 32.72
+x: 24.84
+y: 35.7
 status: full
 ---
 

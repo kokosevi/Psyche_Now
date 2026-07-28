@@ -1,10 +1,10 @@
 ---
 title: "Utilisation von Rückfällen"
 cluster: k3
-summary: "Utilisation von Rückfällen — Zusammenfassung folgt."
+summary: "Rückfälle als Ehrenrunden verstehen — der schädigende Begriff wird ersetzt, das Wiederauftauchen alter Muster nutzbar gemacht."
 related: []
-x: 16.28
-y: 84.64
+x: 17.92
+y: 86.78
 status: stub
 ---
 

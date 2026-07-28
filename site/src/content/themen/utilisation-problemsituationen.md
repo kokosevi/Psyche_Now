@@ -1,10 +1,10 @@
 ---
 title: "Utilisation von Problemsituationen"
 cluster: k3
-summary: "Utilisation von Problemsituationen — Zusammenfassung folgt."
+summary: "Belastende Situationen werden gewürdigt und rekontextualisiert statt bekämpft — auch der berichtete Druck wird nutzbar gemacht."
 related: []
-x: 27.52
-y: 70.92
+x: 28.82
+y: 72.73
 status: stub
 ---
 

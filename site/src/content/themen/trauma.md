@@ -1,10 +1,10 @@
 ---
 title: "Trauma"
 cluster: k4
-summary: "Trauma — Zusammenfassung folgt."
+summary: "Trauma wirkt nicht, weil es geschah, sondern weil es heute wieder ins Zentrum rückt — ein Verständnis jenseits linear-kausaler Ursache-Wirkung."
 related: [steuerposition]
-x: 63.46
-y: 68.99
+x: 64.93
+y: 72.55
 status: stub
 ---
 

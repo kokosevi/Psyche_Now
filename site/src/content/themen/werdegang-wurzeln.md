@@ -1,10 +1,10 @@
 ---
 title: "Werdegang & Wurzeln"
 cluster: k1
-summary: "Werdegang & Wurzeln — Zusammenfassung folgt."
+summary: "Gunther Schmidts Weg von der Volkswirtschaft über die Medizin zur Familien- und Hypnotherapie — die Wurzeln des hypnosystemischen Ansatzes."
 related: []
-x: 18.61
-y: 15.07
+x: 19.7
+y: 18.22
 status: stub
 ---
 

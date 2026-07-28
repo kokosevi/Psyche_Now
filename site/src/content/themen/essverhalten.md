@@ -1,10 +1,10 @@
 ---
 title: "Ess- und Bewegungsgewohnheiten"
 cluster: k4
-summary: "Ess- und Bewegungsgewohnheiten — Zusammenfassung folgt."
+summary: "Ess- und Bewegungsthemen hypnosystemisch: Aufklärung über Hypnose-Missverständnisse und der Umgang mit der besonderen Gewichtsthematik."
 related: [utilisation-ambivalenzen]
-x: 81.21
-y: 84.2
+x: 80.2
+y: 85.64
 status: stub
 ---
 

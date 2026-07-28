@@ -1,10 +1,10 @@
 ---
 title: "Klärung der Zuweisungs-Dynamik"
 cluster: k3
-summary: "Klärung der Zuweisungs-Dynamik — Zusammenfassung folgt."
+summary: "Der erste Schritt jedes Prozesses: klären, wie und von wem die Idee zur Beratung entstand — und in welchem Kontext."
 related: []
-x: 15.61
-y: 72.77
+x: 15.8
+y: 75.6
 status: stub
 ---
 

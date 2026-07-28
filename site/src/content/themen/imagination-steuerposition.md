@@ -1,10 +1,10 @@
 ---
 title: "Imagination: Steuerposition"
 cluster: k3
-summary: "Imagination: Steuerposition — Zusammenfassung folgt."
+summary: "Eine Imaginationsübung, die einen geschützten Beobachterplatz aufbaut — eine Steuerposition, die vor belastenden Narrativen schützt."
 related: []
-x: 43.48
-y: 70.95
+x: 41.25
+y: 74.11
 status: stub
 ---
 

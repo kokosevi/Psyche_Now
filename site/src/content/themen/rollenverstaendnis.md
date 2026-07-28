@@ -1,10 +1,10 @@
 ---
 title: "Hypnosystemisches Rollenverständnis"
 cluster: k1
-summary: "Hypnosystemisches Rollenverständnis — Zusammenfassung folgt."
+summary: "Therapie als achtungsvolle Kooperation, in der Klient:innen erleben, dass ihre Potenziale vorhanden sind und aktiviert werden können."
 related: [eigene-wahrgebung, neutralitaet, selbstfuersorge]
-x: 23.9
-y: 26.11
+x: 22.99
+y: 29.27
 status: stub
 ---
 

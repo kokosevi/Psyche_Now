@@ -1,10 +1,10 @@
 ---
 title: "Paarkonflikt"
 cluster: k4
-summary: "Paarkonflikt — Zusammenfassung folgt."
+summary: "Hypnosystemische Paararbeit: systemische Wechselwirkungen, Auftragsgestaltung und bezogene Individuation in typischen Paardynamiken."
 related: [abgrenzung]
-x: 57.62
-y: 78.76
+x: 59.91
+y: 80.96
 status: stub
 ---
 
