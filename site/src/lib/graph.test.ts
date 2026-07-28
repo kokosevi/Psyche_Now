@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { assembleGraph, type RawNode } from './graph';
 
 const n = (slug: string, related: string[] = []): RawNode => ({
-  slug, title: slug, cluster: 'grundlagen', summary: 's',
+  slug, title: slug, cluster: 'k1', summary: 's',
   x: 10, y: 20, status: 'stub', related,
 });
 
@@ -16,12 +16,10 @@ describe('assembleGraph', () => {
     expect(() => assembleGraph([n('a', ['ghost'])])).toThrow(/ghost/);
   });
 
-  it('liefert alle fünf Cluster-Metadaten', () => {
+  it('liefert alle vier Kapitel-Cluster-Metadaten', () => {
     const g = assembleGraph([n('a')]);
-    expect(g.clusters.map((c) => c.id)).toEqual(
-      ['grundlagen', 'symptom', 'anwendung', 'prozess', 'selbst'],
-    );
-    expect(g.clusters[1]).toMatchObject({ id: 'symptom', colorVar: '--marker' });
+    expect(g.clusters.map((c) => c.id)).toEqual(['k1', 'k2', 'k3', 'k4']);
+    expect(g.clusters[1]).toMatchObject({ id: 'k2', colorVar: '--marker' });
   });
 
   it('behält alle Knoten', () => {
