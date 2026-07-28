@@ -10,7 +10,7 @@ export interface ClusterMeta { id: Cluster; label: string; colorVar: string; }
 export interface Graph { nodes: GraphNode[]; edges: GraphEdge[]; clusters: ClusterMeta[]; }
 
 export const CLUSTER_META: ClusterMeta[] = [
-  { id: 'k1', label: 'Grundlagen', colorVar: '--ink' },
+  { id: 'k1', label: 'Grundlagen', colorVar: '--leaf' },
   { id: 'k2', label: 'Herausforderungen', colorVar: '--marker' },
   { id: 'k3', label: 'Handwerk', colorVar: '--ink-2' },
   { id: 'k4', label: 'Praxisfälle', colorVar: '--sun-deep' },
