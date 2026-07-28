@@ -2,9 +2,9 @@
 title: "Bastelanleitung für Probleme"
 cluster: k1
 summary: "Wie wir unbewusst Probleme „herstellen\" — und was das über Lösungen verrät."
-related: [erleben-erzeugen, symptomverstaendnis]
-x: 27.06
-y: 41.86
+related: [ursachen]
+x: 39.63
+y: 21.58
 status: stub
 ---
 

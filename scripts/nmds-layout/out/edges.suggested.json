@@ -1,97 +1,202 @@
 [
   {
-    "a": "eigene-wahrgebung",
-    "b": "rollenverstaendnis",
-    "sim": 0.2041
+    "a": "angst",
+    "b": "panik",
+    "sim": 0.2763
   },
   {
-    "a": "restriktionen",
-    "b": "trauer-schuld",
-    "sim": 0.1594
+    "a": "depression",
+    "b": "selbsterfahrung",
+    "sim": 0.2321
+  },
+  {
+    "a": "auftragsklaerung",
+    "b": "trauma",
+    "sim": 0.2302
+  },
+  {
+    "a": "imagination-steuerposition",
+    "b": "selbsterfahrung",
+    "sim": 0.2278
+  },
+  {
+    "a": "depression",
+    "b": "diagnosen",
+    "sim": 0.2258
   },
   {
     "a": "netzwerk-modell",
-    "b": "unterschiede",
-    "sim": 0.1474
+    "b": "trauma",
+    "sim": 0.2227
   },
   {
-    "a": "hypnosyst-denken",
-    "b": "innere-weisheit",
-    "sim": 0.1413
+    "a": "panik",
+    "b": "selbsterfahrung",
+    "sim": 0.2207
   },
   {
-    "a": "angst",
+    "a": "netzwerk-modell",
     "b": "panik",
-    "sim": 0.1293
-  },
-  {
-    "a": "abgrenzung",
-    "b": "rollenverstaendnis",
-    "sim": 0.123
-  },
-  {
-    "a": "interventionen",
-    "b": "netzwerk-modell",
-    "sim": 0.1228
-  },
-  {
-    "a": "neutralitaet",
-    "b": "rollenverstaendnis",
-    "sim": 0.1221
-  },
-  {
-    "a": "neutralitaet",
-    "b": "selbstfuersorge",
-    "sim": 0.1196
-  },
-  {
-    "a": "abgrenzung",
-    "b": "paarkonflikt",
-    "sim": 0.1195
+    "sim": 0.2196
   },
   {
     "a": "rollenverstaendnis",
     "b": "selbstfuersorge",
-    "sim": 0.118
+    "sim": 0.2158
+  },
+  {
+    "a": "innere-weisheit",
+    "b": "selbsterfahrung",
+    "sim": 0.215
+  },
+  {
+    "a": "steuerposition",
+    "b": "trauma",
+    "sim": 0.2148
   },
   {
     "a": "netzwerk-modell",
-    "b": "panik",
-    "sim": 0.1146
+    "b": "trauer-schuld",
+    "sim": 0.2141
   },
   {
-    "a": "interventionen",
+    "a": "auftragsklaerung",
+    "b": "haltung",
+    "sim": 0.2115
+  },
+  {
+    "a": "netzwerk-modell",
     "b": "schmerzen",
-    "sim": 0.1111
+    "sim": 0.2106
   },
   {
-    "a": "abgrenzung",
-    "b": "eigene-wahrgebung",
-    "sim": 0.1072
-  },
-  {
-    "a": "symptomverstaendnis",
-    "b": "utilisation",
-    "sim": 0.1046
+    "a": "depression",
+    "b": "netzwerk-modell",
+    "sim": 0.2063
   },
   {
     "a": "loesung-aller-probleme",
     "b": "trauer-schuld",
-    "sim": 0.1037
+    "sim": 0.2052
   },
   {
-    "a": "ursachen",
-    "b": "utilisation",
-    "sim": 0.1021
+    "a": "auftragsklaerung",
+    "b": "selbsterfahrung",
+    "sim": 0.2028
   },
   {
-    "a": "abgrenzung",
-    "b": "haltung",
-    "sim": 0.1011
+    "a": "angst",
+    "b": "depression",
+    "sim": 0.2025
   },
   {
-    "a": "beratungssystem",
+    "a": "haltung",
+    "b": "trauma",
+    "sim": 0.2022
+  },
+  {
+    "a": "hypnosyst-denken",
+    "b": "trauma",
+    "sim": 0.2017
+  },
+  {
+    "a": "netzwerk-modell",
+    "b": "sucht",
+    "sim": 0.2016
+  },
+  {
+    "a": "selbsterfahrung",
+    "b": "trauma",
+    "sim": 0.2011
+  },
+  {
+    "a": "neutralitaet",
     "b": "rollenverstaendnis",
-    "sim": 0.1004
+    "sim": 0.201
+  },
+  {
+    "a": "auftragsklaerung",
+    "b": "ursachen",
+    "sim": 0.2008
+  },
+  {
+    "a": "probleme-basteln",
+    "b": "ursachen",
+    "sim": 0.2003
+  },
+  {
+    "a": "rollenverstaendnis",
+    "b": "trauma",
+    "sim": 0.2002
+  },
+  {
+    "a": "auftragsklaerung",
+    "b": "netzwerk-modell",
+    "sim": 0.1992
+  },
+  {
+    "a": "auftragsklaerung",
+    "b": "rollenverstaendnis",
+    "sim": 0.1991
+  },
+  {
+    "a": "angst",
+    "b": "trauma",
+    "sim": 0.199
+  },
+  {
+    "a": "potenzialhypothese",
+    "b": "trauma",
+    "sim": 0.1989
+  },
+  {
+    "a": "essverhalten",
+    "b": "netzwerk-modell",
+    "sim": 0.1986
+  },
+  {
+    "a": "depression",
+    "b": "haltung",
+    "sim": 0.198
+  },
+  {
+    "a": "haltung",
+    "b": "paarkonflikt",
+    "sim": 0.198
+  },
+  {
+    "a": "netzwerk-modell",
+    "b": "paarkonflikt",
+    "sim": 0.1974
+  },
+  {
+    "a": "innere-weisheit",
+    "b": "netzwerk-modell",
+    "sim": 0.197
+  },
+  {
+    "a": "interventionen",
+    "b": "schmerzen",
+    "sim": 0.1967
+  },
+  {
+    "a": "depression",
+    "b": "restriktionen",
+    "sim": 0.1958
+  },
+  {
+    "a": "trance-transparenz",
+    "b": "trauma",
+    "sim": 0.1953
+  },
+  {
+    "a": "restriktionen",
+    "b": "trauer-schuld",
+    "sim": 0.195
+  },
+  {
+    "a": "rollenverstaendnis",
+    "b": "unterschiede",
+    "sim": 0.1948
   }
 ]

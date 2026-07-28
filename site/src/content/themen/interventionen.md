@@ -2,9 +2,9 @@
 title: "Weitere Interventionen"
 cluster: k3
 summary: "Ein Werkzeugkasten hypnosystemischer Interventionen."
-related: [netzwerk-modell, schmerzen, unterschiede, utilisation]
-x: 35.69
-y: 77.48
+related: []
+x: 26.24
+y: 67.71
 status: stub
 ---
 

@@ -1,23 +1,86 @@
 [
-  ["abgrenzung", "haltung"],
-  ["abgrenzung", "paarkonflikt"],
-  ["angst", "panik"],
-  ["burnout", "selbstfuersorge"],
-  ["depression", "symptomverstaendnis"],
-  ["eigene-wahrgebung", "rollenverstaendnis"],
-  ["hypnosyst-denken", "innere-weisheit"],
-  ["interventionen", "netzwerk-modell"],
-  ["interventionen", "schmerzen"],
-  ["innere-weisheit", "potenzialhypothese"],
-  ["netzwerk-modell", "unterschiede"],
-  ["netzwerk-modell", "ursachen"],
-  ["neutralitaet", "rollenverstaendnis"],
-  ["neutralitaet", "selbstfuersorge"],
-  ["probleme-basteln", "symptomverstaendnis"],
-  ["rollenverstaendnis", "selbstfuersorge"],
-  ["symptomverstaendnis", "utilisation"],
-  ["essverhalten", "utilisation-ambivalenzen"],
-  ["sucht", "utilisation-ambivalenzen"],
-  ["steuerposition", "trauma"],
-  ["trauer-schuld", "versoehnung"]
+  [
+    "angst",
+    "depression"
+  ],
+  [
+    "angst",
+    "panik"
+  ],
+  [
+    "auftragsklaerung",
+    "haltung"
+  ],
+  [
+    "auftragsklaerung",
+    "trauma"
+  ],
+  [
+    "auftragsklaerung",
+    "ursachen"
+  ],
+  [
+    "depression",
+    "diagnosen"
+  ],
+  [
+    "depression",
+    "selbsterfahrung"
+  ],
+  [
+    "essverhalten",
+    "netzwerk-modell"
+  ],
+  [
+    "haltung",
+    "paarkonflikt"
+  ],
+  [
+    "imagination-steuerposition",
+    "selbsterfahrung"
+  ],
+  [
+    "loesung-aller-probleme",
+    "trauer-schuld"
+  ],
+  [
+    "netzwerk-modell",
+    "panik"
+  ],
+  [
+    "netzwerk-modell",
+    "schmerzen"
+  ],
+  [
+    "netzwerk-modell",
+    "sucht"
+  ],
+  [
+    "netzwerk-modell",
+    "trauer-schuld"
+  ],
+  [
+    "netzwerk-modell",
+    "trauma"
+  ],
+  [
+    "neutralitaet",
+    "rollenverstaendnis"
+  ],
+  [
+    "panik",
+    "selbsterfahrung"
+  ],
+  [
+    "probleme-basteln",
+    "ursachen"
+  ],
+  [
+    "rollenverstaendnis",
+    "selbstfuersorge"
+  ],
+  [
+    "steuerposition",
+    "trauma"
+  ]
 ]

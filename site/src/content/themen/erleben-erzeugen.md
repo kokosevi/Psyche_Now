@@ -2,9 +2,9 @@
 title: "Wie erzeugen wir unser Erleben?"
 cluster: k1
 summary: "Erleben ist kein Abbild der Realität, sondern ein aktiver innerer Konstruktionsprozess."
-related: [hirnforschung, netzwerk-modell, probleme-basteln, trance-transparenz]
-x: 34.82
-y: 19.19
+related: []
+x: 35.89
+y: 39.67
 status: full
 ---
 

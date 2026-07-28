@@ -48,7 +48,9 @@ def main():
             title = parse_field(fm_text, "title", nd["title"])
             summary = parse_field(fm_text, "summary", "")
             status = parse_field(fm_text, "status", "stub")
-            related = sorted(set(parse_related(fm_text)) | edge_rel)
+            # related wird ERSETZT = nur die (neu berechneten) cluster-übergreifenden
+            # Kanten; alte/Intra-Cluster-Kanten fallen weg (Nähe steckt in x/y).
+            related = sorted(edge_rel)
             updated += 1
         else:
             title = nd["title"]

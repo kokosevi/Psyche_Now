@@ -2,9 +2,9 @@
 title: "Trance & Transparenz"
 cluster: k1
 summary: "Alltagstrancen prägen unser Erleben — Transparenz macht sie nutzbar."
-related: [erleben-erzeugen, utilisation]
-x: 35.72
-y: 31.79
+related: []
+x: 21.93
+y: 19.02
 status: stub
 ---
 

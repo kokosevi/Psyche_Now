@@ -80,12 +80,24 @@ def build(doc_path):
         Y = _relax(Y, REGIONS[cl])
         for s, (x, y) in zip(members, Y):
             nodes[s] = {"cluster": cl, "x": round(float(x), 2), "y": round(float(y), 2)}
+    # Längen-Ausreißer von den Kanten-VORSCHLÄGEN ausschließen (bleiben Knoten):
+    # sehr lange Abschnitte (z. B. die 2h-Fallanalyse) sind durch reine Vokabelbreite
+    # zu fast allem "ähnlich" → künstlicher Hub. Schwelle: > 4× Median-Wortzahl
+    # (trifft nur den Extrem-Ausreißer; zentrale, lange Knoten wie das Netzwerk-Modell
+    # bleiben erhalten).
+    wc = {s: len(corpus[s].split()) for s in slugs}
+    med = sorted(wc.values())[len(wc) // 2]
+    excluded = {s for s in slugs if wc[s] > 4 * med}
+    if excluded:
+        print("Kanten-Ausschluss (Längen-Ausreißer):", ", ".join(sorted(excluded)))
     # Cross-Cluster-Kanten-Vorschläge
     sim = mat @ mat.T
     edges = []
     for i in range(len(slugs)):
         for j in range(i + 1, len(slugs)):
             if nodes[slugs[i]]["cluster"] == nodes[slugs[j]]["cluster"]:
+                continue
+            if slugs[i] in excluded or slugs[j] in excluded:
                 continue
             sc = float(sim[i, j])
             if sc >= CROSS_EDGE_MIN_SIM:

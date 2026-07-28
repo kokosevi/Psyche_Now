@@ -2,9 +2,9 @@
 title: "Diagnosen"
 cluster: k2
 summary: "Diagnosen als Landkarten mit Nutzen und Nebenwirkung."
-related: [symptomverstaendnis, ursachen]
-x: 61.11
-y: 29.26
+related: [depression]
+x: 64.72
+y: 23.65
 status: stub
 ---
 

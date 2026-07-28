@@ -2,9 +2,9 @@
 title: "Praxisbeispiel Angst"
 cluster: k1
 summary: "Angst hypnosystemisch verstanden — am konkreten Beispiel."
-related: [panik, potenzialhypothese, symptomverstaendnis]
-x: 37.73
-y: 38.62
+related: [depression, panik]
+x: 35.61
+y: 26.7
 status: stub
 ---
 
