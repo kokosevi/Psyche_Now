@@ -36,6 +36,7 @@ def _stress(D, Y, disp):
 def _smacof_once(D, Y, iters):
     n = len(D)
     iu = np.triu_indices(n, 1)
+    npairs = len(iu[0])
     order = np.argsort(D[iu], kind="mergesort")   # stabile Rangordnung
     prev = None
     disp = np.zeros((n, n))
@@ -44,9 +45,13 @@ def _smacof_once(D, Y, iters):
         # Disparitäten: isotone Regression der Distanzen entlang der D-Rangordnung
         dvec = d[iu][order]
         disp_sorted = pav(dvec, np.ones(len(dvec)))
-        disp = np.zeros((n, n))
-        tmp = np.empty(len(order))
+        tmp = np.empty(npairs)
         tmp[order] = disp_sorted
+        # Skalen-Normierung der Disparitäten -> verhindert Kollaps auf einen Punkt
+        ss = np.sum(tmp ** 2)
+        if ss > 0:
+            tmp = tmp * np.sqrt(npairs / ss)
+        disp = np.zeros((n, n))
         disp[iu] = tmp
         disp = disp + disp.T
         # Guttman-Transform (SMACOF) mit disp als Ziel-Distanzen

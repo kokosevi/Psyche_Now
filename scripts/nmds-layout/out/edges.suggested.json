@@ -1,0 +1,97 @@
+[
+  {
+    "a": "eigene-wahrgebung",
+    "b": "rollenverstaendnis",
+    "sim": 0.2041
+  },
+  {
+    "a": "restriktionen",
+    "b": "trauer-schuld",
+    "sim": 0.1594
+  },
+  {
+    "a": "netzwerk-modell",
+    "b": "unterschiede",
+    "sim": 0.1474
+  },
+  {
+    "a": "hypnosyst-denken",
+    "b": "innere-weisheit",
+    "sim": 0.1413
+  },
+  {
+    "a": "angst",
+    "b": "panik",
+    "sim": 0.1293
+  },
+  {
+    "a": "abgrenzung",
+    "b": "rollenverstaendnis",
+    "sim": 0.123
+  },
+  {
+    "a": "interventionen",
+    "b": "netzwerk-modell",
+    "sim": 0.1228
+  },
+  {
+    "a": "neutralitaet",
+    "b": "rollenverstaendnis",
+    "sim": 0.1221
+  },
+  {
+    "a": "neutralitaet",
+    "b": "selbstfuersorge",
+    "sim": 0.1196
+  },
+  {
+    "a": "abgrenzung",
+    "b": "paarkonflikt",
+    "sim": 0.1195
+  },
+  {
+    "a": "rollenverstaendnis",
+    "b": "selbstfuersorge",
+    "sim": 0.118
+  },
+  {
+    "a": "netzwerk-modell",
+    "b": "panik",
+    "sim": 0.1146
+  },
+  {
+    "a": "interventionen",
+    "b": "schmerzen",
+    "sim": 0.1111
+  },
+  {
+    "a": "abgrenzung",
+    "b": "eigene-wahrgebung",
+    "sim": 0.1072
+  },
+  {
+    "a": "symptomverstaendnis",
+    "b": "utilisation",
+    "sim": 0.1046
+  },
+  {
+    "a": "loesung-aller-probleme",
+    "b": "trauer-schuld",
+    "sim": 0.1037
+  },
+  {
+    "a": "ursachen",
+    "b": "utilisation",
+    "sim": 0.1021
+  },
+  {
+    "a": "abgrenzung",
+    "b": "haltung",
+    "sim": 0.1011
+  },
+  {
+    "a": "beratungssystem",
+    "b": "rollenverstaendnis",
+    "sim": 0.1004
+  }
+]
