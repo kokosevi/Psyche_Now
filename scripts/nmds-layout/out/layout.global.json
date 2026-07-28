@@ -1,0 +1,202 @@
+{
+  "abgrenzung": {
+    "x": 58.54,
+    "y": 32.05
+  },
+  "abschluss-transfer": {
+    "x": 56.32,
+    "y": 20.37
+  },
+  "angst": {
+    "x": 54.31,
+    "y": 60.58
+  },
+  "auftragsklaerung": {
+    "x": 57.82,
+    "y": 42.1
+  },
+  "beratungssystem": {
+    "x": 51.25,
+    "y": 31.74
+  },
+  "burnout": {
+    "x": 24.51,
+    "y": 41.92
+  },
+  "depression": {
+    "x": 46.43,
+    "y": 42.77
+  },
+  "diagnosen": {
+    "x": 30.75,
+    "y": 53.1
+  },
+  "eigene-wahrgebung": {
+    "x": 72.6,
+    "y": 28.43
+  },
+  "entscheidungen": {
+    "x": 30.19,
+    "y": 43.85
+  },
+  "erleben-erzeugen": {
+    "x": 51.03,
+    "y": 72.82
+  },
+  "essverhalten": {
+    "x": 41.65,
+    "y": 46.39
+  },
+  "fallanalyse-ungewisses": {
+    "x": 53.16,
+    "y": 50.21
+  },
+  "grundlagenmodell": {
+    "x": 52.17,
+    "y": 66.93
+  },
+  "haltung": {
+    "x": 44.68,
+    "y": 55.87
+  },
+  "hirnforschung": {
+    "x": 40.63,
+    "y": 87.71
+  },
+  "hypnosyst-denken": {
+    "x": 37.43,
+    "y": 57.59
+  },
+  "hypnosystemischer-ansatz": {
+    "x": 60.39,
+    "y": 59.8
+  },
+  "imagination-steuerposition": {
+    "x": 73.6,
+    "y": 44.9
+  },
+  "innere-weisheit": {
+    "x": 59.08,
+    "y": 73.17
+  },
+  "interventionen": {
+    "x": 60.14,
+    "y": 66.53
+  },
+  "loesung-aller-probleme": {
+    "x": 34.83,
+    "y": 40.03
+  },
+  "netzwerk-modell": {
+    "x": 50.68,
+    "y": 55.67
+  },
+  "neutralitaet": {
+    "x": 30.57,
+    "y": 35.81
+  },
+  "paarkonflikt": {
+    "x": 39.97,
+    "y": 52.15
+  },
+  "panik": {
+    "x": 56.69,
+    "y": 55.08
+  },
+  "potenzialhypothese": {
+    "x": 45.85,
+    "y": 66.66
+  },
+  "probleme-basteln": {
+    "x": 71.79,
+    "y": 52.48
+  },
+  "restriktionen": {
+    "x": 40.82,
+    "y": 40.44
+  },
+  "rollenverstaendnis": {
+    "x": 52.23,
+    "y": 44.28
+  },
+  "sag-mal-gunther": {
+    "x": 24.22,
+    "y": 60.56
+  },
+  "schmerzen": {
+    "x": 42.66,
+    "y": 71.74
+  },
+  "selbsterfahrung": {
+    "x": 58.75,
+    "y": 48.03
+  },
+  "selbstfuersorge": {
+    "x": 61.43,
+    "y": 37.3
+  },
+  "steuerposition": {
+    "x": 64.68,
+    "y": 47.13
+  },
+  "sucht": {
+    "x": 35.65,
+    "y": 46.36
+  },
+  "symptomverstaendnis": {
+    "x": 70.19,
+    "y": 59.86
+  },
+  "trance-transparenz": {
+    "x": 42.2,
+    "y": 61.33
+  },
+  "trauer-schuld": {
+    "x": 48.19,
+    "y": 61.13
+  },
+  "trauma": {
+    "x": 47.02,
+    "y": 50.3
+  },
+  "unterschiede": {
+    "x": 50.68,
+    "y": 37.71
+  },
+  "ursachen": {
+    "x": 62.28,
+    "y": 52.88
+  },
+  "utilisation": {
+    "x": 81.9,
+    "y": 54.27
+  },
+  "utilisation-ambivalenzen": {
+    "x": 44.82,
+    "y": 24.91
+  },
+  "utilisation-problemsituationen": {
+    "x": 89.91,
+    "y": 85.19
+  },
+  "utilisation-rueckfaelle": {
+    "x": 40.82,
+    "y": 12.73
+  },
+  "versoehnung": {
+    "x": 7.76,
+    "y": 52.66
+  },
+  "werdegang-wurzeln": {
+    "x": 33.8,
+    "y": 62.81
+  },
+  "zugang-kompetenzen": {
+    "x": 82.41,
+    "y": 23.76
+  },
+  "zuweisungsdynamik": {
+    "x": 30.55,
+    "y": 27.89
+  }
+}

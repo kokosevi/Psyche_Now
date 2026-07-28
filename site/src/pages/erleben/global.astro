@@ -1,0 +1,69 @@
+---
+import Site from '../../layouts/Site.astro';
+import GraphKonstellation from '../../components/graph/GraphKonstellation.astro';
+import { buildGraph, CLUSTER_META } from '../../lib/graph';
+import globalPos from '../../lib/layout.global.json';
+
+const pos = globalPos as Record<string, { x: number; y: number }>;
+const base = await buildGraph();
+// Positionen aus der globalen NMDS über ALLE Knoten (statt pro Cluster) übernehmen.
+const graph = {
+  ...base,
+  nodes: base.nodes.map((n) => ({ ...n, x: pos[n.slug].x, y: pos[n.slug].y })),
+};
+---
+<Site title="Erleben — Globale Karte" current="erleben">
+  <section class="pagehead wrap">
+    <p class="overline">Teil 3</p>
+    <h1>Erleben: Wie Glück gestalten</h1>
+  </section>
+  <section class="wrap">
+    <ul class="legende" aria-label="Kapitel">
+      {CLUSTER_META.map((c) => (
+        <li><span class="dot" style={`background: var(${c.colorVar})`}></span>{c.label}</li>
+      ))}
+    </ul>
+  </section>
+  <section class="wrap erleben-stage">
+    <GraphKonstellation graph={graph} showRegions={false} />
+  </section>
+</Site>
+
+<style>
+  .legende { list-style: none; padding: 0; margin: 0 auto 14px; display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; font-size: 14px; color: var(--ink-2); }
+  .legende li { display: flex; align-items: center; gap: 7px; }
+  .legende .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+
+  /* Hover/Fokus hebt den verbundenen Teilgraph hervor, der Rest tritt zurück. */
+  .erleben-stage :global(.konstellation.dim .node) { opacity: .25; transition: opacity .2s var(--ease); }
+  .erleben-stage :global(.konstellation.dim .node.hot) { opacity: 1; }
+  .erleben-stage :global(.konstellation.dim line) { stroke: var(--hairline); }
+  .erleben-stage :global(.konstellation.dim line.hot) { stroke: var(--sun-deep); stroke-width: .9; }
+</style>
+
+<script>
+  const wrap = document.querySelector<HTMLElement>('.erleben-stage .konstellation');
+  if (wrap) {
+    const nodes = Array.from(wrap.querySelectorAll<HTMLElement>('.node'));
+    const lines = Array.from(wrap.querySelectorAll<SVGLineElement>('line'));
+    const neighbors = new Map<string, Set<string>>();
+    lines.forEach((l) => {
+      const a = l.dataset.a!, b = l.dataset.b!;
+      (neighbors.get(a) ?? neighbors.set(a, new Set()).get(a)!).add(b);
+      (neighbors.get(b) ?? neighbors.set(b, new Set()).get(b)!).add(a);
+    });
+
+    const highlight = (slug: string | null) => {
+      wrap.classList.toggle('dim', slug !== null);
+      const hot = slug ? new Set([slug, ...(neighbors.get(slug) ?? [])]) : new Set<string>();
+      nodes.forEach((n) => n.classList.toggle('hot', hot.has(n.dataset.slug!)));
+      lines.forEach((l) => l.classList.toggle('hot', slug !== null && (l.dataset.a === slug || l.dataset.b === slug)));
+    };
+    nodes.forEach((n) => {
+      n.addEventListener('mouseenter', () => highlight(n.dataset.slug!));
+      n.addEventListener('focus', () => highlight(n.dataset.slug!));
+      n.addEventListener('mouseleave', () => highlight(null));
+      n.addEventListener('blur', () => highlight(null));
+    });
+  }
+</script>

@@ -1,8 +1,8 @@
 ---
 import type { Graph } from '../../lib/graph';
 import { CLUSTER_META } from '../../lib/graph';
-interface Props { graph: Graph; }
-const { graph } = Astro.props;
+interface Props { graph: Graph; showRegions?: boolean; }
+const { graph, showRegions = true } = Astro.props;
 const pos = new Map(graph.nodes.map((n) => [n.slug, n]));
 const colorOf = (slug: string) =>
   CLUSTER_META.find((c) => c.id === pos.get(slug)!.cluster)!.colorVar;
@@ -28,7 +28,7 @@ const goldHoverCss = graph.nodes
   .join('');
 ---
 <div class="konstellation" role="group" aria-label="Wissenskarte der Hypnosystemik">
-  {regions.map((r) => (
+  {showRegions && regions.map((r) => (
     <div
       class="cluster-region"
       style={`left:${r.x0}%; top:${r.y0}%; width:${r.w}%; height:${r.h}%; --c: var(${r.colorVar})`}
