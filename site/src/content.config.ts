@@ -1,7 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
-export const CLUSTERS = ['grundlagen', 'symptom', 'anwendung', 'prozess', 'selbst'] as const;
+export const CLUSTERS = ['k1', 'k2', 'k3', 'k4'] as const;
 
 const themen = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/themen' }),

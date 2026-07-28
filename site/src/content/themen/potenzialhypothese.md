@@ -1,10 +1,10 @@
 ---
 title: "Potenzialhypothese"
-cluster: symptom
+cluster: k1
 summary: "Hinter jedem Symptom steckt ein übersehenes Potenzial."
-related: [symptomverstaendnis, zugang-kompetenzen]
-x: 88
-y: 28
+related: [innere-weisheit, symptomverstaendnis, zugang-kompetenzen]
+x: 29.12
+y: 25.94
 status: stub
 ---
 

@@ -1,10 +1,10 @@
 ---
 title: "Utilisation"
-cluster: prozess
+cluster: k3
 summary: "Alles Vorhandene als Ressource nutzen — auch das „Störende\"."
-related: [netzwerk-modell, interventionen, eigene-wahrgebung, trance-transparenz]
-x: 12
-y: 84
+related: [eigene-wahrgebung, interventionen, netzwerk-modell, symptomverstaendnis, trance-transparenz]
+x: 25.32
+y: 63.99
 status: stub
 ---
 

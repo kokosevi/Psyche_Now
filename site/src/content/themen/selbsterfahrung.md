@@ -1,10 +1,10 @@
 ---
 title: "Selbsterfahrung"
-cluster: selbst
+cluster: k1
 summary: "Am eigenen Erleben lernen, wie Hypnosystemik wirkt."
-related: [zugang-kompetenzen, innere-weisheit]
-x: 14
-y: 42
+related: [innere-weisheit, zugang-kompetenzen]
+x: 31.46
+y: 35.6
 status: stub
 ---
 

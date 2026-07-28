@@ -1,10 +1,10 @@
 ---
 title: "Innere Weisheit"
-cluster: selbst
+cluster: k3
 summary: "Der Zugang zu einem inneren Wissen, das mehr weiß als der Verstand."
-related: [zugang-kompetenzen, versoehnung, loesung-aller-probleme]
-x: 20
-y: 18
+related: [hypnosyst-denken, loesung-aller-probleme, potenzialhypothese, versoehnung, zugang-kompetenzen]
+x: 41.16
+y: 81.1
 status: full
 ---
 

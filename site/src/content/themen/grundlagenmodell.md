@@ -1,10 +1,10 @@
 ---
 title: "Elementares Grundlagenmodell"
-cluster: grundlagen
+cluster: k1
 summary: "Ein einfaches Modell, wie Aufmerksamkeit, Fokus und Bedeutung zusammenwirken."
-related: [netzwerk-modell, hypnosystemischer-ansatz]
-x: 60
-y: 38
+related: [hypnosystemischer-ansatz, netzwerk-modell]
+x: 32.7
+y: 24.07
 status: stub
 ---
 

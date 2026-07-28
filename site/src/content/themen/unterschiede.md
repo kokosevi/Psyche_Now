@@ -1,10 +1,10 @@
 ---
 title: "Fokus auf Unterschiede"
-cluster: prozess
+cluster: k3
 summary: "Unterschiede sichtbar machen, die einen Unterschied machen."
-related: [auftragsklaerung, interventionen]
-x: 30
-y: 72
+related: [auftragsklaerung, interventionen, netzwerk-modell]
+x: 18.87
+y: 63.6
 status: stub
 ---
 

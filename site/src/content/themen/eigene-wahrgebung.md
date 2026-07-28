@@ -1,10 +1,10 @@
 ---
 title: "Utilisation der eigenen Wahrgebung"
-cluster: selbst
+cluster: k3
 summary: "Die eigenen inneren Reaktionen als Informationsquelle nutzen."
-related: [utilisation, selbstfuersorge]
-x: 26
-y: 38
+related: [rollenverstaendnis, selbstfuersorge, utilisation]
+x: 29.54
+y: 84.79
 status: stub
 ---
 

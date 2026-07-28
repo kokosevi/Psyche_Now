@@ -1,10 +1,10 @@
 ---
 title: "Beratungssystem"
-cluster: prozess
+cluster: k3
 summary: "Beratung als gemeinsames System aus Klient:in und Beratung."
 related: [auftragsklaerung, steuerposition]
-x: 26
-y: 60
+x: 20.86
+y: 78.34
 status: stub
 ---
 

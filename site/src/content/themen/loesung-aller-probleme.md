@@ -1,10 +1,10 @@
 ---
 title: "Die Lösung aller Probleme"
-cluster: anwendung
+cluster: k2
 summary: "Ein augenzwinkernder Blick auf die Sehnsucht nach der einen Lösung."
-related: [potenzialhypothese, innere-weisheit]
-x: 90
-y: 84
+related: [innere-weisheit, potenzialhypothese]
+x: 78.67
+y: 26.93
 status: stub
 ---
 

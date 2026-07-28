@@ -1,10 +1,10 @@
 ---
 title: "Bedeutung von Ursachen"
-cluster: symptom
+cluster: k2
 summary: "Warum die Ursachenfrage in der Beratung oft weniger hilft als gedacht."
-related: [symptomverstaendnis, diagnosen]
-x: 68
-y: 34
+related: [diagnosen, netzwerk-modell, symptomverstaendnis]
+x: 61.81
+y: 9.52
 status: stub
 ---
 

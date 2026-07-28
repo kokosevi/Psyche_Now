@@ -1,10 +1,10 @@
 ---
 title: "Diagnosen"
-cluster: symptom
+cluster: k2
 summary: "Diagnosen als Landkarten mit Nutzen und Nebenwirkung."
-related: [ursachen, symptomverstaendnis]
-x: 74
-y: 44
+related: [symptomverstaendnis, ursachen]
+x: 59.02
+y: 26.15
 status: stub
 ---
 

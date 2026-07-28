@@ -1,10 +1,10 @@
 ---
 title: "Hypnosystemischer Ansatz auf den Punkt"
-cluster: grundlagen
+cluster: k1
 summary: "Die Verbindung von Hypnotherapie und systemischem Denken in einem Satz."
-related: [grundlagenmodell, symptomverstaendnis, neutralitaet]
-x: 44
-y: 52
+related: [grundlagenmodell, neutralitaet, symptomverstaendnis]
+x: 18.47
+y: 38.11
 status: stub
 ---
 

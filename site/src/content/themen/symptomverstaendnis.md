@@ -1,10 +1,10 @@
 ---
 title: "Symptomverständnis"
-cluster: symptom
+cluster: k2
 summary: "Ein Symptom als sinnvolle Leistung verstehen statt als Defekt."
-related: [potenzialhypothese, ursachen, hypnosystemischer-ansatz]
-x: 72
-y: 20
+related: [depression, hypnosystemischer-ansatz, potenzialhypothese, probleme-basteln, ursachen, utilisation]
+x: 62.06
+y: 33.18
 status: stub
 ---
 

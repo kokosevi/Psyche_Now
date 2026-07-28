@@ -1,10 +1,10 @@
 ---
 title: "Umgang mit Restriktionen"
-cluster: anwendung
+cluster: k2
 summary: "Handlungsspielraum finden, wo äußere Grenzen eng sind."
 related: [neutralitaet, steuerposition]
-x: 68
-y: 74
+x: 72.96
+y: 38.31
 status: stub
 ---
 

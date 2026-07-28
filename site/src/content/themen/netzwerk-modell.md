@@ -1,10 +1,10 @@
 ---
 title: "Das Netzwerk-Modell"
-cluster: grundlagen
+cluster: k1
 summary: "Psychisches Erleben entsteht aus dem Zusammenspiel vieler innerer Seiten in einem Netzwerk."
-related: [erleben-erzeugen, grundlagenmodell, hirnforschung, utilisation]
-x: 50
-y: 45
+related: [erleben-erzeugen, grundlagenmodell, hirnforschung, interventionen, unterschiede, ursachen, utilisation]
+x: 26.91
+y: 32.72
 status: full
 ---
 

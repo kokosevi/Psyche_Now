@@ -1,10 +1,10 @@
 ---
 title: "Optimaler Zugang zu Kompetenzen"
-cluster: selbst
+cluster: k3
 summary: "Vorhandene Fähigkeiten willentlich wieder verfügbar machen."
 related: [innere-weisheit, potenzialhypothese, selbsterfahrung]
-x: 30
-y: 26
+x: 29.38
+y: 74.59
 status: stub
 ---
 
