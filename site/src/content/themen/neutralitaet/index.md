@@ -3,8 +3,8 @@ title: "Neutralität"
 cluster: k2
 summary: "Allparteilichkeit gegenüber allen inneren Seiten eines Menschen."
 related: [rollenverstaendnis]
-x: 70.61
-y: 26.39
+x: 69.72
+y: 36.74
 status: stub
 ---
 

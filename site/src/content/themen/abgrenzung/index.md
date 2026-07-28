@@ -2,9 +2,9 @@
 title: "Abgrenzungsfähigkeit"
 cluster: k2
 summary: "Nähe und Distanz bewusst regulieren, ohne sich zu verlieren."
-related: [eigene-wahrgebung, hypnosystemischer-ansatz, zugang-kompetenzen]
-x: 67.99
-y: 32.34
+related: [hypnosystemischer-ansatz, werdegang-wurzeln, zugang-kompetenzen]
+x: 71.6
+y: 30.49
 status: stub
 ---
 

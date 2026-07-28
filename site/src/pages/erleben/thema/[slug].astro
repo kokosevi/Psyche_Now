@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
 import Site from '../../../layouts/Site.astro';
 import { CLUSTER_META } from '../../../lib/graph';
 
@@ -23,6 +24,9 @@ const related = entry.data.related
     <h1>{entry.data.title}</h1>
   </section>
   <article class="wrap thema-body">
+    {entry.data.hero && (
+      <Image class="thema-hero" src={entry.data.hero} alt={entry.data.heroAlt ?? ''} />
+    )}
     <Content />
     {entry.data.status === 'stub' && <p class="stub-hinweis">Dieser Text wird noch ausgeführt.</p>}
   </article>
@@ -46,6 +50,7 @@ const related = entry.data.related
 
 <style>
   .thema-body { max-width: 640px; }
+  .thema-hero { width: 100%; height: auto; border-radius: 14px; margin: 0 0 24px; box-shadow: var(--shadow-md); }
   .thema-body :global(p) { color: var(--ink-2); }
   .stub-hinweis { color: var(--ink-3); font-style: italic; }
   .verwandt { max-width: 640px; margin-top: 32px; }

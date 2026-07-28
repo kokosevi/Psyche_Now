@@ -2,9 +2,9 @@
 title: "Fokus auf Unterschiede"
 cluster: k3
 summary: "Unterschiede sichtbar machen, die einen Unterschied machen."
-related: [rollenverstaendnis]
-x: 20.54
-y: 73.36
+related: [netzwerk-modell]
+x: 21.3
+y: 80.14
 status: stub
 ---
 

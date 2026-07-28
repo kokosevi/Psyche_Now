@@ -3,8 +3,8 @@ title: "Selbstfürsorge"
 cluster: k3
 summary: "Gut für sich sorgen als Grundlage für alles Weitere."
 related: [rollenverstaendnis]
-x: 32.35
-y: 82.39
+x: 33.17
+y: 72.09
 status: stub
 ---
 

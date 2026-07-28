@@ -2,9 +2,9 @@
 title: "Paarkonflikt"
 cluster: k4
 summary: "Hypnosystemische Paararbeit: systemische Wechselwirkungen, Auftragsgestaltung und bezogene Individuation in typischen Paardynamiken."
-related: [hypnosystemischer-ansatz]
-x: 80.61
-y: 90.62
+related: [utilisation-ambivalenzen]
+x: 84.85
+y: 79.72
 status: full
 ---
 

@@ -3,8 +3,8 @@ title: "Panikattacken"
 cluster: k4
 summary: "Angst und Panik als autopoietisch selbsterzeugte, meist unbewusste Prozesse — mit spezifischen Strukturen und Interventionsmöglichkeiten."
 related: [angst, netzwerk-modell]
-x: 62.37
-y: 74.46
+x: 73.66
+y: 85.16
 status: full
 ---
 

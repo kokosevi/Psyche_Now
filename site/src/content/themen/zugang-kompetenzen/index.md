@@ -3,8 +3,8 @@ title: "Optimaler Zugang zu Kompetenzen"
 cluster: k3
 summary: "Vorhandene Fähigkeiten willentlich wieder verfügbar machen."
 related: [abgrenzung]
-x: 38.84
-y: 82.76
+x: 37.13
+y: 66.92
 status: stub
 ---
 

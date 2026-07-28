@@ -2,9 +2,9 @@
 title: "Elementares Grundlagenmodell"
 cluster: k1
 summary: "Ein einfaches Modell, wie Aufmerksamkeit, Fokus und Bedeutung zusammenwirken."
-related: [utilisation-problemsituationen]
-x: 26.65
-y: 38.3
+related: [trauer-schuld, utilisation-problemsituationen]
+x: 30.27
+y: 37.36
 status: stub
 ---
 

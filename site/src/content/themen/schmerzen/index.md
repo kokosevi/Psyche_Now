@@ -2,9 +2,9 @@
 title: "Chronische Schmerzen"
 cluster: k4
 summary: "Chronische Schmerzen im Licht von Hirnforschung und Gate-Control-Theorie — unwillkürliche Prozesse und die daraus folgenden Interventionsprinzipien."
-related: [hirnforschung]
-x: 59.65
-y: 61.31
+related: [hirnforschung, interventionen]
+x: 58.96
+y: 77.1
 status: full
 ---
 

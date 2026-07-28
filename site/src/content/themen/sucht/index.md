@@ -2,9 +2,9 @@
 title: "Alkohol- und Nikotinsucht"
 cluster: k4
 summary: "Sucht als Suchkompetenz statt Pathologie: hinter jeder Sucht steht eine Sehnsucht nach ersehntem Erleben — und ein Lösungsversuch."
-related: [sag-mal-gunther, werdegang-wurzeln]
-x: 89.04
-y: 73.79
+related: [sag-mal-gunther]
+x: 79.82
+y: 69.51
 status: full
 ---
 
