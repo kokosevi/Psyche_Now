@@ -140,9 +140,11 @@ mehr Passagen pro Knoten, kein Neuentwurf.
    psyche-Seite, Hypnosystemik-`theme`-Backfill).
 3. **Teil A6** Content-Gen + Build-Gate + Deploy.
 
-## Offene Detailfragen (im Implementierungsplan zu klären)
+## Entschiedene Detailfragen
 
-- Retrieval-Granularität: Absatz- vs. Kapitel-Chunks als Retrieval-Einheit.
-- Genaue Cluster-Farbpalette für Bischof (Design-Tokens in
-  `reference/design-tokens.md`).
-- Ob `/psyche` zusätzlich zur Konstellation einen kurzen Einleitungstext trägt.
+- **Retrieval-Granularität:** Kapitel-Chunks als Retrieval-Einheit (die Kapitel/
+  Unterkapitel der hierarchischen Nummerierung, nicht Einzelabsätze).
+- **Cluster-Farbpalette:** wie vorgeschlagen (~4–6 thematische Cluster, eigene
+  Labels/Farben aus `reference/design-tokens.md`), Feinschliff bei der Kuration.
+- **`/psyche`-Einleitungstext:** keiner — die Seite trägt nur die Konstellation
+  (wie `/erleben`).
