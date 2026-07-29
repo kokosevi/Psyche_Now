@@ -80,6 +80,16 @@ Argument, sodass **beide** Themen dieselben Skripte nutzen. `tfidf.py`, `nmds.py
 
 ### Teil B — Site-Generalisierung (Single- → Multi-Map)
 
+> **Nachtrag 2026-07-30 (bei der Planung entdeckt):** Diese Generalisierung ist im
+> Codebase bereits weitgehend **umgesetzt**. `scripts/nmds-layout/spaces.py`
+> abstrahiert Räume über die Env `SPACE`; ein zweiter Raum „herausforderungen"
+> existiert komplett (Schema-Factory `themaSchema` in `content.config.ts`,
+> `HERAUS_CLUSTER_META` + `buildGraph(collection, clusters)` in `graph.ts`, eigene
+> Seiten, `rebuild.sh [raum]`). Für Psyche bleibt daher nur, den **dritten Raum
+> `psyche` nach diesem Muster** zu ergänzen (Details im Implementierungsplan
+> `docs/superpowers/plans/2026-07-30-psyche-bischof-konzeptkarte.md`). Der einzige
+> echte neue Code-Teil ist ein Regionen-Grid für 5 Cluster (bislang nur 4 Quadranten).
+
 Minimal-invasiv; Hypnosystemik läuft unverändert weiter.
 
 - **Schema** (`content.config.ts`): Feld `theme: z.enum(['hypnosystemik',
