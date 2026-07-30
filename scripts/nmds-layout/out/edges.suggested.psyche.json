@@ -1,0 +1,382 @@
+[
+  {
+    "a": "affekt-stimmung",
+    "b": "erregungssystem",
+    "sim": 0.6493
+  },
+  {
+    "a": "affekt-stimmung",
+    "b": "zuercher-modell",
+    "sim": 0.6147
+  },
+  {
+    "a": "instinkt-reflex",
+    "b": "wahrnehmung",
+    "sim": 0.6051
+  },
+  {
+    "a": "aggression",
+    "b": "coping-bewaeltigung",
+    "sim": 0.5053
+  },
+  {
+    "a": "bindung-fuersorge",
+    "b": "liebe-empathie",
+    "sim": 0.4729
+  },
+  {
+    "a": "liebe-empathie",
+    "b": "sexualitaet-paarbindung",
+    "sim": 0.4539
+  },
+  {
+    "a": "autonomiesystem",
+    "b": "emotion",
+    "sim": 0.4332
+  },
+  {
+    "a": "autonomiesystem",
+    "b": "liebe-empathie",
+    "sim": 0.4281
+  },
+  {
+    "a": "angst",
+    "b": "sicherheitssystem",
+    "sim": 0.4242
+  },
+  {
+    "a": "objektivierung",
+    "b": "wahrnehmungskonstanz",
+    "sim": 0.4171
+  },
+  {
+    "a": "evolution-selektion",
+    "b": "praegung",
+    "sim": 0.3907
+  },
+  {
+    "a": "angst",
+    "b": "appetenz-aversion",
+    "sim": 0.3884
+  },
+  {
+    "a": "liebe-empathie",
+    "b": "sicherheitssystem",
+    "sim": 0.3789
+  },
+  {
+    "a": "adaptation-anpassung",
+    "b": "subjekt-objekt",
+    "sim": 0.3234
+  },
+  {
+    "a": "dominanz-rang",
+    "b": "liebe-empathie",
+    "sim": 0.3162
+  },
+  {
+    "a": "dominanz-rang",
+    "b": "emotion",
+    "sim": 0.3066
+  },
+  {
+    "a": "abloesung-individuation",
+    "b": "sollwert-istwert",
+    "sim": 0.2782
+  },
+  {
+    "a": "autonomiesystem",
+    "b": "sollwert-istwert",
+    "sim": 0.2636
+  },
+  {
+    "a": "emotion",
+    "b": "phaenomenologie-introspektion",
+    "sim": 0.2621
+  },
+  {
+    "a": "ambivalenz-konflikt",
+    "b": "coping-bewaeltigung",
+    "sim": 0.2539
+  },
+  {
+    "a": "lust-unlust-valenz",
+    "b": "phaenomenologie-introspektion",
+    "sim": 0.247
+  },
+  {
+    "a": "coping-bewaeltigung",
+    "b": "stress-frustration",
+    "sim": 0.2413
+  },
+  {
+    "a": "evolution-selektion",
+    "b": "natur-vs-geisteswissenschaft",
+    "sim": 0.2398
+  },
+  {
+    "a": "denken-begriff",
+    "b": "praegung",
+    "sim": 0.2226
+  },
+  {
+    "a": "phaenomenologie-introspektion",
+    "b": "repraesentation-schema",
+    "sim": 0.1948
+  },
+  {
+    "a": "natur-vs-geisteswissenschaft",
+    "b": "praegung",
+    "sim": 0.1935
+  },
+  {
+    "a": "adaptation-anpassung",
+    "b": "behaviorismus",
+    "sim": 0.1673
+  },
+  {
+    "a": "homoeostase",
+    "b": "lust-unlust-valenz",
+    "sim": 0.1646
+  },
+  {
+    "a": "coping-bewaeltigung",
+    "b": "instinkt-reflex",
+    "sim": 0.1615
+  },
+  {
+    "a": "emotion",
+    "b": "teleologie-finalitaet",
+    "sim": 0.1562
+  },
+  {
+    "a": "behaviorismus",
+    "b": "instinkt-reflex",
+    "sim": 0.1534
+  },
+  {
+    "a": "instinkt-reflex",
+    "b": "zuercher-modell",
+    "sim": 0.1489
+  },
+  {
+    "a": "ambivalenz-konflikt",
+    "b": "reduktionismus",
+    "sim": 0.1484
+  },
+  {
+    "a": "angst",
+    "b": "instinkt-reflex",
+    "sim": 0.1329
+  },
+  {
+    "a": "wahrnehmung",
+    "b": "zuercher-modell",
+    "sim": 0.1326
+  },
+  {
+    "a": "erkennen-wirklichkeit",
+    "b": "wahrnehmungskonstanz",
+    "sim": 0.1318
+  },
+  {
+    "a": "erregungssystem",
+    "b": "sollwert-istwert",
+    "sim": 0.126
+  },
+  {
+    "a": "sollwert-istwert",
+    "b": "zuercher-modell",
+    "sim": 0.1255
+  },
+  {
+    "a": "systemtheorie-organismus",
+    "b": "teleologie-finalitaet",
+    "sim": 0.1247
+  },
+  {
+    "a": "bedeutung-sinn",
+    "b": "teleologie-finalitaet",
+    "sim": 0.1222
+  },
+  {
+    "a": "aktualgenese",
+    "b": "erkennen-wirklichkeit",
+    "sim": 0.1048
+  },
+  {
+    "a": "aktualgenese",
+    "b": "theoriebildung-methode",
+    "sim": 0.1025
+  },
+  {
+    "a": "gedaechtnis-lernen",
+    "b": "theoriebildung-methode",
+    "sim": 0.099
+  },
+  {
+    "a": "information-signal",
+    "b": "wahrnehmungskonstanz",
+    "sim": 0.098
+  },
+  {
+    "a": "aktualgenese",
+    "b": "phaenomenologie-introspektion",
+    "sim": 0.0961
+  },
+  {
+    "a": "motiv-trieb-beduerfnis",
+    "b": "systemtheorie-organismus",
+    "sim": 0.0952
+  },
+  {
+    "a": "information-signal",
+    "b": "objektivierung",
+    "sim": 0.0912
+  },
+  {
+    "a": "erkennen-wirklichkeit",
+    "b": "gestalt",
+    "sim": 0.0858
+  },
+  {
+    "a": "adaptation-anpassung",
+    "b": "kausalitaet-erklaerung",
+    "sim": 0.0857
+  },
+  {
+    "a": "rueckkopplung-feedback",
+    "b": "subjekt-objekt",
+    "sim": 0.0842
+  },
+  {
+    "a": "motiv-trieb-beduerfnis",
+    "b": "stress-frustration",
+    "sim": 0.0831
+  },
+  {
+    "a": "rueckkopplung-feedback",
+    "b": "wahrnehmungskonstanz",
+    "sim": 0.0824
+  },
+  {
+    "a": "bindung-fuersorge",
+    "b": "theoriebildung-methode",
+    "sim": 0.0813
+  },
+  {
+    "a": "motiv-trieb-beduerfnis",
+    "b": "teleologie-finalitaet",
+    "sim": 0.0813
+  },
+  {
+    "a": "kybernetik-regelkreis",
+    "b": "reduktionismus",
+    "sim": 0.076
+  },
+  {
+    "a": "gestalt",
+    "b": "theoriebildung-methode",
+    "sim": 0.0758
+  },
+  {
+    "a": "leib-seele-problem",
+    "b": "lust-unlust-valenz",
+    "sim": 0.0748
+  },
+  {
+    "a": "kybernetik-regelkreis",
+    "b": "wahrnehmungskonstanz",
+    "sim": 0.0745
+  },
+  {
+    "a": "gedaechtnis-lernen",
+    "b": "sollwert-istwert",
+    "sim": 0.0733
+  },
+  {
+    "a": "dominanz-rang",
+    "b": "scham-schuld",
+    "sim": 0.0727
+  },
+  {
+    "a": "angst",
+    "b": "kybernetik-regelkreis",
+    "sim": 0.0723
+  },
+  {
+    "a": "kausalitaet-erklaerung",
+    "b": "sexualitaet-paarbindung",
+    "sim": 0.0723
+  },
+  {
+    "a": "denken-begriff",
+    "b": "leib-seele-problem",
+    "sim": 0.0713
+  },
+  {
+    "a": "rueckkopplung-feedback",
+    "b": "wahrnehmung",
+    "sim": 0.0699
+  },
+  {
+    "a": "aggression",
+    "b": "gedaechtnis-lernen",
+    "sim": 0.0688
+  },
+  {
+    "a": "information-signal",
+    "b": "kausalitaet-erklaerung",
+    "sim": 0.0683
+  },
+  {
+    "a": "appetenz-aversion",
+    "b": "scham-schuld",
+    "sim": 0.0645
+  },
+  {
+    "a": "ambivalenz-konflikt",
+    "b": "gestalt",
+    "sim": 0.0642
+  },
+  {
+    "a": "lust-unlust-valenz",
+    "b": "sprache-zeichen",
+    "sim": 0.063
+  },
+  {
+    "a": "homoeostase",
+    "b": "scham-schuld",
+    "sim": 0.0626
+  },
+  {
+    "a": "sprache-zeichen",
+    "b": "systemtheorie-organismus",
+    "sim": 0.0613
+  },
+  {
+    "a": "leib-seele-problem",
+    "b": "rueckkopplung-feedback",
+    "sim": 0.0612
+  },
+  {
+    "a": "adaptation-anpassung",
+    "b": "reafferenzprinzip",
+    "sim": 0.0598
+  },
+  {
+    "a": "evolution-selektion",
+    "b": "sprache-zeichen",
+    "sim": 0.0586
+  },
+  {
+    "a": "appetenz-aversion",
+    "b": "reafferenzprinzip",
+    "sim": 0.0483
+  },
+  {
+    "a": "angst",
+    "b": "reafferenzprinzip",
+    "sim": 0.0481
+  }
+]
