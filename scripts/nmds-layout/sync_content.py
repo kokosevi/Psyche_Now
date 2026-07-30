@@ -12,15 +12,15 @@ Hand editieren; hier wird alles überschrieben).
 Ersetzt das frühere write_frontmatter.py (Body kam dort aus dem Content selbst).
 """
 import os, re, json, glob, shutil
-from manifest import NODES
+from spaces import SPACE, NODES, out_path
 from extract_corpus import folder_name
 
 HERE = os.path.dirname(__file__)
-BIB = os.path.normpath(os.path.join(HERE, "..", "..", "Bibliothek", "Hypnosystemik"))
-THEMEN = os.path.normpath(os.path.join(HERE, "..", "..", "site", "src", "content", "themen"))
+BIB = SPACE["bib_dir"]
+THEMEN = SPACE["themen_dir"]
 
-layout = json.load(open(os.path.join(HERE, "out", "layout.json")))
-curated = json.load(open(os.path.join(HERE, "out", "edges.curated.json")))
+layout = json.load(open(out_path(HERE, "layout", "json")))
+curated = json.load(open(out_path(HERE, "edges.curated", "json")))
 
 rel = {}
 for a, b in curated:

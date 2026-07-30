@@ -1,0 +1,267 @@
+[
+  {
+    "a": "hedonische-anpassung",
+    "b": "zeitarmut",
+    "sim": 0.0976
+  },
+  {
+    "a": "schwindende-verbundenheit",
+    "b": "sinnkrise",
+    "sim": 0.0942
+  },
+  {
+    "a": "partner-aendern-wollen",
+    "b": "selbstwert-leistung",
+    "sim": 0.0909
+  },
+  {
+    "a": "perfektionismus",
+    "b": "zersplitterte-aufmerksamkeit",
+    "sim": 0.081
+  },
+  {
+    "a": "fomo",
+    "b": "selbstwert-leistung",
+    "sim": 0.0789
+  },
+  {
+    "a": "fomo",
+    "b": "status-angst",
+    "sim": 0.0774
+  },
+  {
+    "a": "problemtrance",
+    "b": "selbstaufgabe-beziehung",
+    "sim": 0.0733
+  },
+  {
+    "a": "naturentfremdung",
+    "b": "sinnkrise",
+    "sim": 0.0723
+  },
+  {
+    "a": "problemtrance",
+    "b": "status-angst",
+    "sim": 0.07
+  },
+  {
+    "a": "perfektionismus",
+    "b": "selbstaufgabe-beziehung",
+    "sim": 0.0695
+  },
+  {
+    "a": "selbstwert-leistung",
+    "b": "zukunftsunsicherheit",
+    "sim": 0.0679
+  },
+  {
+    "a": "selbstaufgabe-beziehung",
+    "b": "zeitarmut",
+    "sim": 0.0669
+  },
+  {
+    "a": "selbstwert-leistung",
+    "b": "sozialer-vergleich",
+    "sim": 0.0638
+  },
+  {
+    "a": "selbstaufgabe-beziehung",
+    "b": "selbstwert-leistung",
+    "sim": 0.0636
+  },
+  {
+    "a": "selbstwert-leistung",
+    "b": "status-angst",
+    "sim": 0.0625
+  },
+  {
+    "a": "schwindende-verbundenheit",
+    "b": "steigende-erwartungen",
+    "sim": 0.0622
+  },
+  {
+    "a": "ambivalenz-erzwingen",
+    "b": "eigene-reaktionen-bekaempfen",
+    "sim": 0.0607
+  },
+  {
+    "a": "einsamkeit",
+    "b": "zeitarmut",
+    "sim": 0.0584
+  },
+  {
+    "a": "hedonische-anpassung",
+    "b": "sozialer-vergleich",
+    "sim": 0.0557
+  },
+  {
+    "a": "eigene-reaktionen-bekaempfen",
+    "b": "selbstaufgabe-beziehung",
+    "sim": 0.0556
+  },
+  {
+    "a": "einsamkeit",
+    "b": "fomo",
+    "sim": 0.0542
+  },
+  {
+    "a": "leistungsdruck-alwayson",
+    "b": "sinnkrise",
+    "sim": 0.0538
+  },
+  {
+    "a": "ankunfts-trugschluss",
+    "b": "partner-aendern-wollen",
+    "sim": 0.0537
+  },
+  {
+    "a": "eigene-reaktionen-bekaempfen",
+    "b": "status-angst",
+    "sim": 0.0537
+  },
+  {
+    "a": "selbstwert-leistung",
+    "b": "sinnkrise",
+    "sim": 0.0524
+  },
+  {
+    "a": "sinnkrise",
+    "b": "zersplitterte-aufmerksamkeit",
+    "sim": 0.0522
+  },
+  {
+    "a": "perfektionismus",
+    "b": "sozialer-vergleich",
+    "sim": 0.0519
+  },
+  {
+    "a": "partner-aendern-wollen",
+    "b": "perfektionismus",
+    "sim": 0.0513
+  },
+  {
+    "a": "sozialer-vergleich",
+    "b": "steigende-erwartungen",
+    "sim": 0.0512
+  },
+  {
+    "a": "hedonische-anpassung",
+    "b": "zersplitterte-aufmerksamkeit",
+    "sim": 0.0508
+  },
+  {
+    "a": "linearkausales-denken",
+    "b": "partner-aendern-wollen",
+    "sim": 0.0508
+  },
+  {
+    "a": "selbstwert-leistung",
+    "b": "zeitarmut",
+    "sim": 0.0499
+  },
+  {
+    "a": "partner-aendern-wollen",
+    "b": "zukunftsunsicherheit",
+    "sim": 0.0496
+  },
+  {
+    "a": "fomo",
+    "b": "problemtrance",
+    "sim": 0.0493
+  },
+  {
+    "a": "einsamkeit",
+    "b": "naturentfremdung",
+    "sim": 0.0476
+  },
+  {
+    "a": "status-angst",
+    "b": "zeitarmut",
+    "sim": 0.0474
+  },
+  {
+    "a": "leistungsdruck-alwayson",
+    "b": "perfektionismus",
+    "sim": 0.0472
+  },
+  {
+    "a": "perfektionismus",
+    "b": "sinnkrise",
+    "sim": 0.046
+  },
+  {
+    "a": "linearkausales-denken",
+    "b": "zeitarmut",
+    "sim": 0.0452
+  },
+  {
+    "a": "leistungsdruck-alwayson",
+    "b": "selbstwert-leistung",
+    "sim": 0.045
+  },
+  {
+    "a": "hedonische-anpassung",
+    "b": "naturentfremdung",
+    "sim": 0.044
+  },
+  {
+    "a": "leistungsdruck-alwayson",
+    "b": "steigende-erwartungen",
+    "sim": 0.0436
+  },
+  {
+    "a": "doomscrolling",
+    "b": "status-angst",
+    "sim": 0.0426
+  },
+  {
+    "a": "problemtrance",
+    "b": "sinnkrise",
+    "sim": 0.0421
+  },
+  {
+    "a": "ambivalenz-erzwingen",
+    "b": "selbstwert-leistung",
+    "sim": 0.0413
+  },
+  {
+    "a": "hedonische-anpassung",
+    "b": "selbstwert-leistung",
+    "sim": 0.0413
+  },
+  {
+    "a": "ankunfts-trugschluss",
+    "b": "linearkausales-denken",
+    "sim": 0.0406
+  },
+  {
+    "a": "materialismus",
+    "b": "perfektionismus",
+    "sim": 0.0386
+  },
+  {
+    "a": "materialismus",
+    "b": "selbstaufgabe-beziehung",
+    "sim": 0.0371
+  },
+  {
+    "a": "selbstbestrafung",
+    "b": "sozialer-vergleich",
+    "sim": 0.0345
+  },
+  {
+    "a": "materialismus",
+    "b": "zersplitterte-aufmerksamkeit",
+    "sim": 0.0336
+  },
+  {
+    "a": "ambivalenz-erzwingen",
+    "b": "selbstbestrafung",
+    "sim": 0.0295
+  },
+  {
+    "a": "selbstbestrafung",
+    "b": "zeitarmut",
+    "sim": 0.0284
+  }
+]

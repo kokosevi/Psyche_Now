@@ -1,16 +1,13 @@
 import json, os
 import numpy as np
-from manifest import NODES
+from spaces import SPACE, NODES, out_path
 from extract_corpus import build_corpus_from_folders
 from tfidf import tfidf_matrix, cosine_dissim
 from nmds import nmds
 
-REGIONS = {  # x0, x1, y0, y1
-    "k1": (6, 46, 8, 46), "k2": (54, 94, 8, 46),
-    "k3": (6, 46, 54, 92), "k4": (54, 94, 54, 92),
-}
-CROSS_EDGE_MIN_SIM = 0.10   # Schwelle für Kanten-Vorschläge
-CROSS_EDGE_TOPK = 40        # Deckel auf die Vorschlagsliste
+REGIONS = SPACE["regions"]   # x0, x1, y0, y1 je Cluster
+CROSS_EDGE_MIN_SIM = SPACE["edges"]["cross_min_sim"]   # Schwelle für Kanten-Vorschläge
+CROSS_EDGE_TOPK = SPACE["edges"]["cross_topk"]         # Deckel auf die Vorschlagsliste
 
 
 MIN_DIST = 6.5   # min. Knotenabstand in % (gegen Label-Überlappung)
@@ -70,7 +67,7 @@ def build(bib_dir):
     mat = tfidf_matrix(docs)                 # globale TF-IDF (ein Vokabular)
     sidx = {s: i for i, s in enumerate(slugs)}
     nodes = {}
-    for cl in ("k1", "k2", "k3", "k4"):
+    for cl in SPACE["clusters"]:
         members = [n["slug"] for n in NODES if n["cluster"] == cl]
         idx = [sidx[s] for s in members]
         sub = mat[idx]
@@ -135,11 +132,13 @@ def build(bib_dir):
 
 if __name__ == "__main__":
     here = os.path.dirname(__file__)
-    bib = os.path.normpath(os.path.join(here, "..", "..", "Bibliothek", "Hypnosystemik"))
-    L = build(bib)
+    L = build(SPACE["bib_dir"])
     os.makedirs(os.path.join(here, "out"), exist_ok=True)
-    json.dump(L["nodes"], open(os.path.join(here, "out", "layout.json"), "w"),
+    layout_p = out_path(here, "layout", "json")
+    sugg_p = out_path(here, "edges.suggested", "json")
+    json.dump(L["nodes"], open(layout_p, "w"),
               ensure_ascii=False, indent=2, sort_keys=True)
-    json.dump(L["edges_suggested"], open(os.path.join(here, "out", "edges.suggested.json"), "w"),
+    json.dump(L["edges_suggested"], open(sugg_p, "w"),
               ensure_ascii=False, indent=2)
-    print(f"layout.json: {len(L['nodes'])} Knoten; {len(L['edges_suggested'])} Kanten-Vorschläge")
+    print(f"[{SPACE['name']}] {os.path.basename(layout_p)}: {len(L['nodes'])} Knoten; "
+          f"{len(L['edges_suggested'])} Kanten-Vorschläge")

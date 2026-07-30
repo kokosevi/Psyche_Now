@@ -9,13 +9,13 @@ Regeln (reproduzierbar):
   über dem Grad-Deckel).
 """
 import json, os
-from manifest import BY_SLUG
+from spaces import SPACE, BY_SLUG, out_path
 
 HERE = os.path.dirname(__file__)
-MAX_DEG = 3
-MIN_SIM = 0.20
+MAX_DEG = SPACE["edges"]["curate_max_deg"]
+MIN_SIM = SPACE["edges"]["curate_min_sim"]
 
-sugg = json.load(open(os.path.join(HERE, "out", "edges.suggested.json")))
+sugg = json.load(open(out_path(HERE, "edges.suggested", "json")))
 deg = {}
 edges = []
 
@@ -63,7 +63,7 @@ for a, b in final:
     assert BY_SLUG[a]["cluster"] != BY_SLUG[b]["cluster"], (a, b)
 
 json.dump([list(e) for e in final],
-          open(os.path.join(HERE, "out", "edges.curated.json"), "w"),
+          open(out_path(HERE, "edges.curated", "json"), "w"),
           ensure_ascii=False, indent=2)
 linked_final = {x for e in final for x in e}
 missing = [s for s in BY_SLUG if s not in linked_final]

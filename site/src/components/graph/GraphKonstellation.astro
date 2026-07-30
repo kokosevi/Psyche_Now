@@ -1,15 +1,20 @@
 ---
 import type { Graph } from '../../lib/graph';
-import { CLUSTER_META } from '../../lib/graph';
-interface Props { graph: Graph; showRegions?: boolean; }
-const { graph, showRegions = true } = Astro.props;
+interface Props { graph: Graph; showRegions?: boolean; basePath?: string; ariaLabel?: string; }
+const {
+  graph,
+  showRegions = true,
+  basePath = '/erleben/thema',
+  ariaLabel = 'Wissenskarte der Hypnosystemik',
+} = Astro.props;
+const clusterMeta = graph.clusters;
 const pos = new Map(graph.nodes.map((n) => [n.slug, n]));
 const colorOf = (slug: string) =>
-  CLUSTER_META.find((c) => c.id === pos.get(slug)!.cluster)!.colorVar;
+  clusterMeta.find((c) => c.id === pos.get(slug)!.cluster)!.colorVar;
 
 // Cluster-Regionen (Bounding-Box der Knoten + Padding) für die Klenico-artigen Inseln.
 const PAD = 3; // % Padding um die Cluster-Wolke
-const regions = CLUSTER_META.map((c) => {
+const regions = clusterMeta.map((c) => {
   const ns = graph.nodes.filter((n) => n.cluster === c.id);
   const xs = ns.map((n) => n.x), ys = ns.map((n) => n.y);
   const x0 = Math.max(0, Math.min(...xs) - PAD), x1 = Math.min(100, Math.max(...xs) + PAD);
@@ -27,7 +32,7 @@ const goldHoverCss = graph.nodes
   })
   .join('');
 ---
-<div class="konstellation" role="group" aria-label="Wissenskarte der Hypnosystemik">
+<div class="konstellation" role="group" aria-label={ariaLabel}>
   {showRegions && regions.map((r) => (
     <div
       class="cluster-region"
@@ -45,7 +50,7 @@ const goldHoverCss = graph.nodes
   {graph.nodes.map((n) => (
     <a
       class="node"
-      href={`/erleben/thema/${n.slug}`}
+      href={`${basePath}/${n.slug}`}
       data-slug={n.slug}
       style={`left:${n.x}%; top:${n.y}%; --c: var(${colorOf(n.slug)})`}
     >

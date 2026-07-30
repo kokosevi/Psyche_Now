@@ -1,0 +1,127 @@
+{
+  "ambivalenz-erzwingen": {
+    "cluster": "h3",
+    "x": 26.51,
+    "y": 60.96
+  },
+  "ankunfts-trugschluss": {
+    "cluster": "h3",
+    "x": 17.27,
+    "y": 81.58
+  },
+  "doomscrolling": {
+    "cluster": "h4",
+    "x": 84.33,
+    "y": 67.53
+  },
+  "eigene-reaktionen-bekaempfen": {
+    "cluster": "h1",
+    "x": 13.21,
+    "y": 28.97
+  },
+  "einsamkeit": {
+    "cluster": "h2",
+    "x": 58.96,
+    "y": 24.97
+  },
+  "fomo": {
+    "cluster": "h4",
+    "x": 79.31,
+    "y": 60.98
+  },
+  "hedonische-anpassung": {
+    "cluster": "h3",
+    "x": 20.13,
+    "y": 87.42
+  },
+  "leistungsdruck-alwayson": {
+    "cluster": "h4",
+    "x": 64.64,
+    "y": 91.04
+  },
+  "linearkausales-denken": {
+    "cluster": "h1",
+    "x": 28.91,
+    "y": 43.8
+  },
+  "materialismus": {
+    "cluster": "h3",
+    "x": 31.85,
+    "y": 83.03
+  },
+  "naturentfremdung": {
+    "cluster": "h4",
+    "x": 63.07,
+    "y": 69.78
+  },
+  "partner-aendern-wollen": {
+    "cluster": "h2",
+    "x": 83.47,
+    "y": 42.95
+  },
+  "perfektionismus": {
+    "cluster": "h1",
+    "x": 33.18,
+    "y": 19.01
+  },
+  "problemtrance": {
+    "cluster": "h1",
+    "x": 21.81,
+    "y": 36.23
+  },
+  "schwindende-verbundenheit": {
+    "cluster": "h2",
+    "x": 63.73,
+    "y": 37.93
+  },
+  "selbstaufgabe-beziehung": {
+    "cluster": "h2",
+    "x": 69.8,
+    "y": 27.37
+  },
+  "selbstbestrafung": {
+    "cluster": "h1",
+    "x": 25.33,
+    "y": 14.96
+  },
+  "selbstwert-leistung": {
+    "cluster": "h1",
+    "x": 33.56,
+    "y": 37.04
+  },
+  "sinnkrise": {
+    "cluster": "h3",
+    "x": 36.42,
+    "y": 70.07
+  },
+  "sozialer-vergleich": {
+    "cluster": "h2",
+    "x": 83.11,
+    "y": 30.09
+  },
+  "status-angst": {
+    "cluster": "h2",
+    "x": 84.94,
+    "y": 16.68
+  },
+  "steigende-erwartungen": {
+    "cluster": "h3",
+    "x": 23.81,
+    "y": 72.93
+  },
+  "zeitarmut": {
+    "cluster": "h4",
+    "x": 74.12,
+    "y": 78.96
+  },
+  "zersplitterte-aufmerksamkeit": {
+    "cluster": "h4",
+    "x": 67.54,
+    "y": 74.51
+  },
+  "zukunftsunsicherheit": {
+    "cluster": "h4",
+    "x": 85.0,
+    "y": 89.2
+  }
+}

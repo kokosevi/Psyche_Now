@@ -21,11 +21,24 @@ Bibliothek/Hypnosystemik/4.2.4-depression/
 - **Urheberrecht:** `quelle.md` (Transkript) bleibt lokal. Der veröffentlichte
   `text.md` muss ein eigenständiger Text sein, kein Verbatim-Transkript.
 
+## Zwei Räume
+
+Es gibt zwei unabhängige Karten (konfiguriert in `spaces.py`, gewählt per Env-Var
+`SPACE`, Default `erleben`):
+
+| Raum | Quelle | Content-Collection | Cluster |
+|------|--------|--------------------|---------|
+| `erleben` | `Bibliothek/Hypnosystemik/` | `site/src/content/themen/` | k1–k4 |
+| `herausforderungen` | `Bibliothek/Herausforderungen/` | `site/src/content/herausforderungen/` | h1–h4 |
+
+Knotenliste + Titel je Raum: `manifest.py` (Erleben) bzw. `heraus_manifest.py`
+(Herausforderungen). Cluster-Labels/-Farben der Site: `site/src/lib/graph.ts`.
+
 ## Rebuild (nach jeder Ordner-Änderung)
 
 ```
-scripts/nmds-layout/rebuild.sh      # build_layout → curate_edges → sync_content
-cd site && npm run build            # Seite bauen/prüfen
+scripts/nmds-layout/rebuild.sh [raum]   # raum = erleben (Default) | herausforderungen
+cd site && npm run build                # Seite bauen/prüfen
 ```
 
 Determiniert (NMDS seed=42) und idempotent: gleiche Ordner → gleiche Karte/Content.

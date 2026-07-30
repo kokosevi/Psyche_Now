@@ -1,5 +1,5 @@
 import os, re, glob
-from manifest import NODES
+from spaces import NODES
 
 # Format der Quelle (Life Lessons - Transkripte.txt):
 # Abschnitte sind mit Separatorlinien (----- / =====) umrahmt; die Überschrift ist
