@@ -1,0 +1,65 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import Site from '../../../layouts/Site.astro';
+import { PSYCHE_CLUSTER_META } from '../../../lib/graph';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('psyche');
+  return entries.map((e) => ({ params: { slug: e.id }, props: { entry: e } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const cluster = PSYCHE_CLUSTER_META.find((c) => c.id === entry.data.cluster)!;
+
+const all = await getCollection('psyche');
+const related = entry.data.related
+  .map((slug) => all.find((e) => e.id === slug))
+  .filter((e): e is NonNullable<typeof e> => Boolean(e));
+---
+<Site title={entry.data.title} current="psyche">
+  <section class="pagehead wrap">
+    <p class="overline" style={`color: var(${cluster.colorVar})`}>{cluster.label}</p>
+    <h1>{entry.data.title}</h1>
+  </section>
+  <article class="wrap thema-body">
+    {entry.data.hero && (
+      <Image class="thema-hero" src={entry.data.hero} alt={entry.data.heroAlt ?? ''} />
+    )}
+    <Content />
+    {entry.data.status === 'stub' && <p class="stub-hinweis">Dieser Text wird noch ausgeführt.</p>}
+  </article>
+  {related.length > 0 && (
+    <aside class="wrap verwandt" aria-label="Verwandte Herausforderungen">
+      <h2>Verwandte Herausforderungen</h2>
+      <ul>
+        {related.map((r) => (
+          <li>
+            <a href={`/psyche/thema/${r.id}`}>
+              <span class="dot" style={`background: var(${PSYCHE_CLUSTER_META.find((c) => c.id === r.data.cluster)!.colorVar})`}></span>
+              <strong>{r.data.title}</strong> — {r.data.summary}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </aside>
+  )}
+  <p class="wrap zurueck"><a href="/psyche">← Zur Karte</a></p>
+</Site>
+
+<style>
+  .thema-body { max-width: 640px; }
+  .thema-hero { width: 100%; height: auto; border-radius: 14px; margin: 0 0 24px; box-shadow: var(--shadow-md); }
+  .thema-body :global(p) { color: var(--ink-2); }
+  .stub-hinweis { color: var(--ink-3); font-style: italic; }
+  .verwandt { max-width: 640px; margin-top: 32px; }
+  .verwandt h2 { font-family: var(--font-hand); font-size: 30px; }
+  .verwandt ul { list-style: none; padding: 0; }
+  .verwandt li { border-top: 1px solid var(--hairline); }
+  .verwandt a { display: block; padding: 12px 0; text-decoration: none; color: var(--ink-2); font-size: 15px; }
+  .verwandt a:hover { color: var(--ink); }
+  .verwandt .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 8px; }
+  .zurueck { max-width: 640px; margin-top: 40px; }
+  .zurueck a { font-weight: 700; text-decoration: none; }
+</style>
