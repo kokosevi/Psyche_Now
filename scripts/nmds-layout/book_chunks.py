@@ -33,12 +33,21 @@ def _paragraphs(text):
     return para
 
 
+def _split_para(p, target):
+    words = p.split()
+    if len(words) <= int(target * 1.5):
+        return [p]
+    return [" ".join(words[i:i + target]) for i in range(0, len(words), target)]
+
+
 def passages(text, target_words=200):
     out, buf, wc = [], [], 0
     for p in _paragraphs(text):
-        buf.append(p); wc += len(p.split())
-        if wc >= target_words:
-            out.append({"text": "\n\n".join(buf)}); buf, wc = [], 0
+        for sp in _split_para(p, target_words):
+            n = len(sp.split())
+            if buf and wc + n > target_words:
+                out.append({"text": "\n\n".join(buf)}); buf, wc = [], 0
+            buf.append(sp); wc += n
     if buf:
         out.append({"text": "\n\n".join(buf)})
     return out

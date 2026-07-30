@@ -33,8 +33,17 @@ def test_kurzer_text_ein_chunk():
     assert len(chs) == 1 and "kurzer" in chs[0]["text"]
 
 
+def test_fenster_ueberschreitet_ziel_nicht_grob():
+    # ein sehr langer Absatz (1000 Wörter) muss in mehrere Fenster zerfallen
+    text = "kopf\n\n" + "wort " * 1000
+    chs = passages(text, target_words=200)
+    assert max(len(c["text"].split()) for c in chs) <= 400   # ≤ 2× Ziel
+    assert len(chs) >= 4
+
+
 if __name__ == "__main__":
     test_entfernt_seiten_moeblierung()
     test_fenstert_nach_wortzahl()
     test_kurzer_text_ein_chunk()
+    test_fenster_ueberschreitet_ziel_nicht_grob()
     print("OK test_book_chunks")
