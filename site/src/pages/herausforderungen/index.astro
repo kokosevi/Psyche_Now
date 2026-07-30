@@ -22,6 +22,17 @@ const graph = await buildGraph('herausforderungen', HERAUS_CLUSTER_META);
       ariaLabel="Karte der Herausforderungen: Woran Glück scheitert"
     />
   </section>
+
+  <section class="wrap methodik" aria-label="Wie diese Karte entstanden ist">
+    <h2>Wie diese Karte entstanden ist</h2>
+    <p>
+      Die Herausforderungen stammen aus zwei Quellen: dem hypnosystemischen Denken von
+      Gunther Schmidt und der Forschung zu Glück und Wohlbefinden. Aus beidem wurden die
+      wiederkehrenden Muster herausgearbeitet und zu 25 abgrenzbaren Herausforderungen in
+      vier Themenfeldern verdichtet. Die Karte ist eine erste Fassung und wird fortlaufend
+      weiter geschärft.
+    </p>
+  </section>
 </Site>
 
 <style>
@@ -31,6 +42,11 @@ const graph = await buildGraph('herausforderungen', HERAUS_CLUSTER_META);
   .karte-stage :global(.konstellation.dim .node.hot) { opacity: 1; }
   .karte-stage :global(.konstellation.dim line) { stroke: var(--hairline); }
   .karte-stage :global(.konstellation.dim line.hot) { stroke: var(--sun-deep); stroke-width: .9; }
+
+  .methodik { max-width: 640px; margin: 48px auto 0; }
+  .methodik h2 { font-family: var(--font-hand); font-size: 30px; margin: 0 0 12px; }
+  .methodik p { color: var(--ink-3); font-size: 15px; line-height: 1.6; margin: 0 0 12px; }
+  .methodik p:last-child { margin-bottom: 0; }
 </style>
 
 <script>
