@@ -582,6 +582,8 @@ Und einen `_psyche()`-Raum analog zu `_herausforderungen()` hinzufügen:
 
 ```python
 _PSYCHE_CLUSTERS = ("p1", "p2", "p3", "p4", "p5")
+# Kanten-Schwellen (analog _EDGES_ERLEBEN; ~50-Knoten-Karte, in Task 6 nachjustierbar).
+_EDGES_PSYCHE = {"cross_min_sim": 0.10, "cross_topk": 40, "curate_min_sim": 0.20, "curate_max_deg": 3}
 
 def _psyche():
     try:
@@ -596,8 +598,11 @@ def _psyche():
         "clusters": _PSYCHE_CLUSTERS,
         "regions": _grid_regions(_PSYCHE_CLUSTERS, cols=3),
         "out_suffix": ".psyche",
+        "edges": _EDGES_PSYCHE,
     }
 ```
+
+> Hinweis: Der `"edges"`-Key kam durch den herausforderungen-Refactor hinzu (`build_layout.py`/`curate_edges.py` lesen `SPACE["edges"][...]`). Ohne ihn wirft `SPACE=psyche` in Task 6 einen KeyError. Der Test (Step 1) prüft daher `get_space("psyche")["edges"]` auf die vier Schlüssel.
 
 In `get_space` den Zweig ergänzen (vor dem `raise`):
 
