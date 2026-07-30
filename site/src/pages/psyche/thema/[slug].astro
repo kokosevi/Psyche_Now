@@ -31,8 +31,8 @@ const related = entry.data.related
     {entry.data.status === 'stub' && <p class="stub-hinweis">Dieser Text wird noch ausgeführt.</p>}
   </article>
   {related.length > 0 && (
-    <aside class="wrap verwandt" aria-label="Verwandte Herausforderungen">
-      <h2>Verwandte Herausforderungen</h2>
+    <aside class="wrap verwandt" aria-label="Verwandte Konzepte">
+      <h2>Verwandte Konzepte</h2>
       <ul>
         {related.map((r) => (
           <li>
