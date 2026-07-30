@@ -14,6 +14,7 @@ Jeder Raum liefert:
   regions     Cluster-ID -> (x0, x1, y0, y1) Layout-Region in %
   out_suffix  Suffix der Zwischen-Dateien in out/ ('' = Erleben, byte-kompatibel)
 """
+import math
 import os
 from manifest import NODES as _ERLEBEN_NODES
 
@@ -25,6 +26,22 @@ _QUADRANTS = lambda a, b, c, d: {
     a: (6, 46, 8, 46), b: (54, 94, 8, 46),
     c: (6, 46, 54, 92), d: (54, 94, 54, 92),
 }
+
+
+def _grid_regions(ids, cols=3):
+    """Gleichmäßiges Grid im Canvas [5,95]² mit kleiner Lücke zwischen den Zellen."""
+    n = len(ids)
+    rows = math.ceil(n / cols)
+    gap = 2.0
+    cw = (90.0 - gap * (cols - 1)) / cols
+    ch = (90.0 - gap * (rows - 1)) / rows
+    out = {}
+    for k, cid in enumerate(ids):
+        r, c = divmod(k, cols)
+        x0 = 5.0 + c * (cw + gap)
+        y0 = 5.0 + r * (ch + gap)
+        out[cid] = (round(x0, 2), round(x0 + cw, 2), round(y0, 2), round(y0 + ch, 2))
+    return out
 
 # Kanten-Parameter je Raum. Erleben-Werte = die bisherigen Konstanten (byte-identisch).
 # Herausforderungen: die kurzen Steckbriefe liefern deutlich kleinere TF-IDF-Cosinus
@@ -63,13 +80,34 @@ def _herausforderungen():
     }
 
 
+_PSYCHE_CLUSTERS = ("p1", "p2", "p3", "p4", "p5")
+
+
+def _psyche():
+    try:
+        from psyche_manifest import NODES as _PN
+    except Exception:
+        _PN = []
+    return {
+        "name": "psyche",
+        "bib_dir": os.path.join(ROOT, "Bibliothek", "Allgemeine Psychologie"),
+        "themen_dir": os.path.join(ROOT, "site", "src", "content", "psyche"),
+        "nodes": _PN,
+        "clusters": _PSYCHE_CLUSTERS,
+        "regions": _grid_regions(_PSYCHE_CLUSTERS, cols=3),
+        "out_suffix": ".psyche",
+    }
+
+
 def get_space(name=None):
     name = name or os.environ.get("SPACE", "erleben")
     if name == "erleben":
         return _ERLEBEN
     if name == "herausforderungen":
         return _herausforderungen()
-    raise SystemExit(f"Unbekannter SPACE: {name!r} (erlaubt: erleben | herausforderungen)")
+    if name == "psyche":
+        return _psyche()
+    raise SystemExit(f"Unbekannter SPACE: {name!r} (erlaubt: erleben | herausforderungen | psyche)")
 
 
 SPACE = get_space()
