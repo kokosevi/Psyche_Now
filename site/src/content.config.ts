@@ -3,6 +3,7 @@ import { glob } from 'astro/loaders';
 
 export const CLUSTERS = ['k1', 'k2', 'k3', 'k4'] as const;
 export const HERAUS_CLUSTERS = ['h1', 'h2', 'h3', 'h4'] as const;
+export const PSYCHE_CLUSTERS = ['p1', 'p2', 'p3', 'p4', 'p5'] as const;
 
 // Gemeinsames Schema für beide Karten-Räume; nur der Cluster-Enum unterscheidet sich.
 // `image` ist der von Astro im schema-Callback gereichte Image-Helfer.
@@ -36,4 +37,9 @@ const herausforderungen = defineCollection({
   schema: ({ image }) => themaSchema(HERAUS_CLUSTERS, image),
 });
 
-export const collections = { themen, herausforderungen };
+const psyche = defineCollection({
+  loader: glob({ pattern: '**/index.md', base: './src/content/psyche', generateId: slugFromIndex }),
+  schema: ({ image }) => themaSchema(PSYCHE_CLUSTERS, image),
+});
+
+export const collections = { themen, herausforderungen, psyche };

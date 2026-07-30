@@ -30,6 +30,15 @@ export const HERAUS_CLUSTER_META: ClusterMeta[] = [
   { id: 'h4', label: 'Reizwelt & Struktur', colorVar: '--ink-2' },
 ];
 
+// Raum „Psyche: Was wir sind" (Bischof, Allgemeine Psychologie).
+export const PSYCHE_CLUSTER_META: ClusterMeta[] = [
+  { id: 'p1', label: 'Wissenschaft & Erkenntnis', colorVar: '--ink-2' },
+  { id: 'p2', label: 'Motivation (Zürcher Modell)', colorVar: '--marker' },
+  { id: 'p3', label: 'Kognition & Wahrnehmung', colorVar: '--leaf' },
+  { id: 'p4', label: 'Emotion & Affekt', colorVar: '--sun-deep' },
+  { id: 'p5', label: 'System & Kybernetik', colorVar: '--ink-3' },
+];
+
 export function assembleGraph(nodes: RawNode[], clusters: ClusterMeta[] = CLUSTER_META): Graph {
   const slugs = new Set(nodes.map((x) => x.slug));
   const seen = new Set<string>();
@@ -50,7 +59,7 @@ export function assembleGraph(nodes: RawNode[], clusters: ClusterMeta[] = CLUSTE
   return { nodes, edges, clusters };
 }
 
-export type CollectionName = 'themen' | 'herausforderungen';
+export type CollectionName = 'themen' | 'herausforderungen' | 'psyche';
 
 export async function buildGraph(
   collection: CollectionName = 'themen',
