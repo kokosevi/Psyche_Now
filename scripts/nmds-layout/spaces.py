@@ -49,6 +49,9 @@ def _grid_regions(ids, cols=3):
 # eine ähnlich dichte Konstellation.
 _EDGES_ERLEBEN = {"cross_min_sim": 0.10, "cross_topk": 40, "curate_min_sim": 0.20, "curate_max_deg": 3}
 _EDGES_HERAUS = {"cross_min_sim": 0.04, "cross_topk": 80, "curate_min_sim": 0.05, "curate_max_deg": 4}
+# Psyche: ~50-Knoten-Karte wie Erleben, daher zunächst dieselben Schwellen
+# (bei Bedarf später anhand der tatsächlichen TF-IDF-Verteilung nachjustieren).
+_EDGES_PSYCHE = {"cross_min_sim": 0.10, "cross_topk": 40, "curate_min_sim": 0.20, "curate_max_deg": 3}
 
 _ERLEBEN = {
     "name": "erleben",
@@ -96,6 +99,7 @@ def _psyche():
         "clusters": _PSYCHE_CLUSTERS,
         "regions": _grid_regions(_PSYCHE_CLUSTERS, cols=3),
         "out_suffix": ".psyche",
+        "edges": _EDGES_PSYCHE,
     }
 
 

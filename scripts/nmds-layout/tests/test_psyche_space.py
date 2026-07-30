@@ -18,6 +18,7 @@ def test_psyche_space_konfiguration():
     assert set(sp["regions"]) == set(sp["clusters"])
     assert sp["bib_dir"].endswith(os.path.join("Bibliothek", "Allgemeine Psychologie"))
     assert sp["themen_dir"].endswith(os.path.join("content", "psyche"))
+    assert set(sp["edges"]) == {"cross_min_sim", "cross_topk", "curate_min_sim", "curate_max_deg"}
 
 
 def test_erleben_unveraendert():
