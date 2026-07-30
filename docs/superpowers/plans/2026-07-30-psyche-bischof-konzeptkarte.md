@@ -4,7 +4,9 @@
 
 **Goal:** Eine NMDS-Konzeptkarte aus Norbert Bischofs Kern-Theorie (Grundbuch + Theoretische Psychologie 2026) als dritter Karten-„Raum" `psyche` auf `/psyche`, nach exakt dem bestehenden `erleben`/`herausforderungen`-Muster.
 
-**Architecture:** Die Pipeline (`scripts/nmds-layout/`) ist bereits raum-parametrisiert über `spaces.py` (Env `SPACE`); die Rechenskripte (`build_layout.py`, `curate_edges.py`, `sync_content.py`, `extract_corpus.py`, `tfidf.py`, `nmds.py`) bleiben unverändert. Neu sind: (1) ein `_psyche()`-Raum in `spaces.py` inkl. Regionen für 5 Cluster, (2) die Bischof-Content-Erzeugung (PDF→Kapitel-Chunks→kuratierte Konzept-Knoten→Passagen-Retrieval→Knotenordner), (3) die dritte Kopie der Site-Karten-Seiten (`psyche` Collection + Cluster-Meta + Seiten).
+**Architecture:** Die Pipeline (`scripts/nmds-layout/`) ist bereits raum-parametrisiert über `spaces.py` (Env `SPACE`); die Rechenskripte (`build_layout.py`, `curate_edges.py`, `sync_content.py`, `extract_corpus.py`, `tfidf.py`, `nmds.py`) bleiben unverändert. Neu sind: (1) ein `_psyche()`-Raum in `spaces.py` inkl. Regionen für 5 Cluster, (2) die Bischof-Content-Erzeugung (PDF→Passagen-Chunks→kuratierte Konzept-Knoten→Passagen-Retrieval→Knotenordner), (3) die dritte Kopie der Site-Karten-Seiten (`psyche` Collection + Cluster-Meta + Seiten).
+
+> **Pivot 2026-07-30 (Task 2 Fix-Loop):** Ursprünglich waren „Kapitel-Chunks" als Retrieval-Einheit geplant. In den real extrahierten PDFs stehen Kapitel-Nummer und -Titel jedoch auf getrennten Zeilen, die zwei Bücher nutzen verschiedene Formate, und ToC/Fußnoten verrauschen die Heading-Erkennung — ein zuverlässiger Kapitel-Parser ist teuer und fragil. Da die Chunk-Labels ohnehin nie live gehen (`quelle.md` ist lokale TF-IDF-Quelle; die publizierte Zusammenfassung wird in Task 9 von Hand geschrieben), zählt nur sauberer, konzept-relevanter **Text**. Entscheidung des Nutzers: **Passagen-Chunks** (~200-Wort-Fenster an Absatzgrenzen, Seiten-Möblierung entfernt). Task 2 und die `score_chunks`/`write_folders`-Signaturen in Task 4 sind entsprechend angepasst; Task 9 bleibt unberührt.
 
 **Tech Stack:** Python 3 (numpy, stdlib; `pdftotext` CLI), Astro 7 Content Collections, TypeScript, vitest, pytest.
 
@@ -31,8 +33,8 @@
 
 **Neu (Pipeline):**
 - `scripts/nmds-layout/extract_pdf.py` — PDF→Text (`pdftotext`) für die 2 Bücher nach `_extracted/`.
-- `scripts/nmds-layout/book_chunks.py` — parst extrahierten Text in Kapitel-Chunks `(num, title, text)`.
-- `scripts/nmds-layout/retrieve_passages.py` — ordnet je Konzept die Top-K Kapitel-Chunks zu, schreibt Knotenordner (`quelle.md` + `meta.json`).
+- `scripts/nmds-layout/book_chunks.py` — zerlegt extrahierten Text in Passagen-Chunks `{text}` (~200-Wort-Fenster, Seiten-Möblierung entfernt).
+- `scripts/nmds-layout/retrieve_passages.py` — ordnet je Konzept die Top-K Passagen-Chunks zu, schreibt Knotenordner (`quelle.md` + `meta.json`).
 - `scripts/nmds-layout/psyche_manifest.py` — kuratierte Konzept-Knoten (`slug, cluster, headings, title, terms`).
 - `scripts/nmds-layout/tests/test_book_chunks.py`, `tests/test_retrieve.py`, `tests/test_psyche_space.py`.
 
@@ -125,17 +127,18 @@ git commit -m "psyche: PDF-Extraktion der Bischof-Kern-Bücher"
 
 ---
 
-### Task 2: Kapitel-Chunker
+### Task 2: Passagen-Chunker
 
-Zerlegt den extrahierten Buchtext in Kapitel-Chunks — die vom Nutzer gewählte Retrieval-Einheit.
+Zerlegt den extrahierten Buchtext in robuste Passagen-Fenster (~200 Wörter, an Absatzgrenzen) — die Retrieval-Einheit. Seiten-Möblierung (Export-Timestamp, `.indb`-Footer, reine Seitenzahlen, Form-Feed) wird VOR dem Fenstern entfernt, damit sie den TF-IDF-Corpus nicht verrauscht. (Pivot weg von Kapitel-Chunks — siehe Architecture-Notiz.)
 
 **Files:**
-- Create: `scripts/nmds-layout/book_chunks.py`
-- Test: `scripts/nmds-layout/tests/test_book_chunks.py`
+- Create/overwrite: `scripts/nmds-layout/book_chunks.py`
+- Create/overwrite: `scripts/nmds-layout/tests/test_book_chunks.py`
 
 **Interfaces:**
-- Produces: `chapters(text: str) -> list[dict]` mit `{"num": "1.2.3", "title": "…", "text": "…"}`. Überschriften-Muster: Zeilenanfang `N[.N…] Titel` (Ziffern-Nummerierung, Titel nicht leer). Text = alles bis zur nächsten Überschrift.
-- Produces: `all_chunks(extracted_dir: str) -> list[dict]` — Chunks beider Bücher, je mit zusätzlichem `"book"`-Key.
+- Produces: `passages(text: str, target_words: int = 200) -> list[dict]` mit `{"text": str}`. Zerlegt an Leerzeilen in Absätze; entfernt Rausch-Zeilen; akkumuliert Absätze bis ~`target_words`, dann neuer Chunk.
+- Produces: `all_passages(extracted_dir: str) -> list[dict]` — Passagen beider Bücher, je mit zusätzlichem `"book"`-Key.
+- Produces: `_clean_lines(text: str)` — Generator über Zeilen ohne Seiten-Möblierung (intern, aber getestet).
 
 - [ ] **Step 1: Failing test schreiben**
 
@@ -143,83 +146,106 @@ Zerlegt den extrahierten Buchtext in Kapitel-Chunks — die vom Nutzer gewählte
 # scripts/nmds-layout/tests/test_book_chunks.py
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
-from book_chunks import chapters
+from book_chunks import passages, _clean_lines
 
-SAMPLE = """Vorwort ohne Nummer, wird ignoriert.
-1 Einstimmung
-Erster Rumpf.
-1.1 Das öffentliche Geheimnis
-Zweiter Rumpf über Wahrnehmung.
-1.1.1 Warten auf den Knoten
-Dritter Rumpf über Motivation und Sollwert.
-2 Nächstes Kapitel
-Vierter Rumpf.
+SAMPLE = """13.01.2014 14:59:54
+Erster Absatz über Wahrnehmung und Farbe.
+00 Grundkurs Psychologie (Bischof).indb 5
+
+Zweiter Absatz über Motivation und Sollwert.
+
+123
+Dritter Absatz über Regelkreise.
 """
 
 
-def test_findet_nummerierte_kapitel():
-    chs = chapters(SAMPLE)
-    nums = [c["num"] for c in chs]
-    assert nums == ["1", "1.1", "1.1.1", "2"], nums
+def test_entfernt_seiten_moeblierung():
+    joined = "\n".join(_clean_lines(SAMPLE))
+    assert "13.01.2014" not in joined          # Export-Timestamp weg
+    assert ".indb" not in joined               # Footer weg
+    assert "\n123\n" not in "\n" + joined + "\n"  # reine Seitenzahl weg
+    assert "Wahrnehmung" in joined             # echter Text bleibt
 
 
-def test_titel_und_text():
-    chs = {c["num"]: c for c in chapters(SAMPLE)}
-    assert chs["1.1"]["title"] == "Das öffentliche Geheimnis"
-    assert "Wahrnehmung" in chs["1.1"]["text"]
-    # Text endet vor der nächsten Überschrift
-    assert "Motivation" not in chs["1.1"]["text"]
+def test_fenstert_nach_wortzahl():
+    text = "\n\n".join(f"Absatz {i} " + "wort " * 60 for i in range(5))
+    chs = passages(text, target_words=100)
+    assert len(chs) >= 2                        # 5×~61 Wörter -> mehrere Fenster
+    assert all(c["text"].strip() for c in chs)
 
 
-def test_ignoriert_unnummerierte_zeilen():
-    chs = chapters(SAMPLE)
-    assert all(c["title"] for c in chs)
-    assert "Vorwort" not in " ".join(c["num"] for c in chs)
+def test_kurzer_text_ein_chunk():
+    chs = passages("Nur ein kurzer Absatz.", target_words=200)
+    assert len(chs) == 1 and "kurzer" in chs[0]["text"]
 
 
 if __name__ == "__main__":
-    test_findet_nummerierte_kapitel()
-    test_titel_und_text()
-    test_ignoriert_unnummerierte_zeilen()
+    test_entfernt_seiten_moeblierung()
+    test_fenstert_nach_wortzahl()
+    test_kurzer_text_ein_chunk()
     print("OK test_book_chunks")
 ```
 
 - [ ] **Step 2: Test ausführen (rot)**
 
 Run: `cd scripts/nmds-layout && python3 -m pytest tests/test_book_chunks.py -v`
-Expected: FAIL (`ModuleNotFoundError: book_chunks`).
+Expected: FAIL (`ModuleNotFoundError: book_chunks` bzw. `ImportError: passages`).
 
 - [ ] **Step 3: Implementierung schreiben**
 
 ```python
 # scripts/nmds-layout/book_chunks.py
-"""Zerlegt extrahierten Buchtext in Kapitel-Chunks (Retrieval-Einheit).
-Überschrift = Zeilenanfang 'N[.N…] Titel' (Ziffern-Nummerierung, Titel nicht leer)."""
+"""Zerlegt extrahierten Buchtext in Passagen-Fenster (~target_words) an
+Absatzgrenzen — die Retrieval-Einheit für die Konzept-Zuordnung.
+Seiten-Möblierung (Export-Timestamp, .indb-Footer, reine Seitenzahlen,
+Form-Feed) wird vor dem Fenstern entfernt, damit sie den TF-IDF-Corpus nicht
+verrauscht."""
 import os, re, glob
 
-_HEAD = re.compile(r'^(\d+(?:\.\d+)*)\s+(\S.*\S|\S)\s*$')
+# Pro Seite wiederkehrendes Rauschen aus dem PDF-Export.
+_NOISE = [
+    re.compile(r'^\s*\d{1,2}\.\d{1,2}\.\d{4}\s+\d{1,2}:\d{2}(:\d{2})?\s*$'),  # 13.01.2014 14:59:54
+    re.compile(r'\.indb\b'),                                                  # …indb 123 Footer
+    re.compile(r'^\s*\d{1,4}\s*$'),                                           # reine Seitenzahl
+    re.compile(r'^\s*\f\s*$'),                                                # Form-Feed
+]
 
 
-def chapters(text):
-    lines = text.split("\n")
-    heads = []  # (line_index, num, title)
-    for i, l in enumerate(lines):
-        m = _HEAD.match(l)
-        if m:
-            heads.append((i, m.group(1), m.group(2).strip()))
-    out = []
-    for idx, (li, num, title) in enumerate(heads):
-        end = heads[idx + 1][0] if idx + 1 < len(heads) else len(lines)
-        body = "\n".join(lines[li + 1:end]).strip()
-        out.append({"num": num, "title": title, "text": body})
+def _clean_lines(text):
+    for raw in text.replace("\f", "\n").split("\n"):
+        if any(p.search(raw) for p in _NOISE):
+            continue
+        yield raw
+
+
+def _paragraphs(text):
+    para, buf = [], []
+    for line in _clean_lines(text):
+        if line.strip():
+            buf.append(line.strip())
+        elif buf:
+            para.append(" ".join(buf)); buf = []
+    if buf:
+        para.append(" ".join(buf))
+    return para
+
+
+def passages(text, target_words=200):
+    out, buf, wc = [], [], 0
+    for p in _paragraphs(text):
+        buf.append(p); wc += len(p.split())
+        if wc >= target_words:
+            out.append({"text": "\n\n".join(buf)}); buf, wc = [], 0
+    if buf:
+        out.append({"text": "\n\n".join(buf)})
     return out
 
 
-def all_chunks(extracted_dir):
+def all_passages(extracted_dir):
     out = []
     for path in sorted(glob.glob(os.path.join(extracted_dir, "*.txt"))):
         book = os.path.splitext(os.path.basename(path))[0]
-        for c in chapters(open(path, encoding="utf-8").read()):
+        for c in passages(open(path, encoding="utf-8").read()):
             out.append({**c, "book": book})
     return out
 ```
@@ -229,16 +255,16 @@ def all_chunks(extracted_dir):
 Run: `cd scripts/nmds-layout && python3 -m pytest tests/test_book_chunks.py -v`
 Expected: PASS (3 Tests).
 
-- [ ] **Step 5: Reale Chunk-Zahl prüfen (informativ)**
+- [ ] **Step 5: Reale Passagen prüfen (Gate)**
 
-Run: `cd scripts/nmds-layout && python3 -c "from book_chunks import all_chunks; import os; d=os.path.join('..','..','Bibliothek','Allgemeine Psychologie Materials','_extracted'); c=all_chunks(d); print(len(c), 'Chunks'); print([x['num'] for x in c[:8]])"`
-Expected: einige hundert Chunks, Nummern wie `1`, `1.1`, `1.1.1`.
+Run: `cd scripts/nmds-layout && python3 -c "from book_chunks import all_passages; import os; d=os.path.join('..','..','Bibliothek','Allgemeine Psychologie Materials','_extracted'); c=all_passages(d); ws=[len(x['text'].split()) for x in c]; print(len(c),'Passagen; Ø Wörter=%d'%(sum(ws)//len(ws))); j=' '.join(x['text'] for x in c[:50]); print('kein Timestamp:', '13.01.2014' not in j)"`
+Expected: einige hundert bis wenige tausend Passagen, Ø ~200 Wörter, „kein Timestamp: True".
 
 - [ ] **Step 6: Commit**
 
 ```bash
 git add scripts/nmds-layout/book_chunks.py scripts/nmds-layout/tests/test_book_chunks.py
-git commit -m "psyche: Kapitel-Chunker für Bischof-Bücher (TDD)"
+git commit -m "psyche: Passagen-Chunker für Bischof-Bücher (TDD, Pivot von Kapitel-Chunks)"
 ```
 
 ---
@@ -261,9 +287,9 @@ Hybrid: automatischer Konzept-Vorschlag aus den Chunks, dann kuratierte Endliste
 
 - [ ] **Step 1: Auto-Vorschlag erzeugen**
 
-Konzept-Extraktion über die Kapitel-Chunks (Titel + Textanfänge). Nutze einen Extraktions-Prompt (LLM) mit exakt dieser Aufgabe:
+Konzept-Extraktion über die Passagen-Chunks (Stichprobe von Passagen-Texten aus beiden Büchern). Nutze einen Extraktions-Prompt (LLM) mit exakt dieser Aufgabe:
 
-> „Du erhältst die Kapitelstruktur (Nummern, Titel, Textauszüge) aus Norbert Bischofs *Grundbuch* und *Theoretische Psychologie*. Extrahiere 40–60 zentrale, benannte Konzepte seiner Theorie (z. B. Zürcher Modell der sozialen Motivation, Sicherheitssystem, Erregungssystem, Autonomiesystem, Sollwert-Regulation, appetitiv/aversiv, Coping, Prägung, Objektivierung, …). Gib JSON zurück: Liste von `{slug, title, cluster, terms}`. `cluster` ist eines von: p1=Wissenschaft & Erkenntnis, p2=Motivation (Zürcher Modell), p3=Kognition & Wahrnehmung, p4=Emotion & Affekt, p5=System & Kybernetik. `terms` = 3–8 deutsche Suchbegriffe/Aliase, unter denen das Konzept im Buchtext vorkommt. Keine erfundenen Konzepte; nur was bei Bischof vorkommt."
+> „Du erhältst Textpassagen aus Norbert Bischofs *Grundbuch* und *Theoretische Psychologie*. Extrahiere 40–60 zentrale, benannte Konzepte seiner Theorie (z. B. Zürcher Modell der sozialen Motivation, Sicherheitssystem, Erregungssystem, Autonomiesystem, Sollwert-Regulation, appetitiv/aversiv, Coping, Prägung, Objektivierung, …). Gib JSON zurück: Liste von `{slug, title, cluster, terms}`. `cluster` ist eines von: p1=Wissenschaft & Erkenntnis, p2=Motivation (Zürcher Modell), p3=Kognition & Wahrnehmung, p4=Emotion & Affekt, p5=System & Kybernetik. `terms` = 3–8 deutsche Suchbegriffe/Aliase, unter denen das Konzept im Buchtext vorkommt. Keine erfundenen Konzepte; nur was bei Bischof vorkommt."
 
 Speichere die JSON-Antwort nach `_extracted/_concepts_draft.json`.
 
@@ -329,10 +355,10 @@ Ordnet jedem Konzept die inhaltlich passenden **Kapitel-Chunks** zu und schreibt
 - Output (gitignored): `Bibliothek/Allgemeine Psychologie/<seq>-<slug>/{quelle.md,meta.json}`
 
 **Interfaces:**
-- Consumes: `psyche_manifest.NODES` (mit `terms`), `book_chunks.all_chunks`, `extract_corpus.folder_name`.
-- Produces: `score_chunks(terms: list[str], chunks: list[dict]) -> list[tuple[int, float]]` — (chunk_index, score) absteigend, Score = Summe der (case-insensitiven) Term-Vorkommen in `title`(×3) + `text`, längen-normiert (pro 1000 Wörter).
+- Consumes: `psyche_manifest.NODES` (mit `terms`), `book_chunks.all_passages`, `extract_corpus.folder_name`.
+- Produces: `score_chunks(terms: list[str], chunks: list[dict]) -> list[tuple[int, float]]` — (chunk_index, score) absteigend, Score = Summe der (case-insensitiven) Term-Vorkommen in `text`, längen-normiert (pro 1000 Wörter). (Chunks haben nur noch `text`/`book`, keinen Titel.)
 - Produces: `retrieve(nodes, chunks, top_k=6) -> dict[str, list[int]]` — je slug die Top-K Chunk-Indizes (Score>0).
-- Produces: `write_folders(bib_dir, nodes, chunks, assign)` — schreibt `quelle.md` (konkatenierte Chunk-Texte) + `meta.json` (`title`, `summary`-Platzhalter, `status:"stub"`).
+- Produces: `write_folders(bib_dir, nodes, chunks, assign)` — schreibt `quelle.md` (konkatenierte Passagen-Texte) + `meta.json` (`title`, `summary`-Platzhalter, `status:"stub"`).
 
 - [ ] **Step 1: Failing test schreiben**
 
@@ -343,13 +369,13 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 from retrieve_passages import score_chunks, retrieve
 
 CHUNKS = [
-    {"num": "1.1", "title": "Sollwert und Regelkreis", "text": "Der Sollwert steuert den Regelkreis. Sollwert überall."},
-    {"num": "2.1", "title": "Wahrnehmung", "text": "Farbe und Form der Wahrnehmung."},
-    {"num": "3.1", "title": "Motivation", "text": "Ein Satz ohne Treffer hier."},
+    {"text": "Der Sollwert steuert den Regelkreis. Sollwert überall.", "book": "b"},
+    {"text": "Farbe und Form der Wahrnehmung.", "book": "b"},
+    {"text": "Ein Satz ohne Treffer hier.", "book": "b"},
 ]
 
 
-def test_score_gewichtet_titel_und_normiert():
+def test_score_normiert():
     sc = dict(score_chunks(["sollwert", "regelkreis"], CHUNKS))
     assert sc[0] > sc[1], sc          # Chunk 0 trifft, Chunk 1 nicht
     assert sc[2] == 0.0
@@ -363,7 +389,7 @@ def test_retrieve_top_k_nur_positive():
 
 
 if __name__ == "__main__":
-    test_score_gewichtet_titel_und_normiert()
+    test_score_normiert()
     test_retrieve_top_k_nur_positive()
     print("OK test_retrieve")
 ```
@@ -390,7 +416,7 @@ def score_chunks(terms, chunks):
     out = []
     for i, c in enumerate(chunks):
         words = max(1, len(c["text"].split()))
-        raw = sum(3 * _count(t, c["title"]) + _count(t, c["text"]) for t in terms)
+        raw = sum(_count(t, c["text"]) for t in terms)
         out.append((i, raw / words * 1000.0))
     out.sort(key=lambda p: (-p[1], p[0]))
     return out
@@ -411,7 +437,7 @@ def write_folders(bib_dir, nodes, chunks, assign):
         d = os.path.join(bib_dir, folder_name(nd))
         os.makedirs(d, exist_ok=True)
         idxs = assign[nd["slug"]]
-        body = "\n\n".join(f"## {chunks[i]['num']} {chunks[i]['title']}\n{chunks[i]['text']}"
+        body = "\n\n".join(f"## {chunks[i]['book']} — Passage {i}\n{chunks[i]['text']}"
                            for i in idxs)
         open(os.path.join(d, "quelle.md"), "w", encoding="utf-8").write(body)
         meta = {"title": nd["title"],
@@ -425,12 +451,12 @@ def write_folders(bib_dir, nodes, chunks, assign):
 
 if __name__ == "__main__":
     from psyche_manifest import NODES
-    from book_chunks import all_chunks
+    from book_chunks import all_passages
     HERE = os.path.dirname(os.path.abspath(__file__))
     ROOT = os.path.normpath(os.path.join(HERE, "..", ".."))
     ext = os.path.join(ROOT, "Bibliothek", "Allgemeine Psychologie Materials", "_extracted")
     bib = os.path.join(ROOT, "Bibliothek", "Allgemeine Psychologie")
-    chunks = all_chunks(ext)
+    chunks = all_passages(ext)
     assign = retrieve(NODES, chunks)
     n = write_folders(bib, NODES, chunks, assign)
     empty = [s for s, v in assign.items() if not v]

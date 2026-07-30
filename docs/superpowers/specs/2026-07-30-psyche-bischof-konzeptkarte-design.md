@@ -152,8 +152,11 @@ mehr Passagen pro Knoten, kein Neuentwurf.
 
 ## Entschiedene Detailfragen
 
-- **Retrieval-Granularität:** Kapitel-Chunks als Retrieval-Einheit (die Kapitel/
-  Unterkapitel der hierarchischen Nummerierung, nicht Einzelabsätze).
+- **Retrieval-Granularität:** ursprünglich Kapitel-Chunks gewählt; bei der Umsetzung
+  (Task 2) auf **Passagen-Chunks** (~200-Wort-Fenster an Absatzgrenzen) umgestellt,
+  weil die extrahierten PDFs keine zuverlässig parsbaren Kapitel liefern (Nummer/Titel
+  getrennt, zwei Buchformate, ToC/Fußnoten-Rauschen) und die Chunk-Labels ohnehin nicht
+  live gehen. Sauberer Passagentext dient dem TF-IDF-Ziel besser. Siehe Plan-Pivot-Notiz.
 - **Cluster-Farbpalette:** wie vorgeschlagen (~4–6 thematische Cluster, eigene
   Labels/Farben aus `reference/design-tokens.md`), Feinschliff bei der Kuration.
 - **`/psyche`-Einleitungstext:** keiner — die Seite trägt nur die Konstellation
