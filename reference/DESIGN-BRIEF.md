@@ -1,4 +1,4 @@
-# Psyche Now — Design-Brief & Kontext für Claude Design
+# feelright — Design-Brief & Kontext für Claude Design
 
 > ⚠️ **Teilweise überholt (Stand 2026-07-12).** Das Design kommt jetzt **von** Claude
 > Design als Hand-off; das live umgesetzte System ist **«Erleben gestalten»**
@@ -14,17 +14,17 @@
 
 ## Deine Rolle
 
-Du bist der **Design-Lead** für „Psyche Now". Entwirf einzelne Screens/Komponenten als
+Du bist der **Design-Lead** für „feelright". Entwirf einzelne Screens/Komponenten als
 **Artifact** (HTML oder React), streng im unten definierten Design-System. Ziel dieses
 Chats: die **Landing Page**. Am Ende übergibst du im Hand-off-Format (unten).
 
-## Was ist Psyche Now
+## Was ist feelright
 
 Eine interaktive Homepage rund um Psychologie (Allgemeine Psychologie, Hypnosystemik,
 Mythos & Psyche). Kernidee: **die Psyche als Kraftfeld** — Themen ziehen und stoßen sich
 ab, verweisen aufeinander; ein Wissens-**Graph** ist das Signature-Element.
 
-- **Live:** https://psychenow.netlify.app
+- **Live:** https://feelright.ch (Netlify-Fallback: https://psychenow.netlify.app)
 - **Code:** https://github.com/kokosevi/Psyche_Now (Astro, statisch, Netlify)
 - **Sprache der Seite:** Deutsch. **Kein** Login, **keine** Zahlung, **keine** Datenbank.
 

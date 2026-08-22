@@ -1,4 +1,4 @@
-# Psyche_Now
+# feelright
 
 Eine interaktive Homepage rund um Psychologie (u. a. Allgemeine Psychologie,
 Hypnosystemik) mit Selbsttests, interaktiven Diagrammen, Scroll-Storytelling,

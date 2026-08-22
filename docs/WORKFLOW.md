@@ -1,4 +1,4 @@
-# Workflow: Psyche_Now Homepage
+# Workflow: feelright Homepage
 
 Dieses Dokument beschreibt den kompletten Weg von der Idee bis zur veröffentlichten
 Seite — und vor allem: **wann du in Claude Design arbeitest, wann in Claude Code**,
@@ -46,7 +46,7 @@ Wenn es *funktionieren* oder *deployt* werden soll → Code.
 ## Ordnerstruktur
 
 ```
-Psyche_Now/                    ← Git-Repo-Wurzel
+feelright/                     ← Git-Repo-Wurzel (lokaler Ordner heisst noch Psyche_Now)
 ├── site/                      ← Das Astro-Projekt (wird beim Scaffold angelegt)
 │   └── src/content/themen/    ← Deine Inhalte: 1 Markdown = 1 Thema = 1 Graph-Knoten
 ├── content/drafts/            ← Roh-Notizen & Entwürfe, bevor sie zu Themen werden
@@ -105,7 +105,7 @@ Der Hand-off läuft in **zwei Richtungen**:
 5. Umami-Konto anlegen und Tracking-Snippet einbauen.
 
 > Status: **Schritte 1–5 erledigt + erster Design-Hand-off umgesetzt.**
-> Live: https://psychenow.netlify.app · Repo: https://github.com/kokosevi/Psyche_Now
+> Live: https://feelright.ch (Netlify-Fallback: https://psychenow.netlify.app) · Repo: https://github.com/kokosevi/Psyche_Now
 > (public, `main`, Auto-Deploy). Umami aktiv (bei gesetzten `PUBLIC_UMAMI_*`).
 > Aktuelles Design: **«Erleben gestalten»** (4 Seiten: Landing + Psyche/Herausforderungen/
 > Erleben) aus `design/handoffs/2026-07-12-erleben-gestalten/`. Das frühere «Kraftfeld»-
