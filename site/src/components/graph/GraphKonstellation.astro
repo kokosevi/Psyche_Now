@@ -89,7 +89,7 @@ const goldHoverCss = graph.nodes
     position: absolute; transform: translate(-50%, -50%);
     width: 12px; height: 12px;
     text-decoration: none; color: var(--ink);
-    transition: transform .18s var(--ease);
+    transition: transform .38s var(--ease);
   }
   .node .dot { display: block; width: 12px; height: 12px; border-radius: 50%; background: var(--c); border: 2px solid var(--paper); box-shadow: var(--shadow-md); }
   .node .label {
@@ -99,7 +99,7 @@ const goldHoverCss = graph.nodes
     /* Papier-Halo: bleibt lesbar, auch wenn Labels sich in dichten Clustern überlappen */
     text-shadow: 0 0 3px var(--paper), 0 0 3px var(--paper), 0 0 3px var(--paper), 0 0 6px var(--paper);
   }
-  .node:hover, .node:focus-visible { transform: translate(-50%, -50%) translateY(-4px) scale(1.15); z-index: 4; }
+  .node:hover, .node:focus-visible { transform: translate(-50%, -50%) translateY(-6px) scale(1.6); z-index: 4; }
   .node:hover .label, .node:focus-visible .label { text-shadow: none; }
   @media (max-width: 720px) { .node .label { font-size: 12px; width: 78px; } }
   @media (prefers-reduced-motion: reduce) {

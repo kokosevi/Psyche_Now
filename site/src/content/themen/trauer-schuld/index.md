@@ -3,8 +3,8 @@ title: "Trauer & Schuld"
 cluster: k4
 summary: "Trauer und Schuld als dynamische, selbsterzeugte Prozesse mit wichtiger Funktion — und wie sich damit hypnosystemisch arbeiten lässt."
 related: [grundlagenmodell, loesung-aller-probleme, restriktionen]
-x: 78.35
-y: 79.72
+x: 72.95
+y: 75.36
 status: full
 ---
 

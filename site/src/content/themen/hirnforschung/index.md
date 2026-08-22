@@ -3,8 +3,8 @@ title: "Erkenntnisse der Hirnforschung"
 cluster: k1
 summary: "Das Gehirn arbeitet zustandsabhängig — welche Netze aktiv sind, bestimmt das Erleben."
 related: [schmerzen]
-x: 38.84
-y: 43.97
+x: 42.63
+y: 45.89
 status: stub
 ---
 

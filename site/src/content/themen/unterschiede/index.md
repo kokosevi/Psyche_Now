@@ -3,8 +3,8 @@ title: "Fokus auf Unterschiede"
 cluster: k3
 summary: "Unterschiede sichtbar machen, die einen Unterschied machen."
 related: [netzwerk-modell]
-x: 21.3
-y: 80.14
+x: 26.69
+y: 75.47
 status: stub
 ---
 

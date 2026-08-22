@@ -3,8 +3,8 @@ title: "Depressionen"
 cluster: k4
 summary: "Depression nicht als statische Diagnose, sondern als unwillkürlich selbsterzeugter Prozess — mit den entsprechenden therapeutischen Ansatzpunkten."
 related: [diagnosen, haltung, trance-transparenz]
-x: 72.71
-y: 72.25
+x: 66.59
+y: 68.37
 status: full
 ---
 

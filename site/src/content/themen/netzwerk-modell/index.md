@@ -3,8 +3,8 @@ title: "Das Netzwerk-Modell"
 cluster: k1
 summary: "Psychisches Erleben entsteht aus dem Zusammenspiel vieler innerer Seiten in einem Netzwerk."
 related: [entscheidungen, fallanalyse-ungewisses, panik, trauma, unterschiede]
-x: 25.49
-y: 31.76
+x: 33.12
+y: 38.31
 status: full
 ---
 

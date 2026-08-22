@@ -3,8 +3,8 @@ title: "Innere Weisheit"
 cluster: k3
 summary: "Der Zugang zu einem inneren Wissen, das mehr weiß als der Verstand."
 related: [sag-mal-gunther]
-x: 31.81
-y: 82.32
+x: 38.53
+y: 73.14
 status: full
 ---
 

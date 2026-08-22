@@ -3,8 +3,8 @@ title: "Weitere Interventionen"
 cluster: k3
 summary: "Ein Werkzeugkasten hypnosystemischer Interventionen."
 related: [schmerzen]
-x: 20.71
-y: 91.04
+x: 25.4
+y: 85.0
 status: stub
 ---
 

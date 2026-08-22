@@ -14,7 +14,9 @@ const graph = await buildGraph();
 <style>
   /* Hover/Fokus auf einen Knoten hebt den verbundenen Teilgraph hervor,
      der Rest tritt zurück. Keine Drift-Animation. */
-  .erleben-stage :global(.konstellation.dim .node) { opacity: .25; transition: opacity .2s var(--ease); }
+  /* Transform-Transition MUSS erhalten bleiben, sonst springt der gehoverte Knoten
+     beim Vergrössern sofort (nur das Zurück-Verkleinern würde animieren). */
+  .erleben-stage :global(.konstellation.dim .node) { opacity: .25; transition: opacity .2s var(--ease), transform .38s var(--ease); }
   .erleben-stage :global(.konstellation.dim .node.hot) { opacity: 1; }
   .erleben-stage :global(.konstellation.dim line) { stroke: var(--hairline); }
   .erleben-stage :global(.konstellation.dim line.hot) { stroke: var(--sun-deep); stroke-width: .9; }

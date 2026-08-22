@@ -3,8 +3,8 @@ title: "Trauma"
 cluster: k4
 summary: "Trauma wirkt nicht, weil es geschah, sondern weil es heute wieder ins Zentrum rückt — ein Verständnis jenseits linear-kausaler Ursache-Wirkung."
 related: [auftragsklaerung, erleben-erzeugen, haltung, netzwerk-modell, potenzialhypothese, steuerposition]
-x: 71.93
-y: 78.71
+x: 66.34
+y: 74.86
 status: full
 ---
 

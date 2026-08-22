@@ -21,11 +21,20 @@ from manifest import NODES as _ERLEBEN_NODES
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.normpath(os.path.join(HERE, "..", ".."))
 
-# Vier Quadranten-Regionen (x0, x1, y0, y1) — identisch für beide Räume.
-_QUADRANTS = lambda a, b, c, d: {
-    a: (6, 46, 8, 46), b: (54, 94, 8, 46),
-    c: (6, 46, 54, 92), d: (54, 94, 54, 92),
-}
+# Vier Quadranten-Regionen (x0, x1, y0, y1).
+# Parameter: mx/my = Außenrand, gx/gy = Lücke zwischen den Rechtecken (in %).
+# Kleinere Ränder + kleinere Lücke => größere, näher beieinander liegende Rechtecke.
+def _quadrants(a, b, c, d, mx=6, my=8, gx=8, gy=8):
+    xl0, xl1 = mx, 50 - gx / 2
+    xr0, xr1 = 50 + gx / 2, 100 - mx
+    yt0, yt1 = my, 50 - gy / 2
+    yb0, yb1 = 50 + gy / 2, 100 - my
+    return {a: (xl0, xl1, yt0, yt1), b: (xr0, xr1, yt0, yt1),
+            c: (xl0, xl1, yb0, yb1), d: (xr0, xr1, yb0, yb1)}
+
+
+# Defaults reproduzieren die bisherigen Werte (byte-identisch für Herausforderungen).
+_QUADRANTS = lambda a, b, c, d: _quadrants(a, b, c, d)
 
 
 def _grid_regions(ids, cols=3):
@@ -59,7 +68,9 @@ _ERLEBEN = {
     "themen_dir": os.path.join(ROOT, "site", "src", "content", "themen"),
     "nodes": _ERLEBEN_NODES,
     "clusters": ("k1", "k2", "k3", "k4"),
-    "regions": _QUADRANTS("k1", "k2", "k3", "k4"),
+    # Kompaktere Karte: große Außenränder ziehen die Cluster zur Mitte, kleine
+    # Lücke dazwischen -> deutlich weniger Leerraum zwischen den Rechtecken.
+    "regions": _quadrants("k1", "k2", "k3", "k4", mx=15, my=15, gx=6, gy=6),
     "out_suffix": "",
     "edges": _EDGES_ERLEBEN,
 }

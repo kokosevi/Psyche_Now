@@ -3,8 +3,8 @@ title: "Hypnosystemischer Ansatz auf den Punkt"
 cluster: k1
 summary: "Die Verbindung von Hypnotherapie und systemischem Denken in einem Satz."
 related: [abgrenzung]
-x: 17.94
-y: 20.59
+x: 22.44
+y: 23.09
 status: stub
 ---
 
