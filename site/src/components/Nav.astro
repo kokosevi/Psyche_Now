@@ -9,10 +9,7 @@ const { current } = Astro.props;
 
 <header class="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="/" aria-label="Startseite">
-      <img src="/bilder/logo.png" alt="" />
-      <span>Erleben gestalten</span>
-    </a>
+    <a class="marke" href="/">Erleben gestalten</a>
     <nav class="nav-links" aria-label="Hauptnavigation">
       {PARTS.map((p) => (
         <a href={p.href} aria-current={current === p.id ? 'page' : undefined}>{p.nav}</a>

@@ -25,6 +25,8 @@
   /* Schrift */
   --font-sans: 'Mulish', ui-sans-serif, system-ui, sans-serif;
   --font-hand: 'Amatic SC', cursive;
+  --font-serif: 'Spectral', Georgia, serif;
+  --font-grotesk: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
 
   /* Bewegung */
   --ease: cubic-bezier(.22, 1, .36, 1);
@@ -54,17 +56,17 @@ a:hover { color: var(--sun-deep); }
 :focus-visible {
   outline: 3px solid var(--sun-deep);
   outline-offset: 4px;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
-.wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
 
 .skip-link {
-  position: absolute; left: -9999px; top: 8px;
-  background: var(--ink); color: var(--paper); padding: 8px 16px;
-  border-radius: 8px; font-weight: 700; z-index: 100; text-decoration: none;
+  position: absolute; left: -9999px; top: 0;
+  background: var(--sun); color: var(--ink); padding: 10px 16px;
+  font-family: var(--font-grotesk); z-index: 100; text-decoration: none;
 }
-.skip-link:focus { left: 16px; }
+.skip-link:focus { left: 0; }
 
 /* ---------- Navigation ---------- */
 .nav {
@@ -81,30 +83,22 @@ a:hover { color: var(--sun-deep); }
   gap: 24px;
   min-height: 72px;
 }
-.brand {
+.marke {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 19px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.nav-links {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
+  gap: 26px;
+  font-family: var(--font-grotesk);
+  font-size: 14px;
 }
-.brand img { height: 44px; width: 44px; }
-.brand span {
-  font-weight: 900;
-  font-size: 15px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-}
-.nav-links { display: flex; gap: 8px; }
-.nav-links a {
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 15px;
-  padding: 10px 14px;
-  border-radius: 999px;
-  transition: background .18s var(--ease), color .18s var(--ease);
-}
-.nav-links a:hover { background: var(--paper-2); color: var(--ink); }
-.nav-links a[aria-current="page"] { background: var(--sun); color: var(--ink); }
+.nav-links a { text-decoration: none; color: var(--ink-2); }
+.nav-links a:hover { color: var(--ink); }
+.nav-links a[aria-current="page"] { color: var(--ink); font-weight: 500; }
 
 /* ---------- Hand-Strich + Label (unter den Grafiken) ---------- */
 .teil {
@@ -178,16 +172,21 @@ a:hover { color: var(--sun-deep); }
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
-  padding: 28px 0;
-  font-size: 14px;
-  color: var(--ink-3);
+  padding-block: 24px;
+  font-family: var(--font-grotesk);
+  font-size: 13px;
+  /* Abweichend von der Vorlage (--ink-3): 13px auf --paper-2 ergäbe 3.68:1 —
+     WCAG-AA-Kontrastfehler. --ink-2 hält den Look und besteht. */
+  color: var(--ink-2);
 }
 .footer-in nav { display: flex; gap: 18px; }
-.footer-in a { color: var(--ink-3); text-decoration: none; }
+.footer-in a { color: var(--ink-2); text-decoration: none; }
 .footer-in a:hover { color: var(--ink); }
 
 /* ---------- Responsiv ---------- */
 @media (max-width: 720px) {
-  .nav-links a { padding: 8px 10px; font-size: 14px; }
-  .brand span { display: none; }
+  /* Wortmarke + drei Links passen nicht nebeneinander in schmale Viewports:
+     umbrechen statt horizontal überlaufen (Abnahme: kein horizontales Scrollen). */
+  .nav-in { flex-wrap: wrap; padding: 12px 28px; row-gap: 2px; min-height: 0; }
+  .nav-links { gap: 14px; font-size: 13px; flex-wrap: wrap; }
 }
