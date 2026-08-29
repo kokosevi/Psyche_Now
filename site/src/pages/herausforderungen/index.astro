@@ -8,8 +8,7 @@ const part = PARTS.find((p) => p.id === 'herausforderungen')!;
 const graph = await buildGraph('herausforderungen', HERAUS_CLUSTER_META);
 ---
 <Site title={part.label} current="herausforderungen">
-  <section class="pagehead wrap">
-    <p class="overline">{part.overline}</p>
+  <section class="pagehead pagehead-kompakt wrap">
     <h1>{part.label}</h1>
     <svg class="strich" viewBox="0 0 220 14" aria-hidden="true" focusable="false">
       <path d={part.strich} fill="none" stroke-width="4" stroke-linecap="round"></path>
@@ -18,6 +17,7 @@ const graph = await buildGraph('herausforderungen', HERAUS_CLUSTER_META);
   <section class="wrap karte-stage">
     <GraphKonstellation
       graph={graph}
+      regionStyle="quadranten"
       basePath="/herausforderungen/thema"
       ariaLabel="Karte der Herausforderungen: Woran Glück scheitert"
     />
@@ -36,6 +36,13 @@ const graph = await buildGraph('herausforderungen', HERAUS_CLUSTER_META);
 </Site>
 
 <style>
+  /* Flachere Karte: möglichst viel davon soll ohne Scrollen sichtbar sein. */
+  .karte-stage :global(.konstellation) { aspect-ratio: 1.9; }
+  /* Schmale Viewports: flache Karte würde die Knoten zu stark stauchen. */
+  @media (max-width: 720px) {
+    .karte-stage :global(.konstellation) { aspect-ratio: 1.1; }
+  }
+
   /* Hover/Fokus auf einen Knoten hebt den verbundenen Teilgraph hervor,
      der Rest tritt zurück. (Spiegel der Erleben-Karte.) */
   .karte-stage :global(.konstellation.dim .node) { opacity: .25; transition: opacity .2s var(--ease); }

@@ -12,9 +12,16 @@ import { dirname, join } from 'node:path';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 let html = '';
 
+let herausHtml = '';
+let erlebenHtml = '';
+let psycheHtml = '';
+
 beforeAll(() => {
   execSync('npx astro build', { cwd: root, stdio: 'pipe' });
   html = readFileSync(join(root, 'dist', 'index.html'), 'utf8');
+  herausHtml = readFileSync(join(root, 'dist', 'herausforderungen', 'index.html'), 'utf8');
+  erlebenHtml = readFileSync(join(root, 'dist', 'erleben', 'index.html'), 'utf8');
+  psycheHtml = readFileSync(join(root, 'dist', 'psyche', 'index.html'), 'utf8');
 });
 
 describe('Landingpage — Hero', () => {
@@ -77,5 +84,46 @@ describe('Header & Footer (sitewide neu)', () => {
   it('Footer mit © und den drei Teil-Links', () => {
     expect(html).toContain('© 2026 Erleben gestalten');
     expect(html).toMatch(/<footer[\s\S]*href="\/psyche"[\s\S]*href="\/herausforderungen"[\s\S]*href="\/erleben"[\s\S]*<\/footer>/);
+  });
+});
+
+describe('Herausforderungen-Karte — Quadranten statt Inseln', () => {
+  it('vier randlose Quadranten-Felder (0/50 in beiden Achsen)', () => {
+    const quads = herausHtml.match(/<div class="cluster-quadrant"/g) ?? [];
+    expect(quads).toHaveLength(4);
+    for (const pos of ['left:0%; top:0%', 'left:50%; top:0%', 'left:0%; top:50%', 'left:50%; top:50%']) {
+      expect(herausHtml).toContain(pos);
+    }
+  });
+
+  it('alle vier Cluster-Labels in den Feldern, keine Insel-Boxen mehr', () => {
+    for (const label of ['Innere Fallen', 'Beziehung &amp; Vergleich', 'Sinn &amp; Werte', 'Reizwelt &amp; Struktur']) {
+      expect(herausHtml).toContain(label);
+    }
+    expect(herausHtml).not.toContain('<div class="cluster-region"');
+  });
+
+  it('kompakter Kopf auf allen drei Karten-Seiten: keine Overlines, Titel vorhanden', () => {
+    expect(herausHtml).not.toMatch(/>\s*Teil 2\s*</);
+    expect(psycheHtml).not.toMatch(/>\s*Teil 1\s*</);
+    expect(erlebenHtml).toContain('Erleben: Wie Glück gestalten</h1>');
+    for (const html of [herausHtml, psycheHtml, erlebenHtml]) {
+      expect(html).toContain('pagehead pagehead-kompakt');
+    }
+  });
+
+  it('Erleben-Karte hat ebenfalls vier randlose Quadranten', () => {
+    const quads = erlebenHtml.match(/<div class="cluster-quadrant"/g) ?? [];
+    expect(quads).toHaveLength(4);
+    expect(erlebenHtml).not.toContain('<div class="cluster-region"');
+  });
+
+  it('Psyche-Karte: ein Rechteck mit fünf Feldern (Raster), keine Inseln', () => {
+    const fields = psycheHtml.match(/<div class="cluster-quadrant"/g) ?? [];
+    expect(fields).toHaveLength(5);
+    expect(psycheHtml).not.toContain('<div class="cluster-region"');
+    for (const label of ['Wissenschaft &amp; Erkenntnis', 'Motivation (Zürcher Modell)', 'Kognition &amp; Wahrnehmung', 'Emotion &amp; Affekt', 'System &amp; Kybernetik']) {
+      expect(psycheHtml).toContain(label);
+    }
   });
 });

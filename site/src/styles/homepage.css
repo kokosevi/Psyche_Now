@@ -153,12 +153,15 @@ a:hover { color: var(--sun-deep); }
 .pagehead h1 {
   font-family: var(--font-hand);
   font-weight: 700;
-  font-size: clamp(56px, 8vw, 88px);
+  font-size: clamp(44px, 5.5vw, 64px);
   line-height: .95;
   margin: 0;
 }
 .pagehead .strich { width: 240px; height: 16px; margin: 18px auto 0; display: block; }
 .pagehead .strich path { stroke: var(--sun-deep); }
+/* Kompakter Kopf der drei Karten-Seiten: einheitliche Grösse und einheitlicher
+   Abstand zum Karten-Rechteck, keine Overline. */
+.pagehead-kompakt { padding: 28px 0 18px; }
 
 /* ---------- Footer ---------- */
 .footer {
@@ -185,6 +188,7 @@ a:hover { color: var(--sun-deep); }
 
 /* ---------- Responsiv ---------- */
 @media (max-width: 720px) {
+  .pagehead h1 { font-size: clamp(30px, 10.5vw, 44px); }
   /* Wortmarke + drei Links passen nicht nebeneinander in schmale Viewports:
      umbrechen statt horizontal überlaufen (Abnahme: kein horizontales Scrollen). */
   .nav-in { flex-wrap: wrap; padding: 12px 28px; row-gap: 2px; min-height: 0; }

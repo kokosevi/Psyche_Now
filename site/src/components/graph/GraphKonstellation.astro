@@ -1,9 +1,20 @@
 ---
 import type { Graph } from '../../lib/graph';
-interface Props { graph: Graph; showRegions?: boolean; basePath?: string; ariaLabel?: string; }
+interface Props {
+  graph: Graph;
+  showRegions?: boolean;
+  /* 'inseln': Bounding-Box je Cluster (Klenico-artig, mit Lücken).
+     'quadranten': ein randloses 2×2-Raster — vier aneinanderstossende Felder.
+     'raster': wie 'quadranten', aber für beliebig viele Cluster in zwei Zeilen —
+     Spaltengrenzen liegen mittig in den Lücken zwischen den Knotenwolken. */
+  regionStyle?: 'inseln' | 'quadranten' | 'raster';
+  basePath?: string;
+  ariaLabel?: string;
+}
 const {
   graph,
   showRegions = true,
+  regionStyle = 'inseln',
   basePath = '/erleben/thema',
   ariaLabel = 'Wissenskarte der Hypnosystemik',
 } = Astro.props;
@@ -22,6 +33,40 @@ const regions = clusterMeta.map((c) => {
   return { ...c, x0, y0, w: x1 - x0, h: y1 - y0 };
 }).filter((r) => r.w > 0 && r.h > 0);
 
+// Quadranten: jedes Feld füllt ein Viertel des Containers; die Zuordnung folgt der
+// mittleren Knotenposition des Clusters (das Layout ist bereits quadrantenweise).
+const quadrants = clusterMeta.map((c) => {
+  const ns = graph.nodes.filter((n) => n.cluster === c.id);
+  const mx = ns.reduce((s, n) => s + n.x, 0) / ns.length;
+  const my = ns.reduce((s, n) => s + n.y, 0) / ns.length;
+  return { ...c, x0: mx < 50 ? 0 : 50, y0: my < 50 ? 0 : 50, w: 50 };
+});
+
+// Raster (für ≠4 Cluster): zwei Zeilen (geteilt bei y=50), pro Zeile beliebig viele
+// Spalten. Spaltengrenzen liegen mittig in der Lücke zwischen benachbarten
+// Knotenwolken; die Randfelder laufen bis 0 bzw. 100.
+const rasterRows = [0, 1].map((row) =>
+  clusterMeta
+    .flatMap((c) => {
+      const ns = graph.nodes.filter((n) => n.cluster === c.id);
+      if (!ns.length) return [];
+      const xs = ns.map((n) => n.x);
+      const my = ns.reduce((s, n) => s + n.y, 0) / ns.length;
+      return (my < 50 ? 0 : 1) === row
+        ? [{ ...c, minX: Math.min(...xs), maxX: Math.max(...xs) }]
+        : [];
+    })
+    .sort((a, b) => a.minX - b.minX)
+);
+const rasterFields = rasterRows.flatMap((cs, row) => {
+  const bounds = [0, ...cs.slice(1).map((c, i) => (cs[i].maxX + c.minX) / 2), 100];
+  return cs.map((c, i) => ({
+    ...c, x0: bounds[i], w: bounds[i + 1] - bounds[i], y0: row * 50,
+  }));
+});
+// Vertikale Trennlinien = innere Feldgrenzen je Zeile (die horizontale liegt fix bei 50%).
+const rasterDividers = rasterFields.filter((f) => f.x0 > 0).map((f) => ({ x: f.x0, y0: f.y0 }));
+
 // Pro Knoten eine :has()-Regel: Hover/Fokus auf einen Knoten färbt seine Kanten gold.
 const goldHoverCss = graph.nodes
   .map((n) => {
@@ -33,7 +78,7 @@ const goldHoverCss = graph.nodes
   .join('');
 ---
 <div class="konstellation" role="group" aria-label={ariaLabel}>
-  {showRegions && regions.map((r) => (
+  {showRegions && regionStyle === 'inseln' && regions.map((r) => (
     <div
       class="cluster-region"
       style={`left:${r.x0}%; top:${r.y0}%; width:${r.w}%; height:${r.h}%; --c: var(${r.colorVar})`}
@@ -41,6 +86,40 @@ const goldHoverCss = graph.nodes
       <span class="cluster-label">{r.label}</span>
     </div>
   ))}
+  {showRegions && regionStyle === 'quadranten' && (
+    <>
+      {quadrants.map((q) => (
+        <div
+          class="cluster-quadrant"
+          style={`left:${q.x0}%; top:${q.y0}%; --c: var(${q.colorVar})`}
+        >
+          <span class="cluster-label">{q.label}</span>
+        </div>
+      ))}
+      <div class="quadrant-teiler teiler-v" aria-hidden="true"></div>
+      <div class="quadrant-teiler teiler-h" aria-hidden="true"></div>
+    </>
+  )}
+  {showRegions && regionStyle === 'raster' && (
+    <>
+      {rasterFields.map((f) => (
+        <div
+          class="cluster-quadrant"
+          style={`left:${f.x0}%; top:${f.y0}%; width:${f.w}%; --c: var(${f.colorVar})`}
+        >
+          <span class="cluster-label">{f.label}</span>
+        </div>
+      ))}
+      {rasterDividers.map((d) => (
+        <div
+          class="quadrant-teiler teiler-v"
+          style={`left:${d.x}%; top:${d.y0}%; bottom:auto; height:50%`}
+          aria-hidden="true"
+        ></div>
+      ))}
+      <div class="quadrant-teiler teiler-h" aria-hidden="true"></div>
+    </>
+  )}
   <svg class="edges" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
     {graph.edges.map((e) => {
       const a = pos.get(e.a)!; const b = pos.get(e.b)!;
@@ -79,6 +158,22 @@ const goldHoverCss = graph.nodes
     letter-spacing: .05em; text-transform: uppercase; white-space: nowrap;
     color: color-mix(in srgb, var(--c) 72%, var(--ink));
   }
+  /* Randloses 2×2-Raster: vier Felder füllen den Container, Labels innenliegend. */
+  .cluster-quadrant {
+    position: absolute; width: 50%; height: 50%;
+    background: color-mix(in srgb, var(--c) 9%, transparent);
+    pointer-events: none; z-index: 0;
+  }
+  /* Innenliegende Feldtitel deutlich salienter als die Insel-Variante:
+     grösser und dunkler (mehr Ink-Anteil), damit sie die Felder klar benennen. */
+  .cluster-quadrant .cluster-label {
+    top: 12px; left: 16px;
+    font-size: 27px; letter-spacing: .06em;
+    color: color-mix(in srgb, var(--c) 48%, var(--ink));
+  }
+  .quadrant-teiler { position: absolute; background: rgba(30, 29, 29, .14); z-index: 0; }
+  .teiler-v { left: 50%; top: 0; bottom: 0; width: 1px; transform: translateX(-.5px); }
+  .teiler-h { top: 50%; left: 0; right: 0; height: 1px; transform: translateY(-.5px); }
   .konstellation .edges, .konstellation .node { z-index: 1; }
   .edges { position: absolute; inset: 0; width: 100%; height: 100%; }
   .edges line { stroke: var(--hairline); stroke-width: .4; vector-effect: non-scaling-stroke; }
@@ -101,7 +196,15 @@ const goldHoverCss = graph.nodes
   }
   .node:hover, .node:focus-visible { transform: translate(-50%, -50%) translateY(-6px) scale(1.6); z-index: 4; }
   .node:hover .label, .node:focus-visible .label { text-shadow: none; }
-  @media (max-width: 720px) { .node .label { font-size: 12px; width: 78px; } }
+  @media (max-width: 720px) {
+    .node .label { font-size: 12px; width: 78px; }
+    /* Schmale Felder: Titel darf innerhalb seines Felds umbrechen, sonst
+       laufen benachbarte Feldtitel ineinander (z. B. 3 Spalten auf /psyche). */
+    .cluster-quadrant .cluster-label {
+      font-size: 15px; top: 8px; left: 10px; right: 8px;
+      white-space: normal; line-height: 1.05;
+    }
+  }
   @media (prefers-reduced-motion: reduce) {
     .node { transition: none; }
     .node:hover, .node:focus-visible { transform: translate(-50%, -50%); }

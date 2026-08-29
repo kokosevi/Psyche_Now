@@ -2,16 +2,31 @@
 import Site from '../../layouts/Site.astro';
 import GraphKonstellation from '../../components/graph/GraphKonstellation.astro';
 import { buildGraph } from '../../lib/graph';
+import { PARTS } from '../../site';
 
+const part = PARTS.find((p) => p.id === 'erleben')!;
 const graph = await buildGraph();
 ---
-<Site title="Erleben: Wie Glück gestalten" current="erleben">
+<Site title={part.label} current="erleben">
+  <section class="pagehead pagehead-kompakt wrap">
+    <h1>{part.label}</h1>
+    <svg class="strich" viewBox="0 0 220 14" aria-hidden="true" focusable="false">
+      <path d={part.strich} fill="none" stroke-width="4" stroke-linecap="round"></path>
+    </svg>
+  </section>
   <section class="wrap erleben-stage">
-    <GraphKonstellation graph={graph} />
+    <GraphKonstellation graph={graph} regionStyle="quadranten" />
   </section>
 </Site>
 
 <style>
+  /* Flachere Karte wie auf /herausforderungen: möglichst viel ohne Scrollen sichtbar;
+     schmale Viewports bleiben höher, damit die Knoten nicht gestaucht werden. */
+  .erleben-stage :global(.konstellation) { aspect-ratio: 1.9; }
+  @media (max-width: 720px) {
+    .erleben-stage :global(.konstellation) { aspect-ratio: 1.1; }
+  }
+
   /* Hover/Fokus auf einen Knoten hebt den verbundenen Teilgraph hervor,
      der Rest tritt zurück. Keine Drift-Animation. */
   /* Transform-Transition MUSS erhalten bleiben, sonst springt der gehoverte Knoten
